@@ -66,11 +66,11 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "nickname"
+    t.string "nickname", default: "", null: false
     t.string "image"
     t.string "email"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.string "introduction"
     t.date "birthday"
     t.integer "gender"
