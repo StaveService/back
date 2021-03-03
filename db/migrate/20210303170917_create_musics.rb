@@ -7,7 +7,7 @@ class CreateMusics < ActiveRecord::Migration[5.2]
       t.string :title, default: "", null: false
       t.string :composer, default: "", null: false
       t.string :lyrist, default: "", null: false
-      t.number :bpm
+      t.integer :bpm
       t.time :time
 
       t.timestamps
