@@ -28,11 +28,6 @@ ActiveRecord::Schema.define(version: 2021_03_02_074122) do
   create_table "artists", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", default: "", null: false
-    t.string "twitter"
-    t.string "instagram"
-    t.string "spotify"
-    t.string "itunes"
-    t.string "youtube"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_artists_on_user_id"

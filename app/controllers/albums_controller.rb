@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
 
   # POST /albums
   def create
-    @album = Album.new(album_params)
+    @album = Artist.find(params[:artist_id]).album.new(album_params)
 
     if @album.save
       render json: @album, status: :created, location: @album
@@ -40,7 +40,7 @@ class AlbumsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_artist
+    def set_album
       @album = Album.find(params[:id])
     end
 
