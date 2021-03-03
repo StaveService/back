@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  has_many :albums
+  has_many :albums, dependent: :destroy
   belongs_to :user
-  validates_presence_of :name
+  validates :name, presence: true, length: 1..100
 end

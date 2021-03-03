@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_074122) do
 
   create_table "albums", force: :cascade do |t|
     t.bigint "artist_id"
-    t.string "name", null: false
+    t.string "name", default: "", null: false
     t.string "country"
     t.date "release_date"
     t.datetime "created_at", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_074122) do
 
   create_table "artists", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name", null: false
+    t.string "name", default: "", null: false
     t.string "twitter"
     t.string "instagram"
     t.string "spotify"

@@ -15,6 +15,7 @@ reference
 gems
 
 - [rspec-rails](https://github.com/rspec/rspec-rails)
+- [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
 
 ```sh
 docker-compose run web bundle exec rspec
