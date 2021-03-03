@@ -8,6 +8,12 @@
 
 ## Testing
 
+reference
+
+- [rspec-rails-examples](https://github.com/eliotsykes/rspec-rails-examples)
+
+gems
+
 - [rspec-rails](https://github.com/rspec/rspec-rails)
 
 ```sh
