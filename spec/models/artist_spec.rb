@@ -11,4 +11,6 @@ RSpec.describe Artist, type: :model do
     it { should have_many(:albums).dependent(:destroy) }
     it { should belong_to(:user) }
   end
+
+
 end
