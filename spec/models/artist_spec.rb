@@ -12,5 +12,9 @@ RSpec.describe Artist, type: :model do
     it { should belong_to(:user) }
   end
 
-
+  context "attributes" do
+    it "has name" do
+      expect(build(:artist, name: "artist")).to have_attributes(name: "artist")
+    end
+  end
 end

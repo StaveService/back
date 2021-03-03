@@ -16,6 +16,8 @@ gems
 
 - [rspec-rails](https://github.com/rspec/rspec-rails)
 - [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+- [factory_bot](https://github.com/thoughtbot/factory_bot)
+- [faker](https://github.com/faker-ruby/faker)
 
 ```sh
 docker-compose run web bundle exec rspec
