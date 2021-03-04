@@ -3,7 +3,11 @@
 class User < ActiveRecord::Base
   has_one :artist
   extend Devise::Models
-  validates :nickname, presence: true, uniqueness: true, length: 1..15
+  validates :nickname, length: 4..15
+  validates :first_name, length: { maximum: 35 }
+  validates :last_name, length: { maximum: 35 }
+  validates_presence_of :nickname, :first_name, :last_name
+  validates_uniqueness_of :nickname
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
