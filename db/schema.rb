@@ -16,13 +16,11 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.bigint "artist_id"
     t.string "title", default: "", null: false
     t.string "country"
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_albums_on_artist_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -34,18 +32,14 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
   end
 
   create_table "musics", force: :cascade do |t|
-    t.bigint "artist_id"
     t.bigint "user_id"
     t.bigint "album_id"
     t.string "title", default: "", null: false
-    t.string "composer", default: "", null: false
-    t.string "lyrist", default: "", null: false
     t.integer "bpm"
-    t.time "time"
+    t.string "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_musics_on_album_id"
-    t.index ["artist_id"], name: "index_musics_on_artist_id"
     t.index ["user_id"], name: "index_musics_on_user_id"
   end
 
@@ -83,9 +77,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "albums", "artists"
   add_foreign_key "artists", "users"
   add_foreign_key "musics", "albums"
-  add_foreign_key "musics", "artists"
   add_foreign_key "musics", "users"
 end

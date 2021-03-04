@@ -1,4 +1,5 @@
 class Album < ApplicationRecord
+    has_many :musics
     belongs_to :artist
-    validates :title, presence: true, length: 1..100
+    validates :title, presence: true, length: { maximum: 100 }
 end
