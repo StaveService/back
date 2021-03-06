@@ -1,9 +1,11 @@
-class MusicsController < ApplicationController
+class Artists::Albums::MusicsController < ApplicationController
   before_action :set_music, only: [:show, :update, :destroy]
 
   # GET /musics
   def index
-    render json: Music.all
+    @musics = Music.all
+
+    render json: @musics
   end
 
   # GET /musics/1
@@ -38,8 +40,16 @@ class MusicsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_artist
+      @artist = Artist.find(params[:artist_id])
+    end
+    
+    def set_album
+      @album = @artist.albums.find(params[:album_id])
+    end
+
     def set_music
-      @music = Music.find(params[:id])
+      @music = @artist.albums.musics.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

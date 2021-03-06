@@ -3,9 +3,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists
   def index
-    @artists = Artist.all
-
-    render json: @artists
+    render json: Artist.all
   end
 
   # GET /artists/1

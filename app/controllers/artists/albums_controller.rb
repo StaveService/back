@@ -1,19 +1,19 @@
-class AlbumsController < ApplicationController
+class Artists::AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :update, :destroy]
 
-  # GET /albums
+  # GET /artsts/1/albums
   def index
-    render json: Album.all 
+    render json: @albums.albums
   end
 
-  # GET /albums/1
+  # GET /artsts/1/albums/1
   def show
     render json: @album
   end
 
-  # POST /albums
+  # POST /artsts/1/albums
   def create
-    @album = Artist.find(params[:artist_id]).album.new(album_params)
+    @album = @artist.albums.new(album_params)
 
     if @album.save
       render json: @album, status: :created, location: @album
@@ -22,7 +22,7 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /albums/1
+  # PATCH/PUT /artsts/1/albums/1
   def update
     if @album.update(album_params)
       render json: @album
@@ -31,15 +31,19 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # DELETE /albums/1
+  # DELETE /artsts/1/albums/1
   def destroy
     @album.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_artist
+      @artist = Artist.find(params[:artist_id])
+    end
+    
     def set_album
-      @album = Album.find(params[:id])
+      @album = @artist.albums.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
