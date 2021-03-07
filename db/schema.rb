@@ -24,11 +24,9 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
   create_table "musics", force: :cascade do |t|
@@ -77,7 +75,6 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "artists", "users"
   add_foreign_key "musics", "albums"
   add_foreign_key "musics", "users"
 end

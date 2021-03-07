@@ -13,7 +13,6 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { should have_one(:artist) }
     it { should have_many(:musics).dependent(:destroy) }
   end
 
