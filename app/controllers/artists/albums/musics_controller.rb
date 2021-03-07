@@ -3,9 +3,7 @@ class Artists::Albums::MusicsController < ApplicationController
 
   # GET /musics
   def index
-    @musics = Music.all
-
-    render json: @musics
+    render json: Music.all
   end
 
   # GET /musics/1

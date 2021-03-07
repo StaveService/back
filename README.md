@@ -8,14 +8,16 @@
 
 ## Testing
 
-reference
+references
 
 - [rspec-rails-examples](https://github.com/eliotsykes/rspec-rails-examples)
+- [http status code for rails](https://kapeli.com/cheat_sheets/HTTP_Status_Codes_Rails.docset/Contents/Resources/Documents/index)
 
 gems
 
 - [rspec-rails](https://github.com/rspec/rspec-rails)
 - [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+- [rspec-request_describer](https://github.com/r7kamura/rspec-request_describer)
 - [factory_bot](https://github.com/thoughtbot/factory_bot)
 - [faker](https://github.com/faker-ruby/faker)
 

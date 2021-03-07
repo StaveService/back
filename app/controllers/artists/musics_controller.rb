@@ -48,6 +48,6 @@ class Artists::MusicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def music_params
-      params.require(:music).permit(:artist_id, :user_id, :album_id, :title, :composer, :lyrist, :bpm, :time)
+      params.require(:music).permit(:user_id, :album_id, :title,  :bpm, :length)
     end
 end
