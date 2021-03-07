@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { should have_many(:musics).dependent(:destroy) }
+    it { should have_many(:musics) }
   end
 
   context "attributes" do

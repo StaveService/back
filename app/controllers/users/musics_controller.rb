@@ -1,9 +1,10 @@
-class Artists::Albums::MusicsController < ApplicationController
+class Users::MusicsController < ApplicationController
+  before_action :set_musics, only: [:index]
   before_action :set_music, only: [:show, :update, :destroy]
 
   # GET /musics
   def index
-    render json: Music.all
+    render json: @musics
   end
 
   # GET /musics/1
@@ -11,16 +12,16 @@ class Artists::Albums::MusicsController < ApplicationController
     render json: @music
   end
 
-  ## POST /musics
-  #def create
-    #@music = current_user.musics.new(music_params)
+  # POST /musics
+  def create
+    @music = Music.new(music_params)
 
-    #if @music.save
-      #render json: @music, status: :created, location: @music
-    #else
-      #render json: @music.errors, status: :unprocessable_entity
-    #end
-  #end
+    if @music.save
+      render json: @music, status: :created, location: @music
+    else
+      render json: @music.errors, status: :unprocessable_entity
+    end
+  end
 
   ## PATCH/PUT /musics/1
   #def update
@@ -38,16 +39,12 @@ class Artists::Albums::MusicsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_artist
-      @artist = Artist.find(params[:artist_id])
-    end
-    
-    def set_album
-      @album = @artist.albums.find(params[:album_id])
+    def set_musics
+      @musics = User.find(params[:user_id]).musics
     end
 
     def set_music
-      @music = @artist.albums.musics.find(params[:id])
+      @music = set_musics.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
