@@ -10,23 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_170917) do
+ActiveRecord::Schema.define(version: 2021_03_07_113757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
+    t.bigint "artist_id"
     t.string "title", default: "", null: false
     t.string "country"
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_albums_on_artist_id"
+  end
+
+  create_table "artist_musics", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "music_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_musics_on_artist_id"
+    t.index ["music_id"], name: "index_artist_musics_on_music_id"
   end
 
   create_table "artists", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
   create_table "musics", force: :cascade do |t|
@@ -58,11 +72,11 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "nickname", default: "", null: false
+    t.string "nickname"
     t.string "image"
     t.string "email"
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "introduction"
     t.date "birthday"
     t.integer "gender"
@@ -75,6 +89,10 @@ ActiveRecord::Schema.define(version: 2021_03_03_170917) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "albums", "artists"
+  add_foreign_key "artist_musics", "artists"
+  add_foreign_key "artist_musics", "musics"
+  add_foreign_key "artists", "users"
   add_foreign_key "musics", "albums"
   add_foreign_key "musics", "users"
 end

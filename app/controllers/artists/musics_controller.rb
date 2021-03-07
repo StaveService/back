@@ -1,5 +1,5 @@
 class Artists::MusicsController < ApplicationController
-  before_action :set_musics, only: [:index]
+  before_action :set_musics, only: [:index, :create]
   before_action :set_music, only: [:show, :update, :destroy]
 
   # GET /musics
@@ -14,7 +14,7 @@ class Artists::MusicsController < ApplicationController
 
   # POST /musics
   def create
-    @music = @artist.musics.new(music_params)
+    @music = @musics.new(music_params)
 
     if @music.save
       render json: @music, status: :created, location: @music
@@ -49,6 +49,6 @@ class Artists::MusicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def music_params
-      params.require(:music).permit(:user_id, :album_id, :title,  :bpm, :length)
+      params.require(:music).permit(:user_id, :album_id, :title, :bpm, :length)
     end
 end
