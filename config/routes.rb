@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
-  resources :albums
   resources :musics
+  resources :albums do
+    resources :musics, controller: "albums/musics"
+  end
   resources :users, only: [:index, :show] do
     resources :musics, only: [:index, :show, :create], controller: "users/musics"
   end

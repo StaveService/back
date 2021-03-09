@@ -20,3 +20,7 @@ module DeviseTokenAuthHelpers
         auth_params
     end
 end
+
+RSpec.configure do |config|
+    config.include DeviseTokenAuthHelpers
+end
