@@ -9,12 +9,13 @@ class Users::MusicsController < ApplicationController
 
   # GET /musics/1
   def show
+    p params
     render json: @music
   end
 
   # POST /musics
   def create
-    @music = Music.new(music_params)
+    @music = @musics.new(music_params)
 
     if @music.save
       render json: @music, status: :created, location: @music
@@ -44,7 +45,7 @@ class Users::MusicsController < ApplicationController
     end
 
     def set_music
-      @music = set_musics.find(params[:id])
+      @music = User.find(params[:user_id]).musics.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

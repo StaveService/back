@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :music do
-    add_attribute(:length) { "length" }
-    association :user
-    association :album
+    user
+    album
     title { "MyString" }
     bpm { 120 }
+    add_attribute(:length) { "length" }
   end
 end
