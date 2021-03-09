@@ -46,20 +46,20 @@ RSpec.describe "Artists", type: :request do
     end
   end
   
-  #describe "Artist/Music" do
-    #let(:music_valid_attributes) { {title: Faker::Music::GratefulDead.song} }
-    #let(:artist_id) { create(:artist).id }
+  describe "Artist/Music" do
+    let(:artist) { create(:artist) }
+    let(:artist_id) { artist.id }
 
-    #context "GET /artists/:artist_id/musics" do
-      #it { is_expected.to eq(200) }
-    #end
+    context "GET /artists/:artist_id/musics" do
+      it { is_expected.to eq(200) }
+    end
 
-    #context "POST /artists/:artist_id/musics" do
-      #before do
-        #params[:music] = music_valid_attributes
-      #end
-      #it { is_expected.to eq(200) }
-    #end
-  #end
+    context "GET /artists/:artist_id/musics/:music_id" do
+      let!(:artist_music) { create(:artist_music, music: music, artist: artist)}
+      let(:music) { create(:music) }
+      let(:music_id) { music.id }
+      it { is_expected.to eq(200) }
+    end
+  end
 end
 

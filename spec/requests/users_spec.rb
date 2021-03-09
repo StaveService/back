@@ -27,18 +27,5 @@ RSpec.describe "Users", type: :request do
         it { is_expected.to eq(200) }
       end
     end
-
-    describe "Artist" do
-      context "GET /users/:user_id/artists" do
-        it { is_expected.to eq(200) }
-      end
-
-      context "GET /users/:user_id/musics/:music_id" do
-        let(:music) { create(:music, user: user) }
-        let(:music_id) { music.id }
-        it { is_expected.to eq(200) }
-      end
-    end
-
   end
 end

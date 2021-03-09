@@ -4,7 +4,7 @@
 
 ## Gems
 
-- [devise_token_auth](https://github.com/lynndylanhurley/devise_token_auth)
+- [devise_token_auth](https://devise-token-auth.gitbook.io/devise-token-auth/)
 
 ## Testing
 
@@ -20,6 +20,7 @@ gems
 - [rspec-request_describer](https://github.com/r7kamura/rspec-request_describer)
 - [factory_bot](https://github.com/thoughtbot/factory_bot)
 - [faker](https://github.com/faker-ruby/faker)
+- [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
 
 ```sh
 docker-compose run web bundle exec rspec

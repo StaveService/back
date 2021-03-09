@@ -1,5 +1,5 @@
 class Artists::MusicsController < ApplicationController
-  before_action :set_musics, only: [:index, :create]
+  before_action :set_musics
   before_action :set_music, only: [:show, :update, :destroy]
 
   # GET /musics
@@ -44,7 +44,7 @@ class Artists::MusicsController < ApplicationController
     end
 
     def set_music
-      @music = set_musics.find(params[:id])
+      @music = @musics.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

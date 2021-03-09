@@ -1,5 +1,5 @@
 class Users::MusicsController < ApplicationController
-  before_action :set_musics, only: [:index]
+  before_action :set_musics
   before_action :set_music, only: [:show, :update, :destroy]
 
   # GET /musics
@@ -9,7 +9,6 @@ class Users::MusicsController < ApplicationController
 
   # GET /musics/1
   def show
-    p params
     render json: @music
   end
 
@@ -45,7 +44,7 @@ class Users::MusicsController < ApplicationController
     end
 
     def set_music
-      @music = User.find(params[:user_id]).musics.find(params[:id])
+      @music = @musics.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
