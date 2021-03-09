@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 RSpec.describe "Artists", type: :request do
-  describe "Artist" do
+  describe "/artist" do
     let(:artist_valid_attributes){ {name: Faker::Name.name} }
     context "GET /artists" do
       it { is_expected.to eq(200) }
@@ -46,7 +46,7 @@ RSpec.describe "Artists", type: :request do
     end
   end
   
-  describe "Artist/Music" do
+  describe "/artist/music" do
     let(:artist) { create(:artist) }
     let(:artist_id) { artist.id }
 

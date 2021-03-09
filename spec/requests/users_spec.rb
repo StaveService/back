@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "User" do
+  describe "/user" do
     context "GET /users" do
       it { is_expected.to eq(200) }
     end
@@ -12,11 +12,11 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "User/" do
+  describe "/user" do
     let(:user) { create(:user) }
     let(:user_id) { user.id }
 
-    describe "Music" do
+    describe "/music" do
       context "GET /users/:user_id/musics" do
         it { is_expected.to eq(200) }
       end
