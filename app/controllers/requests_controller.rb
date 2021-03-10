@@ -3,9 +3,7 @@ class RequestsController < ApplicationController
 
   # GET /requests
   def index
-    @requests = Request.all
-
-    render json: @requests
+    render json: Request.all
   end
 
   # GET /requests/1
@@ -46,6 +44,6 @@ class RequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def request_params
-      params.require(:request).permit(:user_id, :artist_id, :title)
+      params.require(:request).permit(:user_id, :title)
     end
 end

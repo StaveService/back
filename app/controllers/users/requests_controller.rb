@@ -1,4 +1,5 @@
-class RequestsController < ApplicationController
+class Users::RequestsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_requests
   before_action :set_request, only: [:show, :update, :destroy]
 
@@ -49,6 +50,6 @@ class RequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def request_params
-      params.require(:request).permit(:user_id, :artist_id, :title)
+      params.require(:request).permit(:user_id, :title)
     end
 end

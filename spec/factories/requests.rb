@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :request do
-    user { nil }
-    artist { nil }
+    user
     title { "MyString" }
   end
 end

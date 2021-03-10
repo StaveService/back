@@ -3,6 +3,7 @@
 class User < ActiveRecord::Base
   extend Devise::Models
   has_many :musics
+  has_many :requests
   validates :nickname, length: 4..30
   validates :first_name, length: { maximum: 35 }
   validates :last_name, length: { maximum: 35 }
