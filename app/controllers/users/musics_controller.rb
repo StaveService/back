@@ -1,4 +1,5 @@
 class Users::MusicsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_musics
   before_action :set_music, only: [:show, :update, :destroy]
 
@@ -23,19 +24,19 @@ class Users::MusicsController < ApplicationController
     end
   end
 
-  ## PATCH/PUT /musics/1
-  #def update
-    #if @music.update(music_params)
-      #render json: @music
-    #else
-      #render json: @music.errors, status: :unprocessable_entity
-    #end
-  #end
+  # PATCH/PUT /musics/1
+  def update
+    if @music.update(music_params)
+      render json: @music
+    else
+      render json: @music.errors, status: :unprocessable_entity
+    end
+  end
 
-  ## DELETE /musics/1
-  #def destroy
-    #@music.destroy
-  #end
+  # DELETE /musics/1
+  def destroy
+    @music.destroy
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

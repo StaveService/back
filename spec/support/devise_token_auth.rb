@@ -1,6 +1,6 @@
 module DeviseTokenAuthHelpers
-    def login
-        post api_user_session_path, params:  { email: @current_user.email, password: 'password' }.to_json, headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    def login user
+        post user_session_path, params:  { email: user.email, password: user.password }.to_json, headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     end
 
     def get_auth_params_from_login_response_headers(response)
@@ -23,4 +23,5 @@ end
 
 RSpec.configure do |config|
     config.include DeviseTokenAuthHelpers
+    config.include ActionController::RespondWith
 end

@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_album, only: [:show, :update, :destroy]
 
   # GET /albums
@@ -13,7 +14,7 @@ class AlbumsController < ApplicationController
 
   # POST /albums
   def create
-    @album = Artist.find(params[:artist_id]).album.new(album_params)
+    @album = Album.new(album_params)
 
     if @album.save
       render json: @album, status: :created, location: @album
