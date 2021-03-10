@@ -102,7 +102,7 @@ RSpec.describe "Users", type: :request do
           it do
             login user
             headers = get_auth_params_from_login_response_headers(response)
-            put user_music_path(user, music), params: { music: attributes_for(:music, title: "update title") }, headers: headers
+            patch user_music_path(user, music), params: { music: attributes_for(:music, title: "update title") }, headers: headers
             expect(response).to have_http_status :ok
           end
         end
@@ -111,12 +111,30 @@ RSpec.describe "Users", type: :request do
           it do
             login user
             headers = get_auth_params_from_login_response_headers(response)
-            put user_music_path(user, music), params: { music: attributes_for(:music, title: "") }, headers: headers
+            patch user_music_path(user, music), params: { music: attributes_for(:music, title: "") }, headers: headers
             expect(response).to have_http_status :unprocessable_entity
           end
         end
       end
 
+
+      context "DELETE /users/:user_id/musics/:music_id" do
+        let(:music) { create(:music, user: user) }
+        let(:music_id) { music.id }
+
+        context "without headers" do
+          it { is_expected.to eq(401) }
+        end
+
+        context "with headers & valid params" do
+          it do
+            login user
+            headers = get_auth_params_from_login_response_headers(response)
+            delete user_music_path(user, music), headers: headers
+            expect(response).to have_http_status :no_content
+          end
+        end
+      end
     end
   end
 end
