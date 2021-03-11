@@ -13,7 +13,8 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { should have_many(:musics) }
+    it { should have_many :musics }
+    it { should have_many :requests }
   end
 
   context "attributes" do

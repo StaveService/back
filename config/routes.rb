@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :issues
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :requests, only: [:index, :show]
   resources :musics, only: [:index, :show]
