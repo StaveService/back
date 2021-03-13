@@ -46,6 +46,6 @@ class IssuesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def issue_params
-      params.require(:issue).permit(:music_id, :title, :description)
+      params.require(:issue).permit(:user_id, :music_id, :title, :description)
     end
 end

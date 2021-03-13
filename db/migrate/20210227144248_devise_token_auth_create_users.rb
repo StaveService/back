@@ -41,8 +41,8 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.2]
       t.string :image
       t.string :email
 
-      t.string :first_name, default: "", null: false
-      t.string :last_name, default: "", null: false
+      t.string :firstname, default: "", null: false
+      t.string :lastname, default: "", null: false
       t.string :introduction
       t.date :birthday
       t.integer :gender
