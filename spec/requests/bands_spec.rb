@@ -17,11 +17,11 @@ RSpec.describe "/bands", type: :request do
   # Band. As you add validations to Band, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:band)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    attributes_for(:band, name: "")
   }
 
   # This should return the minimal set of values that should be in the headers
@@ -85,7 +85,7 @@ RSpec.describe "/bands", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        attributes_for(:band)
       }
 
       it "updates the requested band" do
@@ -93,7 +93,6 @@ RSpec.describe "/bands", type: :request do
         patch band_url(band),
               params: { band: new_attributes }, headers: valid_headers, as: :json
         band.reload
-        skip("Add assertions for updated state")
       end
 
       it "renders a JSON response with the band" do

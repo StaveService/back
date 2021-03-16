@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ArtistBand, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "validations" do
+    it { should validate_presence_of :artist_id }
+    it { should validate_presence_of :band_id }
+  end
+
+  context 'associations' do
+    it { should belong_to :artist }
+    it { should belong_to :band }
+  end
 end

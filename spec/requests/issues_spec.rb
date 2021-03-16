@@ -17,11 +17,13 @@ RSpec.describe "/issues", type: :request do
   # Issue. As you add validations to Issue, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    user = create(:user)
+    music = create(:music, user: user)
+    attributes_for(:issue, user: user, music: music)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    attributes_for(:issue, title: "")
   }
 
   # This should return the minimal set of values that should be in the headers
@@ -45,83 +47,6 @@ RSpec.describe "/issues", type: :request do
       issue = Issue.create! valid_attributes
       get issue_url(issue), as: :json
       expect(response).to be_successful
-    end
-  end
-
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Issue" do
-        expect {
-          post issues_url,
-               params: { issue: valid_attributes }, headers: valid_headers, as: :json
-        }.to change(Issue, :count).by(1)
-      end
-
-      it "renders a JSON response with the new issue" do
-        post issues_url,
-             params: { issue: valid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including("application/json"))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "does not create a new Issue" do
-        expect {
-          post issues_url,
-               params: { issue: invalid_attributes }, as: :json
-        }.to change(Issue, :count).by(0)
-      end
-
-      it "renders a JSON response with errors for the new issue" do
-        post issues_url,
-             params: { issue: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq("application/json")
-      end
-    end
-  end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested issue" do
-        issue = Issue.create! valid_attributes
-        patch issue_url(issue),
-              params: { issue: new_attributes }, headers: valid_headers, as: :json
-        issue.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "renders a JSON response with the issue" do
-        issue = Issue.create! valid_attributes
-        patch issue_url(issue),
-              params: { issue: new_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:ok)
-        expect(response.content_type).to match(a_string_including("application/json"))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "renders a JSON response with errors for the issue" do
-        issue = Issue.create! valid_attributes
-        patch issue_url(issue),
-              params: { issue: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq("application/json")
-      end
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested issue" do
-      issue = Issue.create! valid_attributes
-      expect {
-        delete issue_url(issue), headers: valid_headers, as: :json
-      }.to change(Issue, :count).by(-1)
     end
   end
 end
