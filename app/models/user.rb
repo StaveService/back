@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   has_many :musics
   has_many :requests
   validates :nickname, length: 4..30
-  validates :first_name, length: { maximum: 35 }
-  validates :last_name, length: { maximum: 35 }
-  validates_presence_of :nickname, :first_name, :last_name
+  validates :familyname, length: { maximum: 35 }
+  validates :givenname, length: { maximum: 35 }
+  validates_presence_of :nickname, :familyname, :givenname
   validates_uniqueness_of :nickname
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

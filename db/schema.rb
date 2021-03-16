@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_182036) do
     t.string "nickname", default: "", null: false
     t.string "image"
     t.string "email"
-    t.string "firstname", default: "", null: false
-    t.string "lastname", default: "", null: false
+    t.string "familyname", default: "", null: false
+    t.string "givenname", default: "", null: false
     t.string "introduction"
     t.date "birthday"
     t.integer "gender"

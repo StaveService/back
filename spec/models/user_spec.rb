@@ -4,11 +4,11 @@ RSpec.describe User, type: :model do
   context "validations" do
     subject { build(:user) } 
     it { should validate_presence_of :nickname }
-    it { should validate_presence_of :first_name }
-    it { should validate_presence_of :last_name }
+    it { should validate_presence_of :familyname }
+    it { should validate_presence_of :givenname }
     it { should validate_length_of(:nickname).is_at_least(4).is_at_most(30) }
-    it { should validate_length_of(:first_name).is_at_most(35) }
-    it { should validate_length_of(:last_name).is_at_most(35) }
+    it { should validate_length_of(:familyname).is_at_most(35) }
+    it { should validate_length_of(:givenname).is_at_most(35) }
     it { should validate_uniqueness_of :nickname }
   end
 
@@ -22,12 +22,12 @@ RSpec.describe User, type: :model do
       expect(build(:user, nickname: "nickname")).to have_attributes(nickname: "nickname")
     end
 
-    it "has first_name" do
-      expect(build(:user, first_name: "first_name")).to have_attributes(first_name: "first_name")
+    it "has family_name" do
+      expect(build(:user, familyname: "familyname")).to have_attributes(familyname: "familyname")
     end
 
-    it "has last_name" do
-      expect(build(:user, last_name: "last_name")).to have_attributes(last_name: "last_name")
+    it "has give_name" do
+      expect(build(:user, givenname: "givenname")).to have_attributes(givenname: "givenname")
     end
 
     it "has introduction" do
