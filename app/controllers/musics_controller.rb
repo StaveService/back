@@ -3,7 +3,7 @@ class MusicsController < ApplicationController
 
   # GET /musics
   def index
-    render json: Music.all
+    render json: Music.all, include: :user
   end
 
   # GET /musics/1

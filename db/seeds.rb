@@ -8,6 +8,7 @@
 require 'factory_bot_rails'
 
 10.times do 
-  FactoryBot.create(:music, user: FactoryBot.create(:user))
+  user = FactoryBot.create(:user)
+  music = FactoryBot.create(:music, user: user)
+  FactoryBot.create(:artist_music,  music: music)
 end
-

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_182036) do
+ActiveRecord::Schema.define(version: 2021_03_16_210432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_03_11_182036) do
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "artist_bands", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "band_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_bands_on_artist_id"
+    t.index ["band_id"], name: "index_artist_bands_on_band_id"
   end
 
   create_table "artist_musics", force: :cascade do |t|
@@ -35,6 +45,12 @@ ActiveRecord::Schema.define(version: 2021_03_11_182036) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bands", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -104,6 +120,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_182036) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "artist_bands", "artists"
+  add_foreign_key "artist_bands", "bands"
   add_foreign_key "artist_musics", "artists"
   add_foreign_key "artist_musics", "musics"
   add_foreign_key "issues", "musics"
