@@ -9,6 +9,7 @@ RSpec.describe Music, type: :model do
   context 'associations' do
     it { should have_many(:artists).through(:artist_musics) }
     it { should belong_to(:album).optional }
+    it { should belong_to(:band).optional }
     it { should belong_to(:user) }
   end
 

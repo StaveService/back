@@ -69,12 +69,14 @@ ActiveRecord::Schema.define(version: 2021_03_16_210432) do
   create_table "musics", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "album_id"
+    t.bigint "band_id"
     t.string "title", default: "", null: false
     t.integer "bpm"
     t.string "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_musics_on_album_id"
+    t.index ["band_id"], name: "index_musics_on_band_id"
     t.index ["user_id"], name: "index_musics_on_user_id"
   end
 
@@ -127,6 +129,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_210432) do
   add_foreign_key "issues", "musics"
   add_foreign_key "issues", "users"
   add_foreign_key "musics", "albums"
+  add_foreign_key "musics", "bands"
   add_foreign_key "musics", "users"
   add_foreign_key "requests", "users"
 end
