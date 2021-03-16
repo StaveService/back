@@ -6,6 +6,12 @@
 
 - [devise_token_auth](https://devise-token-auth.gitbook.io/devise-token-auth/)
 
+## Credentials
+
+```cmd
+docker-compose run web rails credentials:edit
+```
+
 ## Testing
 
 references
