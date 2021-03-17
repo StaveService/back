@@ -7,8 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'factory_bot_rails'
 
+artist = FactoryBot.create(:artist)
+band = FactoryBot.create(:band)
 10.times do 
   user = FactoryBot.create(:user)
-  music = FactoryBot.create(:music, user: user)
-  FactoryBot.create(:artist_music,  music: music)
+  music = FactoryBot.create(:music, user: user, band: band)
+  FactoryBot.create(:artist_music, artist: artist, music: music)
 end
+
+User.create(email: "test@test.com", familyname: "test", givenname: "tester", nickname: "IamTester", password: "password", password_confirmation: "password")

@@ -14,6 +14,10 @@ docker-compose run web rails credentials:edit
 
 ## Testing
 
+test-user
+    test@test.com
+    password
+
 references
 
 - [rspec-rails-examples](https://github.com/eliotsykes/rspec-rails-examples)
