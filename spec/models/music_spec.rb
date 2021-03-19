@@ -7,10 +7,12 @@ RSpec.describe Music, type: :model do
   end
 
   context 'associations' do
+    it { should have_many(:music_composers).through(:composers).source(:artist) }
+    it { should have_many(:music_lyrists).through(:lyrists).source(:artist) }
     it { should have_many(:artists).through(:artist_musics) }
+    it { should belong_to(:user) }
     it { should belong_to(:album).optional }
     it { should belong_to(:band).optional }
-    it { should belong_to(:user) }
   end
 
   context "attributes" do

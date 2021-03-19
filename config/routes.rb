@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :lyrists
-  resources :composers
+  resources :lyrists, only: [:index, :show]
+  resources :composers, only: [:index, :show]
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :bands
   resources :issues, only: [:index, :show]

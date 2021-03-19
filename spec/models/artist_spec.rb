@@ -7,7 +7,10 @@ RSpec.describe Artist, type: :model do
   end
   
   context 'associations' do
+    it { should have_many(:composers).class_name("Artist").through(:composers) }
+    it { should have_many(:lyrists).class_name("Artist").through(:lyrists) }
     it { should have_many(:musics).through(:artist_musics) }
+    it { should have_many(:bands).through(:artist_bands) }
   end
   
   context "attributes" do

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :lyrist do
-    artist { nil }
-    music { nil }
+    artist
+    music
   end
 end

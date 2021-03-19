@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: @user
+        render json: @user, include: [:musics]
     end
 
     def set_user

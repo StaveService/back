@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_210432) do
+ActiveRecord::Schema.define(version: 2021_03_18_234514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,21 +26,10 @@ ActiveRecord::Schema.define(version: 2021_03_16_210432) do
   create_table "artist_bands", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "band_id"
-    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_artist_bands_on_artist_id"
     t.index ["band_id"], name: "index_artist_bands_on_band_id"
-  end
-
-  create_table "artist_musics", force: :cascade do |t|
-    t.bigint "artist_id"
-    t.bigint "music_id"
-    t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_artist_musics_on_artist_id"
-    t.index ["music_id"], name: "index_artist_musics_on_music_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -55,6 +44,15 @@ ActiveRecord::Schema.define(version: 2021_03_16_210432) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "composers", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "music_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_composers_on_artist_id"
+    t.index ["music_id"], name: "index_composers_on_music_id"
+  end
+
   create_table "issues", force: :cascade do |t|
     t.bigint "music_id"
     t.bigint "user_id"
@@ -64,6 +62,15 @@ ActiveRecord::Schema.define(version: 2021_03_16_210432) do
     t.datetime "updated_at", null: false
     t.index ["music_id"], name: "index_issues_on_music_id"
     t.index ["user_id"], name: "index_issues_on_user_id"
+  end
+
+  create_table "lyrists", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "music_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_lyrists_on_artist_id"
+    t.index ["music_id"], name: "index_lyrists_on_music_id"
   end
 
   create_table "musics", force: :cascade do |t|
@@ -86,6 +93,16 @@ ActiveRecord::Schema.define(version: 2021_03_16_210432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "music_id"
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_roles_on_artist_id"
+    t.index ["music_id"], name: "index_roles_on_music_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -124,12 +141,16 @@ ActiveRecord::Schema.define(version: 2021_03_16_210432) do
 
   add_foreign_key "artist_bands", "artists"
   add_foreign_key "artist_bands", "bands"
-  add_foreign_key "artist_musics", "artists"
-  add_foreign_key "artist_musics", "musics"
+  add_foreign_key "composers", "artists"
+  add_foreign_key "composers", "musics"
   add_foreign_key "issues", "musics"
   add_foreign_key "issues", "users"
+  add_foreign_key "lyrists", "artists"
+  add_foreign_key "lyrists", "musics"
   add_foreign_key "musics", "albums"
   add_foreign_key "musics", "bands"
   add_foreign_key "musics", "users"
   add_foreign_key "requests", "users"
+  add_foreign_key "roles", "artists"
+  add_foreign_key "roles", "musics"
 end

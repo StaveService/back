@@ -13,30 +13,30 @@ class IssuesController < ApplicationController
     render json: @issue
   end
 
-  # POST /issues
-  def create
-    @issue = Issue.new(issue_params)
+  # # POST /issues
+  # def create
+    # @issue = Issue.new(issue_params)
 
-    if @issue.save
-      render json: @issue, status: :created, location: @issue
-    else
-      render json: @issue.errors, status: :unprocessable_entity
-    end
-  end
+    # if @issue.save
+      # render json: @issue, status: :created, location: @issue
+    # else
+      # render json: @issue.errors, status: :unprocessable_entity
+    # end
+  # end
 
-  # PATCH/PUT /issues/1
-  def update
-    if @issue.update(issue_params)
-      render json: @issue
-    else
-      render json: @issue.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /issues/1
+  # def update
+    # if @issue.update(issue_params)
+      # render json: @issue
+    # else
+      # render json: @issue.errors, status: :unprocessable_entity
+    # end
+  # end
 
-  # DELETE /issues/1
-  def destroy
-    @issue.destroy
-  end
+  # # DELETE /issues/1
+  # def destroy
+    # @issue.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

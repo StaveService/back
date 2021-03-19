@@ -10,7 +10,7 @@ class BandsController < ApplicationController
 
   # GET /bands/1
   def show
-    render json: @band
+    render json: @band, include: :artists
   end
 
   # POST /bands
