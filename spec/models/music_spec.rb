@@ -7,15 +7,18 @@ RSpec.describe Music, type: :model do
   end
 
   context 'associations' do
+    it { should have_many :roles }
     it { should have_many(:music_composers).through(:composers).source(:artist) }
     it { should have_many(:music_lyrists).through(:lyrists).source(:artist) }
-    it { should have_many(:artists).through(:artist_musics) }
-    it { should belong_to(:user) }
+    it { should belong_to :user }
     it { should belong_to(:album).optional }
     it { should belong_to(:band).optional }
   end
 
   context "attributes" do
+    it "has title" do
+      expect(build(:music, title: "title")).to have_attributes(title: "title")
+    end
     it "has bpm" do
       expect(build(:music, bpm: 120)).to have_attributes(bpm: 120)
     end

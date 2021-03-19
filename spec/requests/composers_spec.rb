@@ -16,7 +16,7 @@ RSpec.describe "/composers", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Composer. As you add validations to Composer, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let!(:valid_attributes) {
     artist = create(:artist)
     music = create(:music)
     attributes_for(:composer, artist: artist, music: music)
@@ -45,7 +45,7 @@ RSpec.describe "/composers", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       composer = Composer.create! valid_attributes
-      get composer_url(composer), as: :json
+      get composer_url composer, as: :json
       expect(response).to be_successful
     end
   end

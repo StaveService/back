@@ -16,7 +16,7 @@ RSpec.describe "/lyrists", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Lyrist. As you add validations to Lyrist, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let!(:valid_attributes) {
     artist = create(:artist)
     music = create(:music)
     attributes_for(:lyrist, artist: artist, music: music)

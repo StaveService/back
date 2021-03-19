@@ -22,7 +22,6 @@ RSpec.describe "Artists", type: :request do
       it { is_expected.to eq(200) }
     end
 
-
     context "PATCH /artists/:artist_id" do
       let(:artist_id) { artist.id }
       before do
@@ -57,7 +56,7 @@ RSpec.describe "Artists", type: :request do
     end
 
     context "GET /artists/:artist_id/musics/:music_id" do
-      let!(:artist_music) { create(:artist_music, music: music, artist: artist)}
+      let!(:role) { create(:role, music: music, artist: artist)}
       let(:music) { create(:music) }
       let(:music_id) { music.id }
       it { is_expected.to eq(200) }
