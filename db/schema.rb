@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_131810) do
+ActiveRecord::Schema.define(version: 2021_03_19_151323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_musics", force: :cascade do |t|
+    t.bigint "album_id"
+    t.bigint "music_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_musics_on_album_id"
+    t.index ["music_id"], name: "index_album_musics_on_music_id"
+  end
 
   create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
@@ -84,14 +93,12 @@ ActiveRecord::Schema.define(version: 2021_03_19_131810) do
 
   create_table "musics", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "album_id"
     t.bigint "band_id"
     t.string "title", default: "", null: false
     t.integer "bpm"
     t.string "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["album_id"], name: "index_musics_on_album_id"
     t.index ["band_id"], name: "index_musics_on_band_id"
     t.index ["user_id"], name: "index_musics_on_user_id"
   end
@@ -148,6 +155,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_131810) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "album_musics", "albums"
+  add_foreign_key "album_musics", "musics"
   add_foreign_key "artist_albums", "albums"
   add_foreign_key "artist_albums", "artists"
   add_foreign_key "artist_bands", "artists"
@@ -158,7 +167,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_131810) do
   add_foreign_key "issues", "users"
   add_foreign_key "lyrists", "artists"
   add_foreign_key "lyrists", "musics"
-  add_foreign_key "musics", "albums"
   add_foreign_key "musics", "bands"
   add_foreign_key "musics", "users"
   add_foreign_key "requests", "users"

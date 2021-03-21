@@ -10,7 +10,7 @@ class Users::MusicsController < ApplicationController
 
   # GET /musics/1
   def show
-    render json: @music, include: [:user, :band, :music_composers, :music_lyrists, roles: {include: :artist}]
+    render json: @music, include: [:user, :band, :albums, :music_composers, :music_lyrists, roles: {include: :artist}]
   end
 
   # POST /musics

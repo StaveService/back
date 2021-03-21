@@ -20,8 +20,11 @@ RSpec.describe "Albums", type: :request do
     end
 
     context "GET /albums/:album_id/musics/:music_id" do
-      let(:music) { create(:music, album: album) }
+      let(:music) { create(:music) }
       let(:music_id) { music.id }
+      before do
+        create :album_music, album: album, music: music
+      end
       it { is_expected.to eq(200) }
     end
   end

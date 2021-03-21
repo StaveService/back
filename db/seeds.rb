@@ -12,12 +12,17 @@ band1= Band.create(name: "Ling tosite Sigure")
 artist1 = Artist.create(name: "TK")
 artist2 = Artist.create(name: "345")
 artist3 = Artist.create(name: "ピエール中野")
+album1 = Album.create(title: "#4", release_date: "2005/11/9")
+FactoryBot.create(:artist_album, artist: artist1, album: album1)
+FactoryBot.create(:artist_album, artist: artist2, album: album1)
+FactoryBot.create(:artist_album, artist: artist3, album: album1)
 FactoryBot.create(:artist_band, artist: artist1, band: band1)
 FactoryBot.create(:artist_band, artist: artist2, band: band1)
 FactoryBot.create(:artist_band, artist: artist3, band: band1)
 
 user1 = FactoryBot.create(:user)
-user1_music1 = FactoryBot.create(:music, user: user1, band: band1, title: "abnormalize") 
+
+user1_music1 = FactoryBot.create(:music, user: user1, band: band1, title: "abnormalize")
 FactoryBot.create(:composer, artist: artist1 , music: user1_music1)
 FactoryBot.create(:lyrist, artist: artist1 , music: user1_music1)
 FactoryBot.create(:role, artist: artist1, music: user1_music1, role: 1)
@@ -31,6 +36,13 @@ FactoryBot.create(:role, artist: artist1, music: user1_music2, role: 1)
 FactoryBot.create(:role, artist: artist2, music: user1_music2, role: 2)
 FactoryBot.create(:role, artist: artist3, music: user1_music2, role: 3)
 
+user1_music3 = FactoryBot.create(:music, user: user1, band: band1, title: "O.F.T") 
+FactoryBot.create(:composer, artist: artist1 , music: user1_music3)
+FactoryBot.create(:lyrist, artist: artist1 , music: user1_music3)
+FactoryBot.create(:album_music, album: album1, music: user1_music3)
+FactoryBot.create(:role, artist: artist1, music: user1_music3, role: 1)
+FactoryBot.create(:role, artist: artist2, music: user1_music3, role: 2)
+FactoryBot.create(:role, artist: artist3, music: user1_music3, role: 3)
 
 # RADWIMPS
 

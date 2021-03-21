@@ -8,7 +8,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1
   def show
-    render json: @artist, include: [:bands, musics: {include: [:user, :music_composers, :music_lyrists]}]
+    render json: @artist, include: [:bands, :albums, musics: {include: [:user, :music_composers, :music_lyrists]}]
   end
 
   # POST /artists
