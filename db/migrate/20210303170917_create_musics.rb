@@ -6,6 +6,8 @@ class CreateMusics < ActiveRecord::Migration[5.2]
       t.string :title, default: "", null: false
       t.integer :bpm
       t.string :length
+      t.string :itunes_artwork_url
+      t.date :release_date
 
       t.timestamps
     end

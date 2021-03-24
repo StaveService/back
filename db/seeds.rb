@@ -8,7 +8,7 @@
 require 'factory_bot_rails'
 
 # Ling tosite Sigure
-band1= Band.create(name: "Ling tosite Sigure")
+band1= Band.create(name: "Ling tosite sigure")
 artist1 = Artist.create(name: "TK")
 artist2 = Artist.create(name: "345")
 artist3 = Artist.create(name: "ピエール中野")
@@ -22,7 +22,7 @@ FactoryBot.create(:artist_band, artist: artist3, band: band1)
 
 user1 = FactoryBot.create(:user)
 
-user1_music1 = FactoryBot.create(:music, user: user1, band: band1, title: "abnormalize")
+user1_music1 = FactoryBot.create(:music, user: user1, band: band1, title: "Abnormalize", itunes_artwork_url: "https://is3-ssl.mzstatic.com/image/thumb/Music124/v4/e0/83/8e/e0838e53-06ce-f04f-19c3-a3a6e1ff2102/source/100x100bb.jpg")
 FactoryBot.create(:composer, artist: artist1 , music: user1_music1)
 FactoryBot.create(:lyrist, artist: artist1 , music: user1_music1)
 FactoryBot.create(:role, artist: artist1, music: user1_music1, role: 1)

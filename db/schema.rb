@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_151323) do
     t.string "title", default: "", null: false
     t.integer "bpm"
     t.string "length"
+    t.string "itunes_artwork_url"
+    t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_musics_on_band_id"

@@ -13,4 +13,6 @@ class Music < ApplicationRecord
   belongs_to :user
   belongs_to :band, optional: true
   validates :title, presence: true, length: { maximum: 50 }
+
+  accepts_nested_attributes_for :albums, :band
 end

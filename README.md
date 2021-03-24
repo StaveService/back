@@ -5,6 +5,7 @@
 ## Gems
 
 - [devise_token_auth](https://devise-token-auth.gitbook.io/devise-token-auth/)
+- [ransack](https://github.com/activerecord-hackery/ransack)
 
 ## Credentials
 
