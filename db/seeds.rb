@@ -29,7 +29,7 @@ FactoryBot.create(:role, artist: artist1, music: user1_music1, role: 1)
 FactoryBot.create(:role, artist: artist2, music: user1_music1, role: 2)
 FactoryBot.create(:role, artist: artist3, music: user1_music1, role: 3)
 
-user1_music2 = FactoryBot.create(:music, user: user1, band: band1, title: "Enigmatic Feeling") 
+user1_music2 = FactoryBot.create(:music, user: user1, band: band1, title: "Enigmatic Feeling", itunes_artwork_url: "https://is5-ssl.mzstatic.com/image/thumb/Music128/v4/8e/d1/e0/8ed1e002-0917-ab83-6194-62244108a271/source/100x100bb.jpg") 
 FactoryBot.create(:composer, artist: artist1 , music: user1_music2)
 FactoryBot.create(:lyrist, artist: artist1 , music: user1_music2)
 FactoryBot.create(:role, artist: artist1, music: user1_music2, role: 1)
