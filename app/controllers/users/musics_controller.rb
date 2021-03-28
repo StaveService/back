@@ -5,7 +5,7 @@ class Users::MusicsController < ApplicationController
 
   # GET /musics
   def index
-    render json: @musics
+    render json: @musics.ransack(params[:q]).result, include: [:user, :band, :music_composers, :music_lyrists]
   end
 
   # GET /musics/1
@@ -15,7 +15,8 @@ class Users::MusicsController < ApplicationController
 
   # POST /musics
   def create
-    @music = @musics.new(music_params)
+    @music = @musics.new music_params
+
 
     if @music.save
       render json: @music, status: :created, location: @music
@@ -50,6 +51,10 @@ class Users::MusicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def music_params
-      params.require(:music).permit(:user_id, :album_id, :title, :bpm, :length)
+      params.require(:music).permit(:user_id, :title, :bpm, :length, :release_date, :itunes_track_id)
+    end
+
+    def album_params
+      params.require(:album).permit(:title, :release_date)
     end
 end

@@ -16,5 +16,9 @@ RSpec.describe Artist, type: :model do
     it "has name" do
       expect(build(:artist, name: "artist")).to have_attributes(name: "artist")
     end
+
+    it "has itunes_artist_id" do
+      expect(build(:artist, itunes_artist_id: 0)).to have_attributes(itunes_artist_id: 0)
+    end
   end
 end

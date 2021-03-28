@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_151323) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.string "country"
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,12 +51,14 @@ ActiveRecord::Schema.define(version: 2021_03_19_151323) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.integer "itunes_artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "bands", force: :cascade do |t|
     t.string "name"
+    t.integer "itunes_artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,7 +98,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_151323) do
     t.string "title", default: "", null: false
     t.integer "bpm"
     t.string "length"
-    t.string "itunes_artwork_url"
+    t.integer "itunes_track_id"
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -3,7 +3,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists
   def index
-    render json: Artist.all
+    render json: Artist.ransack(params[:q] && JSON.parse(params[:q])).result
   end
 
   # GET /artists/1

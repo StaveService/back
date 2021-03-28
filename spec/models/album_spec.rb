@@ -16,8 +16,9 @@ RSpec.describe Album, type: :model do
       expect(build(:album, title: "title")).to have_attributes(title: "title")
     end
 
-    it "has country" do
-      expect(build(:album, country: "JP")).to have_attributes(country: "JP")
+    it "has release_date" do
+      date = Date.today
+      expect(build(:album, release_date: date)).to have_attributes(release_date: date)
     end
   end
 end

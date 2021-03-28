@@ -25,5 +25,9 @@ RSpec.describe Music, type: :model do
     it "has time" do
       expect(build(:music, length: "length")).to have_attributes(length: "length")
     end
+
+    it "has itunes_track_id" do
+      expect(build(:music, itunes_track_id: 0)).to have_attributes(itunes_track_id: 0)
+    end
   end
 end

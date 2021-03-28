@@ -3,7 +3,7 @@ class MusicsController < ApplicationController
 
   # GET /musics
   def index
-    render json: Music.ransack(params[:q]).result, include: [:user, :band, :music_composers, :music_lyrists]
+    render json: Music.ransack(params[:q] && JSON.parse(params[:q])).result, include: [:user, :band, :music_composers, :music_lyrists]
   end
 
   # GET /musics/1
