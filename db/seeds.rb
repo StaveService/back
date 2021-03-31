@@ -45,7 +45,6 @@ FactoryBot.create(:role, artist: artist2, music: user1_music3, role: 2)
 FactoryBot.create(:role, artist: artist3, music: user1_music3, role: 3)
 
 # RADWIMPS
-
 band2 = Band.create(name: "RADWIMPS")
 artist4 = Artist.create(name: "野田 洋二郎")
 FactoryBot.create(:artist_band, artist: artist4, band: band2)

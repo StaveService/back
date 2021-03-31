@@ -1,11 +1,13 @@
 class Users::MusicsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
-  before_action :set_musics
-  before_action :set_music, only: [:show, :update, :destroy]
+  before_action :set_musics, only: [:index, :show]
+  before_action :set_music, only: [:show]
+  before_action :set_current_user_musics, only: [:create, :update, :destroy]
+  before_action :set_current_user_music, only: [:update, :destroy]
 
   # GET /musics
   def index
-    render json: @musics.ransack(params[:q]).result, include: [:user, :band, :music_composers, :music_lyrists]
+    render json: @musics.ransack(params[:q] && JSON.parse(params[:q])).result, include: [:user, :band, :music_composers, :music_lyrists]
   end
 
   # GET /musics/1
@@ -16,7 +18,6 @@ class Users::MusicsController < ApplicationController
   # POST /musics
   def create
     @music = @musics.new music_params
-
 
     if @music.save
       render json: @music, status: :created, location: @music
@@ -32,11 +33,12 @@ class Users::MusicsController < ApplicationController
     else
       render json: @music.errors, status: :unprocessable_entity
     end
+    current_user.musics.find(params[:id]).destroy
   end
 
   # DELETE /musics/1
   def destroy
-    @music.destroy
+    current_user.musics.find(params[:id]).destroy
   end
 
   private
@@ -49,12 +51,16 @@ class Users::MusicsController < ApplicationController
       @music = @musics.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
-    def music_params
-      params.require(:music).permit(:user_id, :title, :bpm, :length, :release_date, :itunes_track_id)
+    def set_current_user_musics
+      @musics = current_user.musics
     end
 
-    def album_params
-      params.require(:album).permit(:title, :release_date)
+    def set_current_user_music
+      @music = current_user.musics.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def music_params
+      params.require(:music).permit(:user_id, :title, :itunes_track_id)
     end
 end

@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_151323) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
+    t.integer "itunes_collection_id"
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,10 +97,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_151323) do
     t.bigint "user_id"
     t.bigint "band_id"
     t.string "title", default: "", null: false
-    t.integer "bpm"
-    t.string "length"
     t.integer "itunes_track_id"
-    t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_musics_on_band_id"

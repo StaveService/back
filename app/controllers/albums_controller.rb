@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums
   def index
-    render json: Album.all 
+    render json: Album.ransack(params[:q] && JSON.parse(params[:q])).result
   end
 
   # GET /albums/1
