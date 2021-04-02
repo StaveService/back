@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :musics, controller: "albums/musics"
   end
   resources :users, only: [:index, :show] do
-    resources :musics, controller: "users/musics"
+    resources :musics, controller: "users/musics" do
+      resources :composers, controller: "users/musics/composers"
+      resources :lyrists, controller: "users/musics/lyrists"
+      resources :bands, controller: "users/musics/bands"
+    end
     resources :requests, controller: "users/requests"
   end
   resources :artists do
