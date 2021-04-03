@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show] do
     resources :musics, controller: "users/musics" do
-      resources :composers, controller: "users/musics/composers"
-      resources :lyrists, controller: "users/musics/lyrists"
-      resources :bands, controller: "users/musics/bands"
+      resources :composers, only: [:create, :destroy], controller: "users/musics/composers"
+      resources :lyrists, only: [:create, :destroy],  controller: "users/musics/lyrists"
+      resources :bands, conly: [:create, :destroy], controller: "users/musics/bands"
     end
     resources :requests, controller: "users/requests"
   end

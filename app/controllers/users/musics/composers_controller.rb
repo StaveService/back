@@ -1,5 +1,7 @@
 class Users::Musics::ComposersController < ApplicationController
-  before_action :set_composer, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :set_current_user_music_composers, only: [:create, :destroy]
+  before_action :set_composer, only: [:destroy]
 
   # # GET /composers
   # def index
@@ -15,7 +17,7 @@ class Users::Musics::ComposersController < ApplicationController
 
   # POST /composers
   def create
-    @composer = Composer.new(composer_params)
+    @composer = @composers.new(artist_id: composer_params[:id])
 
     if @composer.save
       render json: @composer, status: :created, location: @composer
@@ -25,13 +27,13 @@ class Users::Musics::ComposersController < ApplicationController
   end
 
   # PATCH/PUT /composers/1
-  def update
-    if @composer.update(composer_params)
-      render json: @composer
-    else
-      render json: @composer.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+    # if @composer.update(composer_params)
+      # render json: @composer
+    # else
+      # render json: @composer.errors, status: :unprocessable_entity
+    # end
+  # end
 
   # DELETE /composers/1
   def destroy
@@ -40,12 +42,16 @@ class Users::Musics::ComposersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_current_user_music_composers
+      @composers = current_user.musics.find(params[:music_id]).composers
+    end
+
     def set_composer
-      @composer = Composer.find(params[:id])
+      @composer = @composers.find_by(artist_id: params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def composer_params
-      params.require(:composer).permit(:user_id, :music_id, :artist_id,)
+      params.require(:composer).permit(:id, :user_id, :music_id, :artist_id)
     end
 end
