@@ -5,7 +5,7 @@ class ComposersController < ApplicationController
   def index
     @composers = Composer.all
 
-    render json: @composers
+    render json: @composers, include: :artist
   end
 
   # GET /composers/1

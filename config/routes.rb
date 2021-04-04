@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :lyrists, only: [:index, :show]
   resources :composers, only: [:index, :show]
-  resources :bands
   resources :issues, only: [:index, :show]
   resources :requests, only: [:index, :show]
   resources :musics, only: [:index, :show]
+  resources :bands
   resources :albums do
     resources :musics, controller: "albums/musics"
   end
@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :musics, controller: "users/musics" do
       resources :composers, only: [:create, :destroy], controller: "users/musics/composers"
       resources :lyrists, only: [:create, :destroy],  controller: "users/musics/lyrists"
-      resources :bands, conly: [:create, :destroy], controller: "users/musics/bands"
+      resources :bands, only: [:create, :destroy], controller: "users/musics/bands"
+      resources :roles, only: [:create, :destroy], controller: "users/musics/roles"
     end
     resources :requests, controller: "users/requests"
   end
