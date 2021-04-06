@@ -38,7 +38,7 @@ class Users::MusicsController < ApplicationController
 
   # DELETE /musics/1
   def destroy
-    current_user.musics.find(params[:id]).destroy
+    @music.destroy
   end
 
   private

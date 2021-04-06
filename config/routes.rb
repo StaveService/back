@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :lyrists, only: [:create, :destroy],  controller: "users/musics/lyrists"
       resources :bands, only: [:create, :destroy], controller: "users/musics/bands"
       resources :roles, only: [:create, :destroy], controller: "users/musics/roles"
+      resources :album_musics, only: [:create, :destroy], controller: "users/musics/album_musics"
     end
     resources :requests, controller: "users/requests"
   end

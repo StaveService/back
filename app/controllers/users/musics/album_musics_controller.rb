@@ -1,6 +1,7 @@
-class Users::Musics::AlbumsController < ApplicationController
+class Users::Musics::AlbumMusicsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_current_user_music_album_musics, only: [:create, :destroy]
+
   def create
     @album_music= @album_musics.new(album_id: album_music_params[:album_id])
 
@@ -12,7 +13,7 @@ class Users::Musics::AlbumsController < ApplicationController
   end
 
   def destroy
-    @album_musics.find(params[:id]).destroy
+    @album_musics.find_by(album_id: params[:id]).destroy
   end
 
   private
