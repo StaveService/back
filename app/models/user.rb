@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_many :musics
   has_many :requests
   has_many :issues
+
+  has_many :band_stars
+  has_many :stared_bands, through: :band_stars
+
   validates :nickname, length: 4..30
   validates :familyname, length: { maximum: 35 }
   validates :givenname, length: { maximum: 35 }
