@@ -7,6 +7,9 @@ class Artist < ApplicationRecord
 
   has_many :artist_bands
   has_many :bands, through: :artist_bands
+
+  has_many :artist_stars
+  has_many :stars, through: :artist_stars
   
   validates :name, presence: true, length: { maximum: 50 }
 end
