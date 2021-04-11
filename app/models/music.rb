@@ -1,5 +1,6 @@
 class Music < ApplicationRecord
   has_many :roles, dependent: :destroy
+  has_many :issues, dependent: :destroy
 
   has_many :album_musics
   has_many :albums, through: :album_musics, dependent: :destroy

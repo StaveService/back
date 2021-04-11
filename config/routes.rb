@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   }
   resources :requests, only: [:index, :show]
   resources :musics, only: [:index, :show] do
-    resources :issues, only: [:create, :destory]
     resources :music_stars
   end
   resources :bands do
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
       resources :bands, only: [:create, :destroy], controller: "users/musics/bands"
       resources :roles, only: [:create, :destroy], controller: "users/musics/roles"
       resources :album_musics, only: [:create, :destroy], controller: "users/musics/album_musics"
+      resources :issues, controller: "users/musics/issues"
     end
     resources :requests, controller: "users/requests"
   end
