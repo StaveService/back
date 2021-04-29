@@ -1,10 +1,11 @@
 class Users::Musics::IssuesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_issues
   before_action :set_issue, only: [:show, :update, :destroy]
 
   # GET /issues
   def index
-    render json: @issues
+    render json: @issues.ransack(params[:q] && JSON.parse(params[:q])).result
   end
 
   # GET /issues/1
@@ -14,10 +15,9 @@ class Users::Musics::IssuesController < ApplicationController
 
   # POST /issues
   def create
-    @issue = @issues.new(issue_params)
-
+    @issue = @issues.new(user_id: current_user.id, title: issue_params[:title], description: issue_params[:description])
     if @issue.save
-      render json: @issue, status: :created, location: @issue
+      render json: @issue, status: :created
     else
       render json: @issue.errors, status: :unprocessable_entity
     end
@@ -41,7 +41,6 @@ class Users::Musics::IssuesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_issues
       @issues = User.find(params[:user_id]).musics.find(params[:music_id]).issues
-      p @issues
     end
 
     def set_issue

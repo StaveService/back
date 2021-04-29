@@ -20,7 +20,7 @@ class Users::Musics::LyristsController < ApplicationController
     @lyrist = @lyrists.new(artist_id: lyrist_params[:id])
 
     if @lyrist.save
-      render json: @lyrist, status: :created, location: @lyrist
+      render json: @lyrist, status: :created
     else
       render json: @lyrist.errors, status: :unprocessable_entity
     end

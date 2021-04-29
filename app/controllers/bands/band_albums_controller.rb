@@ -20,7 +20,7 @@ class Bands::BandAlbumsController < ApplicationController
     @band_album = @band_albums.new(band_album_params)
 
     if @band_album.save
-      render json: @band_album, status: :created, location: @band_album, include: :album
+      render json: @band_album, status: :created, include: :album
     else
       render json: @band_album.errors, status: :unprocessable_entity
     end

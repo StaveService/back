@@ -20,7 +20,7 @@ class Users::Musics::ComposersController < ApplicationController
     @composer = @composers.new(artist_id: composer_params[:id])
 
     if @composer.save
-      render json: @composer, status: :created, location: @composer
+      render json: @composer, status: :created
     else
       render json: @composer.errors, status: :unprocessable_entity
     end

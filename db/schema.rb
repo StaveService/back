@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_085953) do
   create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.integer "itunes_collection_id"
-    t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

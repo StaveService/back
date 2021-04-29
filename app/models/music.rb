@@ -12,7 +12,7 @@ class Music < ApplicationRecord
   has_many :music_composers, through: :composers, source: :artist, dependent: :destroy
 
   has_many :music_stars
-  has_many :stars, through: :music_stars, dependent: :destroy
+  has_many :stars, through: :music_stars, source: :music, dependent: :destroy
 
   belongs_to :user
   belongs_to :band, optional: true
