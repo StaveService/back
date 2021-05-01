@@ -61,6 +61,6 @@ class Users::MusicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def music_params
-      params.require(:music).permit(:user_id, :title, :itunes_track_id)
+      params.require(:music).permit(:user_id, :title, :tab, :itunes_track_id)
     end
 end

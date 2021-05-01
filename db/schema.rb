@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_085953) do
     t.bigint "user_id"
     t.bigint "band_id"
     t.string "title", default: "", null: false
+    t.string "tab", default: ""
     t.integer "itunes_track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
