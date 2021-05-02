@@ -1,6 +1,6 @@
 class Users::Musics::RolesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_current_user_music_roles, only: [:create, :destroy]
+  before_action :authenticate_user!
+  before_action :set_current_user_music_roles
   def create
     @role = @roles.new(role: role_params[:role], artist_id: role_params[:artist_id])
 

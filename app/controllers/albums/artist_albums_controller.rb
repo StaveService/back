@@ -1,7 +1,6 @@
 class Albums::ArtistAlbumsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_artist_albums, only: [:create, :destroy]
-  before_action :set_artist_album, only: [:destroy]
+  before_action :authenticate_user!
+  before_action :set_artist_albums
 
   # # GET /band_albums
   # def index
@@ -37,17 +36,13 @@ class Albums::ArtistAlbumsController < ApplicationController
 
   # DELETE /band_albums/1
   def destroy
-    @artist_album.destroy
+    @artist_albums.find_by(album_id: params[:id]).destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artist_albums
       @artist_albums = Album.find(params[:album_id]).artist_albums
-    end
-
-    def set_artist_album
-      @artist_album = @artist_albums.find_by(album_id: params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

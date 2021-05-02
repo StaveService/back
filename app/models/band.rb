@@ -1,4 +1,5 @@
 class Band < ApplicationRecord
+  attr_accessor :current_user
   has_many :musics
 
   has_many :artist_bands
@@ -7,8 +8,12 @@ class Band < ApplicationRecord
   has_many :band_albums
   has_many :albums, through: :band_albums
 
-  has_many :band_stars
-  has_many :stars, through: :band_stars
+  has_many :band_bookmarks
+  has_many :bookmarks, through: :band_bookmarks, source: :band, dependent: :destroy
 
   validates_presence_of :name
+
+  def bookmark
+    return band_bookmarks.find_by(user_id: current_user.id) if current_user 
+  end
 end

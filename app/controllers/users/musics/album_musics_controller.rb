@@ -1,6 +1,6 @@
 class Users::Musics::AlbumMusicsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_current_user_music_album_musics, only: [:create, :destroy]
+  before_action :authenticate_user!
+  before_action :set_current_user_music_album_musics
 
   def create
     @album_music= @album_musics.new(album_id: album_music_params[:album_id])

@@ -1,6 +1,6 @@
 class Users::Musics::BandsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_music, only: [:create, :destroy]
+  before_action :authenticate_user!
+  before_action :set_music
 
   # # GET /bands
   # def index

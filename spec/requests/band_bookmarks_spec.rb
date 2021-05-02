@@ -12,9 +12,9 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/band_stars", type: :request do
+RSpec.describe "/band_bookmarks", type: :request do
   # This should return the minimal set of attributes required to create a valid
-  # BandStar. As you add validations to BandStar, be sure to
+  # BandBookmark. As you add validations to BandBookmark, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -26,7 +26,7 @@ RSpec.describe "/band_stars", type: :request do
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
-  # BandStarsController, or in your router and rack
+  # BandBookmarksController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) {
     {}
@@ -34,48 +34,48 @@ RSpec.describe "/band_stars", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      BandStar.create! valid_attributes
-      get band_stars_url, headers: valid_headers, as: :json
+      BandBookmark.create! valid_attributes
+      get band_bookmarks_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      band_star = BandStar.create! valid_attributes
-      get band_star_url(band_star), as: :json
+      band_bookmark = BandBookmark.create! valid_attributes
+      get band_bookmark_url(band_bookmark), as: :json
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new BandStar" do
+      it "creates a new BandBookmark" do
         expect {
-          post band_stars_url,
-               params: { band_star: valid_attributes }, headers: valid_headers, as: :json
-        }.to change(BandStar, :count).by(1)
+          post band_bookmarks_url,
+               params: { band_bookmark: valid_attributes }, headers: valid_headers, as: :json
+        }.to change(BandBookmark, :count).by(1)
       end
 
-      it "renders a JSON response with the new band_star" do
-        post band_stars_url,
-             params: { band_star: valid_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with the new band_bookmark" do
+        post band_bookmarks_url,
+             params: { band_bookmark: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new BandStar" do
+      it "does not create a new BandBookmark" do
         expect {
-          post band_stars_url,
-               params: { band_star: invalid_attributes }, as: :json
-        }.to change(BandStar, :count).by(0)
+          post band_bookmarks_url,
+               params: { band_bookmark: invalid_attributes }, as: :json
+        }.to change(BandBookmark, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new band_star" do
-        post band_stars_url,
-             params: { band_star: invalid_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with errors for the new band_bookmark" do
+        post band_bookmarks_url,
+             params: { band_bookmark: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json")
       end
@@ -88,28 +88,28 @@ RSpec.describe "/band_stars", type: :request do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested band_star" do
-        band_star = BandStar.create! valid_attributes
-        patch band_star_url(band_star),
-              params: { band_star: new_attributes }, headers: valid_headers, as: :json
-        band_star.reload
+      it "updates the requested band_bookmark" do
+        band_bookmark = BandBookmark.create! valid_attributes
+        patch band_bookmark_url(band_bookmark),
+              params: { band_bookmark: new_attributes }, headers: valid_headers, as: :json
+        band_bookmark.reload
         skip("Add assertions for updated state")
       end
 
-      it "renders a JSON response with the band_star" do
-        band_star = BandStar.create! valid_attributes
-        patch band_star_url(band_star),
-              params: { band_star: new_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with the band_bookmark" do
+        band_bookmark = BandBookmark.create! valid_attributes
+        patch band_bookmark_url(band_bookmark),
+              params: { band_bookmark: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
 
     context "with invalid parameters" do
-      it "renders a JSON response with errors for the band_star" do
-        band_star = BandStar.create! valid_attributes
-        patch band_star_url(band_star),
-              params: { band_star: invalid_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with errors for the band_bookmark" do
+        band_bookmark = BandBookmark.create! valid_attributes
+        patch band_bookmark_url(band_bookmark),
+              params: { band_bookmark: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json")
       end
@@ -117,11 +117,11 @@ RSpec.describe "/band_stars", type: :request do
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested band_star" do
-      band_star = BandStar.create! valid_attributes
+    it "destroys the requested band_bookmark" do
+      band_bookmark = BandBookmark.create! valid_attributes
       expect {
-        delete band_star_url(band_star), headers: valid_headers, as: :json
-      }.to change(BandStar, :count).by(-1)
+        delete band_bookmark_url(band_bookmark), headers: valid_headers, as: :json
+      }.to change(BandBookmark, :count).by(-1)
     end
   end
 end

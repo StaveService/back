@@ -1,4 +1,4 @@
-class BandStar < ApplicationRecord
+class BandBookmark < ApplicationRecord
   belongs_to :user
   belongs_to :band
 end

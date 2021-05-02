@@ -1,6 +1,6 @@
 class Users::Musics::MusicBookmarksController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_music_bookmarks, only: [:create, :destroy]
+  before_action :authenticate_user!
+  before_action :set_music_bookmarks
 
   # # GET /music_bookmarks
   # def index
