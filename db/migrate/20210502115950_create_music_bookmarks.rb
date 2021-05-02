@@ -1,6 +1,6 @@
-class CreateMusicStars < ActiveRecord::Migration[5.2]
+class CreateMusicBookmarks < ActiveRecord::Migration[5.2]
   def change
-    create_table :music_stars do |t|
+    create_table :music_bookmarks do |t|
       t.references :user, foreign_key: true
       t.references :music, foreign_key: true
 

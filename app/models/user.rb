@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   has_many :band_stars
   has_many :stared_bands, through: :band_stars
 
-  has_many :music_stars
-  has_many :stared_musics, through: :music_stars
+  has_many :music_bookmarks
+  has_many :bookmarked_music, through: :music_bookmarks
 
   has_many :artist_stars
   has_many :stared_artists, through: :artist_stars

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_085953) do
+ActiveRecord::Schema.define(version: 2021_05_02_115950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,15 @@ ActiveRecord::Schema.define(version: 2021_04_09_085953) do
     t.index ["music_id"], name: "index_lyrists_on_music_id"
   end
 
+  create_table "music_bookmarks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "music_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["music_id"], name: "index_music_bookmarks_on_music_id"
+    t.index ["user_id"], name: "index_music_bookmarks_on_user_id"
+  end
+
   create_table "music_stars", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "music_id"
@@ -210,6 +219,8 @@ ActiveRecord::Schema.define(version: 2021_04_09_085953) do
   add_foreign_key "issues", "users"
   add_foreign_key "lyrists", "artists"
   add_foreign_key "lyrists", "musics"
+  add_foreign_key "music_bookmarks", "musics"
+  add_foreign_key "music_bookmarks", "users"
   add_foreign_key "music_stars", "musics"
   add_foreign_key "music_stars", "users"
   add_foreign_key "musics", "bands"
