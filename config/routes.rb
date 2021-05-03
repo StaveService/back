@@ -23,13 +23,13 @@ Rails.application.routes.draw do
       resources :bands, only: [:create, :destroy], controller: path + "/bands"
       resources :roles, only: [:create, :destroy], controller: path + "/roles"
       resources :album_musics, only: [:create, :destroy], controller: path + "/album_musics"
-      resources :issues, controller: path + "/issues"
       resources :music_bookmarks, only: [:create, :destroy], controller: path + "/music_bookmarks"
+      resources :issues, controller: path + "/issues"
     end
     resources :requests, controller: "users/requests"
   end
   resources :artists do
-    resources :artist_stars
+    resources :artist_bookmarks, only: [:create, :destroy], controller: "artists/artist_bookmarks"
     resources :musics, only: [:index, :show], controller: "artists/musics"
     resources :albums, controller: "artists/albums" do
       resources :musics, only: [:index, :show], controller: "artists/albums/musics"

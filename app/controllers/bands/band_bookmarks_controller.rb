@@ -36,7 +36,7 @@ class Bands::BandBookmarksController < ApplicationController
 
   # DELETE /band_bookmarks/1
   def destroy
-    @band_bookmarks.find_by(params[:id]).destroy
+    @band_bookmarks.find(params[:id]).destroy
   end
 
   private

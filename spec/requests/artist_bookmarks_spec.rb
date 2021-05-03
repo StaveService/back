@@ -12,9 +12,9 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/artist_stars", type: :request do
+RSpec.describe "/artist_bookmarks", type: :request do
   # This should return the minimal set of attributes required to create a valid
-  # ArtistStar. As you add validations to ArtistStar, be sure to
+  # ArtistBookmark. As you add validations to ArtistBookmark, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -26,7 +26,7 @@ RSpec.describe "/artist_stars", type: :request do
 
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
-  # ArtistStarsController, or in your router and rack
+  # ArtistBookmarksController, or in your router and rack
   # middleware. Be sure to keep this updated too.
   let(:valid_headers) {
     {}
@@ -34,48 +34,48 @@ RSpec.describe "/artist_stars", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      ArtistStar.create! valid_attributes
-      get artist_stars_url, headers: valid_headers, as: :json
+      ArtistBookmark.create! valid_attributes
+      get artist_bookmarks_url, headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      artist_star = ArtistStar.create! valid_attributes
-      get artist_star_url(artist_star), as: :json
+      artist_bookmark = ArtistBookmark.create! valid_attributes
+      get artist_bookmark_url(artist_bookmark), as: :json
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new ArtistStar" do
+      it "creates a new ArtistBookmark" do
         expect {
-          post artist_stars_url,
-               params: { artist_star: valid_attributes }, headers: valid_headers, as: :json
-        }.to change(ArtistStar, :count).by(1)
+          post artist_bookmarks_url,
+               params: { artist_bookmark: valid_attributes }, headers: valid_headers, as: :json
+        }.to change(ArtistBookmark, :count).by(1)
       end
 
-      it "renders a JSON response with the new artist_star" do
-        post artist_stars_url,
-             params: { artist_star: valid_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with the new artist_bookmark" do
+        post artist_bookmarks_url,
+             params: { artist_bookmark: valid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new ArtistStar" do
+      it "does not create a new ArtistBookmark" do
         expect {
-          post artist_stars_url,
-               params: { artist_star: invalid_attributes }, as: :json
-        }.to change(ArtistStar, :count).by(0)
+          post artist_bookmarks_url,
+               params: { artist_bookmark: invalid_attributes }, as: :json
+        }.to change(ArtistBookmark, :count).by(0)
       end
 
-      it "renders a JSON response with errors for the new artist_star" do
-        post artist_stars_url,
-             params: { artist_star: invalid_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with errors for the new artist_bookmark" do
+        post artist_bookmarks_url,
+             params: { artist_bookmark: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json")
       end
@@ -88,28 +88,28 @@ RSpec.describe "/artist_stars", type: :request do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested artist_star" do
-        artist_star = ArtistStar.create! valid_attributes
-        patch artist_star_url(artist_star),
-              params: { artist_star: new_attributes }, headers: valid_headers, as: :json
-        artist_star.reload
+      it "updates the requested artist_bookmark" do
+        artist_bookmark = ArtistBookmark.create! valid_attributes
+        patch artist_bookmark_url(artist_bookmark),
+              params: { artist_bookmark: new_attributes }, headers: valid_headers, as: :json
+        artist_bookmark.reload
         skip("Add assertions for updated state")
       end
 
-      it "renders a JSON response with the artist_star" do
-        artist_star = ArtistStar.create! valid_attributes
-        patch artist_star_url(artist_star),
-              params: { artist_star: new_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with the artist_bookmark" do
+        artist_bookmark = ArtistBookmark.create! valid_attributes
+        patch artist_bookmark_url(artist_bookmark),
+              params: { artist_bookmark: new_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
 
     context "with invalid parameters" do
-      it "renders a JSON response with errors for the artist_star" do
-        artist_star = ArtistStar.create! valid_attributes
-        patch artist_star_url(artist_star),
-              params: { artist_star: invalid_attributes }, headers: valid_headers, as: :json
+      it "renders a JSON response with errors for the artist_bookmark" do
+        artist_bookmark = ArtistBookmark.create! valid_attributes
+        patch artist_bookmark_url(artist_bookmark),
+              params: { artist_bookmark: invalid_attributes }, headers: valid_headers, as: :json
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq("application/json")
       end
@@ -117,11 +117,11 @@ RSpec.describe "/artist_stars", type: :request do
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested artist_star" do
-      artist_star = ArtistStar.create! valid_attributes
+    it "destroys the requested artist_bookmark" do
+      artist_bookmark = ArtistBookmark.create! valid_attributes
       expect {
-        delete artist_star_url(artist_star), headers: valid_headers, as: :json
-      }.to change(ArtistStar, :count).by(-1)
+        delete artist_bookmark_url(artist_bookmark), headers: valid_headers, as: :json
+      }.to change(ArtistBookmark, :count).by(-1)
     end
   end
 end
