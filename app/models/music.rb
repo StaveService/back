@@ -1,6 +1,8 @@
 class Music < ApplicationRecord
   attr_accessor :current_user
-  has_many :roles, dependent: :destroy
+  has_many :artist_musics
+  has_many :artists, through: :artist_musics, dependent: :destroy
+
   has_many :issues, dependent: :destroy
 
   has_many :album_musics

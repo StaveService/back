@@ -6,6 +6,9 @@
 
 - [devise_token_auth](https://devise-token-auth.gitbook.io/devise-token-auth/)
 - [ransack](https://github.com/activerecord-hackery/ransack)
+- [kaminari](https://github.com/kaminari/kaminari)
+- [api-pagination](https://github.com/davidcelis/api-pagination)
+- [graphql](https://github.com/rmosolgo/graphql-ruby)
 
 ## Credentials
 
@@ -16,8 +19,9 @@ docker-compose run web rails credentials:edit
 ## Testing
 
 test-user
-    test@test.com
-    password
+
+- test@test.com
+- password
 
 references
 

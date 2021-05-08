@@ -1,7 +1,6 @@
 FactoryBot.define do
-  factory :role do
+  factory :artist_music do
     artist { nil }
     music { nil }
-    role { 1 }
   end
 end

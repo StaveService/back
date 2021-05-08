@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :music_links
+  resources :links
+  post "/graphql", to: "graphql#execute"
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
     registrations: 'auth/registrations'
   }
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
       resources :composers, only: [:create, :destroy], controller: path + "/composers"
       resources :lyrists, only: [:create, :destroy],  controller: path + "/lyrists"
       resources :bands, only: [:create, :destroy], controller: path + "/bands"
-      resources :roles, only: [:create, :destroy], controller: path + "/roles"
+      resources :artist_musics, only: [:create, :destroy], controller: path + "/artist_musics"
       resources :album_musics, only: [:create, :destroy], controller: path + "/album_musics"
       resources :music_bookmarks, only: [:create, :destroy], controller: path + "/music_bookmarks"
       resources :issues, controller: path + "/issues"

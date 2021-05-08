@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_051202) do
+ActiveRecord::Schema.define(version: 2021_05_08_073350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2021_05_03_051202) do
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_artist_bookmarks_on_artist_id"
     t.index ["user_id"], name: "index_artist_bookmarks_on_user_id"
+  end
+
+  create_table "artist_musics", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "music_id"
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_musics_on_artist_id"
+    t.index ["music_id"], name: "index_artist_musics_on_music_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -200,6 +210,8 @@ ActiveRecord::Schema.define(version: 2021_05_03_051202) do
   add_foreign_key "artist_bands", "bands"
   add_foreign_key "artist_bookmarks", "artists"
   add_foreign_key "artist_bookmarks", "users"
+  add_foreign_key "artist_musics", "artists"
+  add_foreign_key "artist_musics", "musics"
   add_foreign_key "band_albums", "albums"
   add_foreign_key "band_albums", "bands"
   add_foreign_key "band_bookmarks", "bands"

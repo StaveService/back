@@ -16,7 +16,7 @@ class Artists::ArtistBookmarksController < ApplicationController
 
   # POST /artist_bookmarks
   def create
-    @artist_bookmark = @artist_bookmarks.new(user_id: current_user.id)
+    @artist_bookmark = @artist_bookmarks.new user_id: current_user.id
 
     if @artist_bookmark.save
       render json: @artist_bookmark, status: :created

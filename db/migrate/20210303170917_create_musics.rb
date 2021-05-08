@@ -4,7 +4,7 @@ class CreateMusics < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :band, foreign_key: true
       t.string :title, default: "", null: false
-      t.string :tab, default: ""
+      t.string :tab, default: "", null: false
       t.integer :itunes_track_id
 
       t.timestamps

@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :issues
 
-  has_many :band_stars
-  has_many :stared_bands, through: :band_stars
+  has_many :band_bookmarks
+  has_many :bookmarked_bands, through: :band_bookmarks, source: :user
 
   has_many :music_bookmarks
-  has_many :bookmarked_music, through: :music_bookmarks
+  has_many :bookmarked_musics, through: :music_bookmarks, source: :user
 
-  has_many :artist_stars
-  has_many :stared_artists, through: :artist_stars
+  has_many :artist_bookmarks
+  has_many :bookmarked_artists, through: :artist_bookmarks, source: :user
 
   validates :nickname, length: 4..30
   validates :familyname, length: { maximum: 35 }
