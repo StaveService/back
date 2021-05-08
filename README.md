@@ -9,6 +9,7 @@
 - [kaminari](https://github.com/kaminari/kaminari)
 - [api-pagination](https://github.com/davidcelis/api-pagination)
 - [graphql](https://github.com/rmosolgo/graphql-ruby)
+- [graphiql-rails](https://github.com/rmosolgo/graphiql-rails)
 
 ## Credentials
 

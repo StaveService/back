@@ -6,7 +6,21 @@ module Types
 
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
-
+    field :musics, Types::MusicsType, null: true do
+      argument :page, Int, required: false
+    end
+    def musics(**args)
+      musics = Music.page(args[:page]).per(10)
+      { musics: musics, pagination: pagination(musics) }
+    end
+    def pagination(result)
+      {
+        total_count: result.total_count,
+        limit_value: result.limit_value,
+        total_pages: result.total_pages,
+        current_page: result.current_page
+      }
+    end
     # TODO: remove me
     field :test_field, String, null: false,
       description: "An example field added by the generator"
