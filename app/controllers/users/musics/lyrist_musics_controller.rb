@@ -1,4 +1,4 @@
-class Users::Musics::LyristsController < ApplicationController
+class LyristMusicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_current_user_music_lyrists
   # # GET /composers

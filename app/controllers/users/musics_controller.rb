@@ -7,13 +7,13 @@ class Users::MusicsController < ApplicationController
 
   # GET /musics
   def index
-    render json: @musics.ransack(params[:q] && JSON.parse(params[:q])).result, include: [:user, :band, :music_composers, :music_lyrists]
+    render json: @musics.ransack(params[:q] && JSON.parse(params[:q])).result, include: [:user, :band, :composers, :lyrists]
   end
 
   # GET /musics/1
   def show
     @music.current_user = current_user
-    render json: @music, include: [:user, :band, :albums, :music_composers, :music_lyrists,  artist_musics: {include: :artist}], methods: [:bookmark]
+    render json: @music, include: [:user, :band, :albums, :link, :composers, :lyrists,  artist_musics: {include: :artist}], methods: [:bookmark]
   end
 
   # POST /musics

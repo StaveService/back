@@ -9,7 +9,7 @@ class BandsController < ApplicationController
   # GET /bands/1
   def show
     @band.current_user = current_user
-    render json: @band, include: [:artists, :albums, musics: {include: [:user, :music_composers, :music_lyrists]}], methods: [:bookmark]
+    render json: @band, include: [:artists, :albums, musics: {include: [:user, :composers, :lyrists]}], methods: [:bookmark]
   end
 
   # POST /bands

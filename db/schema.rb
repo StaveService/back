@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_073350) do
+ActiveRecord::Schema.define(version: 2021_05_08_110910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,15 @@ ActiveRecord::Schema.define(version: 2021_05_08_073350) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "composer_musics", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "music_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_composer_musics_on_artist_id"
+    t.index ["music_id"], name: "index_composer_musics_on_music_id"
+  end
+
   create_table "composers", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "music_id"
@@ -120,6 +129,25 @@ ActiveRecord::Schema.define(version: 2021_05_08_073350) do
     t.index ["user_id"], name: "index_issues_on_user_id"
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string "youtube"
+    t.string "twitter"
+    t.integer "wikipedia"
+    t.string "official"
+    t.integer "itunes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lyrist_musics", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "music_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_lyrist_musics_on_artist_id"
+    t.index ["music_id"], name: "index_lyrist_musics_on_music_id"
+  end
+
   create_table "lyrists", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "music_id"
@@ -138,11 +166,20 @@ ActiveRecord::Schema.define(version: 2021_05_08_073350) do
     t.index ["user_id"], name: "index_music_bookmarks_on_user_id"
   end
 
+  create_table "music_links", force: :cascade do |t|
+    t.bigint "music_id"
+    t.bigint "link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_music_links_on_link_id"
+    t.index ["music_id"], name: "index_music_links_on_music_id"
+  end
+
   create_table "musics", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "band_id"
     t.string "title", default: "", null: false
-    t.string "tab", default: ""
+    t.string "tab", default: "", null: false
     t.integer "itunes_track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -156,16 +193,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_073350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_requests_on_user_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.bigint "artist_id"
-    t.bigint "music_id"
-    t.integer "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_roles_on_artist_id"
-    t.index ["music_id"], name: "index_roles_on_music_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -216,17 +243,21 @@ ActiveRecord::Schema.define(version: 2021_05_08_073350) do
   add_foreign_key "band_albums", "bands"
   add_foreign_key "band_bookmarks", "bands"
   add_foreign_key "band_bookmarks", "users"
+  add_foreign_key "composer_musics", "artists"
+  add_foreign_key "composer_musics", "musics"
   add_foreign_key "composers", "artists"
   add_foreign_key "composers", "musics"
   add_foreign_key "issues", "musics"
   add_foreign_key "issues", "users"
+  add_foreign_key "lyrist_musics", "artists"
+  add_foreign_key "lyrist_musics", "musics"
   add_foreign_key "lyrists", "artists"
   add_foreign_key "lyrists", "musics"
   add_foreign_key "music_bookmarks", "musics"
   add_foreign_key "music_bookmarks", "users"
+  add_foreign_key "music_links", "links"
+  add_foreign_key "music_links", "musics"
   add_foreign_key "musics", "bands"
   add_foreign_key "musics", "users"
   add_foreign_key "requests", "users"
-  add_foreign_key "roles", "artists"
-  add_foreign_key "roles", "musics"
 end
