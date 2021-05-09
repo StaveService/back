@@ -9,10 +9,20 @@ module Types
     field :musics, Types::MusicsType, null: true do
       argument :page, Int, required: false
     end
+
+    field :music, Types::MusicType, null: false do
+      argument :id, Int, required: true
+    end
+
+    def music(**args)
+      Music.find(args[:id])
+    end
+
     def musics(**args)
       musics = Music.page(args[:page]).per(10)
       { data: musics, pagination: pagination(musics) }
     end
+
     def pagination(result)
       {
         total_count: result.total_count,

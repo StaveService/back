@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_110910) do
+ActiveRecord::Schema.define(version: 2021_05_09_072433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,16 +120,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_110910) do
     t.index ["user_id"], name: "index_issues_on_user_id"
   end
 
-  create_table "links", force: :cascade do |t|
-    t.string "youtube"
-    t.string "twitter"
-    t.integer "wikipedia"
-    t.string "official"
-    t.integer "itunes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "lyrist_musics", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "music_id"
@@ -149,11 +139,11 @@ ActiveRecord::Schema.define(version: 2021_05_08_110910) do
   end
 
   create_table "music_links", force: :cascade do |t|
+    t.integer "itunes"
+    t.string "twitter"
     t.bigint "music_id"
-    t.bigint "link_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["link_id"], name: "index_music_links_on_link_id"
     t.index ["music_id"], name: "index_music_links_on_music_id"
   end
 
@@ -162,7 +152,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_110910) do
     t.bigint "band_id"
     t.string "title", default: "", null: false
     t.string "tab", default: "", null: false
-    t.integer "itunes_track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_musics_on_band_id"
@@ -233,7 +222,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_110910) do
   add_foreign_key "lyrist_musics", "musics"
   add_foreign_key "music_bookmarks", "musics"
   add_foreign_key "music_bookmarks", "users"
-  add_foreign_key "music_links", "links"
   add_foreign_key "music_links", "musics"
   add_foreign_key "musics", "bands"
   add_foreign_key "musics", "users"

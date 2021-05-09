@@ -22,27 +22,31 @@ FactoryBot.create(:artist_band, artist: artist3, band: band1)
 
 user1 = FactoryBot.create(:user)
 
-user1_music1 = FactoryBot.create(:music, user: user1, band: band1, title: "Abnormalize", itunes_track_id: 1535532370)
+user1_music1 = FactoryBot.create(:music, user: user1, band: band1, title: "Abnormalize")
 FactoryBot.create(:composer_music, artist: artist1 , music: user1_music1)
 FactoryBot.create(:lyrist_music, artist: artist1 , music: user1_music1)
 FactoryBot.create(:artist_music, artist: artist1, music: user1_music1, role: 1)
 FactoryBot.create(:artist_music, artist: artist2, music: user1_music1, role: 2)
 FactoryBot.create(:artist_music, artist: artist3, music: user1_music1, role: 3)
+FactoryBot.create(:music_link, music: user1_music1, itunes: 1535532370)
 
-user1_music2 = FactoryBot.create(:music, user: user1, band: band1, title: "Enigmatic Feeling", itunes_track_id: 941516387) 
+user1_music2 = FactoryBot.create(:music, user: user1, band: band1, title: "Enigmatic Feeling") 
 FactoryBot.create(:composer_music, artist: artist1 , music: user1_music2)
 FactoryBot.create(:lyrist_music, artist: artist1 , music: user1_music2)
 FactoryBot.create(:artist_music, artist: artist1, music: user1_music2, role: 1)
 FactoryBot.create(:artist_music, artist: artist2, music: user1_music2, role: 2)
 FactoryBot.create(:artist_music, artist: artist3, music: user1_music2, role: 3)
+FactoryBot.create(:music_link, music: user1_music2, itunes: 941516387)
 
-user1_music3 = FactoryBot.create(:music, user: user1, band: band1, title: "O.F.T", itunes_track_id: "1339500372") 
+user1_music3 = FactoryBot.create(:music, user: user1, band: band1, title: "O.F.T") 
 FactoryBot.create(:composer_music, artist: artist1 , music: user1_music3)
 FactoryBot.create(:lyrist_music, artist: artist1 , music: user1_music3)
 FactoryBot.create(:album_music, album: album1, music: user1_music3)
 FactoryBot.create(:artist_music, artist: artist1, music: user1_music3, role: 1)
 FactoryBot.create(:artist_music, artist: artist2, music: user1_music3, role: 2)
 FactoryBot.create(:artist_music, artist: artist3, music: user1_music3, role: 3)
+FactoryBot.create(:music_link, music: user1_music3, itunes: 1339500372)
+
 
 # RADWIMPS
 band2 = Band.create(name: "RADWIMPS")
