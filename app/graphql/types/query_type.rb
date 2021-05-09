@@ -9,20 +9,27 @@ module Types
     field :musics, Types::MusicsType, null: true do
       argument :page, Int, required: false
     end
-
     field :music, Types::MusicType, null: false do
       argument :id, Int, required: true
     end
+    field :artists, Types::ArtistsType, null: false do
+      argument :page, Int, required: false
+    end
 
+    def artist(**args)
+      Artist.find(args[:id])
+    end
+    def artists(**args)
+      artists= Artist.page(args[:page]).per(10)
+      { data: artists, pagination: pagination(artists) }
+    end
     def music(**args)
       Music.find(args[:id])
     end
-
     def musics(**args)
       musics = Music.page(args[:page]).per(10)
       { data: musics, pagination: pagination(musics) }
     end
-
     def pagination(result)
       {
         total_count: result.total_count,
@@ -30,12 +37,6 @@ module Types
         total_pages: result.total_pages,
         current_page: result.current_page
       }
-    end
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
     end
   end
 end
