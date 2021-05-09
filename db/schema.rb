@@ -109,15 +109,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_110910) do
     t.index ["music_id"], name: "index_composer_musics_on_music_id"
   end
 
-  create_table "composers", force: :cascade do |t|
-    t.bigint "artist_id"
-    t.bigint "music_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_composers_on_artist_id"
-    t.index ["music_id"], name: "index_composers_on_music_id"
-  end
-
   create_table "issues", force: :cascade do |t|
     t.bigint "music_id"
     t.bigint "user_id"
@@ -146,15 +137,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_110910) do
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_lyrist_musics_on_artist_id"
     t.index ["music_id"], name: "index_lyrist_musics_on_music_id"
-  end
-
-  create_table "lyrists", force: :cascade do |t|
-    t.bigint "artist_id"
-    t.bigint "music_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_lyrists_on_artist_id"
-    t.index ["music_id"], name: "index_lyrists_on_music_id"
   end
 
   create_table "music_bookmarks", force: :cascade do |t|
@@ -245,14 +227,10 @@ ActiveRecord::Schema.define(version: 2021_05_08_110910) do
   add_foreign_key "band_bookmarks", "users"
   add_foreign_key "composer_musics", "artists"
   add_foreign_key "composer_musics", "musics"
-  add_foreign_key "composers", "artists"
-  add_foreign_key "composers", "musics"
   add_foreign_key "issues", "musics"
   add_foreign_key "issues", "users"
   add_foreign_key "lyrist_musics", "artists"
   add_foreign_key "lyrist_musics", "musics"
-  add_foreign_key "lyrists", "artists"
-  add_foreign_key "lyrists", "musics"
   add_foreign_key "music_bookmarks", "musics"
   add_foreign_key "music_bookmarks", "users"
   add_foreign_key "music_links", "links"

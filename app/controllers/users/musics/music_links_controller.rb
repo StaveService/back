@@ -1,4 +1,4 @@
-class Users::Musics::MusicLinksController < ApplicationController
+class MusicLinksController < ApplicationController
   before_action :set_music_link, only: [:show, :update, :destroy]
 
   # GET /music_links
@@ -46,6 +46,6 @@ class Users::Musics::MusicLinksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def music_link_params
-      params.require(:music_link).permit(:artist_id, :platform_id)
+      params.require(:music_link).permit(:itunes, :twitter, :music_id)
     end
 end

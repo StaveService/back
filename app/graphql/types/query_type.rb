@@ -11,7 +11,7 @@ module Types
     end
     def musics(**args)
       musics = Music.page(args[:page]).per(10)
-      { musics: musics, pagination: pagination(musics) }
+      { data: musics, pagination: pagination(musics) }
     end
     def pagination(result)
       {
