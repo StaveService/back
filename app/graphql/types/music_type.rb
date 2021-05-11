@@ -10,7 +10,14 @@ module Types
     field :composers, [Types::ArtistType], null: true 
     field :lyrists, [Types::ArtistType], null: true
     field :artist_musics, [Types::ArtistMusicType], null: true
+    field :bookmarks, [Types::MusicBookmarkType], null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :bookmark, Types::MusicBookmarkType, null: true do
+      argument :current_user_id, Int, required: true
+    end
+    def bookmark(**args)
+      object.music_bookmarks.find_by(user_id: args[:current_user_id])
+    end
   end
 end

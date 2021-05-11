@@ -9,43 +9,35 @@ require 'factory_bot_rails'
 
 # Ling tosite Sigure
 band1= Band.create(name: "Ling tosite sigure")
-artist1 = Artist.create(name: "TK")
-artist2 = Artist.create(name: "345")
-artist3 = Artist.create(name: "ピエール中野")
 album1 = Album.create(title: "#4")
-FactoryBot.create(:artist_album, artist: artist1, album: album1)
-FactoryBot.create(:artist_album, artist: artist2, album: album1)
-FactoryBot.create(:artist_album, artist: artist3, album: album1)
-FactoryBot.create(:artist_band, artist: artist1, band: band1)
-FactoryBot.create(:artist_band, artist: artist2, band: band1)
-FactoryBot.create(:artist_band, artist: artist3, band: band1)
-
 user1 = FactoryBot.create(:user)
-
-user1_music1 = FactoryBot.create(:music, user: user1, band: band1, title: "Abnormalize")
-FactoryBot.create(:composer_music, artist: artist1 , music: user1_music1)
-FactoryBot.create(:lyrist_music, artist: artist1 , music: user1_music1)
-FactoryBot.create(:artist_music, artist: artist1, music: user1_music1, role: 1)
-FactoryBot.create(:artist_music, artist: artist2, music: user1_music1, role: 2)
-FactoryBot.create(:artist_music, artist: artist3, music: user1_music1, role: 3)
-FactoryBot.create(:music_link, music: user1_music1, itunes: 1535532370)
-
-user1_music2 = FactoryBot.create(:music, user: user1, band: band1, title: "Enigmatic Feeling") 
-FactoryBot.create(:composer_music, artist: artist1 , music: user1_music2)
-FactoryBot.create(:lyrist_music, artist: artist1 , music: user1_music2)
-FactoryBot.create(:artist_music, artist: artist1, music: user1_music2, role: 1)
-FactoryBot.create(:artist_music, artist: artist2, music: user1_music2, role: 2)
-FactoryBot.create(:artist_music, artist: artist3, music: user1_music2, role: 3)
-FactoryBot.create(:music_link, music: user1_music2, itunes: 941516387)
-
-user1_music3 = FactoryBot.create(:music, user: user1, band: band1, title: "O.F.T") 
-FactoryBot.create(:composer_music, artist: artist1 , music: user1_music3)
-FactoryBot.create(:lyrist_music, artist: artist1 , music: user1_music3)
-FactoryBot.create(:album_music, album: album1, music: user1_music3)
-FactoryBot.create(:artist_music, artist: artist1, music: user1_music3, role: 1)
-FactoryBot.create(:artist_music, artist: artist2, music: user1_music3, role: 2)
-FactoryBot.create(:artist_music, artist: artist3, music: user1_music3, role: 3)
-FactoryBot.create(:music_link, music: user1_music3, itunes: 1339500372)
+artists1 = ["TK", "345", "ピエール中野"].map { |v| Artist.create name: v }
+artists1.each do |v| 
+    FactoryBot.create(:artist_album, artist: v, album: album1)
+    FactoryBot.create(:artist_band, artist: v, band: band1)
+end
+{
+    "Abnormalize": 1535532370, 
+    "Enigmatic Feeling": 941516387, 
+    "O.F.T": 1339500372,
+    "Chocolate Passion": 1341020205,
+    "Telecastic Fake Show": 1354895889,
+    "DISCO FLIGHT": 1339494678,
+    "Sosos": 1033054073,
+    "Who What Who What": 1351201802,
+    "Karma Siren": 1033054076,
+    "Beautiful Circus": 1535532369,
+    "Ultra Overcorrection": 1341020204
+}.each do |k, v|
+    music = FactoryBot.create(:music, user: user1, band: band1, title: k)
+    FactoryBot.create(:music_link, music: music, itunes: v)
+    [:composer_music, :lyrist_music].each do |v|
+        FactoryBot.create(v, artist: artists1[0] , music: music)
+    end
+    artists1.each_with_index do |v, i|
+        FactoryBot.create(:artist_music, artist: v, music: music, role: ++i)
+    end
+end
 
 
 # RADWIMPS
