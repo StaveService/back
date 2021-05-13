@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :music_link do
+  factory :album_link do
     itunes { 1 }
-    music { nil }
+    album { nil }
   end
 end

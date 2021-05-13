@@ -9,11 +9,28 @@ require 'factory_bot_rails'
 
 # Ling tosite Sigure
 band1= Band.create(name: "Ling tosite sigure")
-album1 = Album.create(title: "#4")
+albums1 = {
+    "#4": nil,
+    "i'mperfect": 1535532368,
+    "Just a Moment": 1354895875, 
+    "Es or S - EP": 1033053633, 
+    "Still a Sigure Virgin?": 1354895841,
+    "Inspiration is DEAD": 1339494519,
+    "Feeling your UFO - EP": 1340075005,
+    "Telecastic fake show - Single": 1339490655,
+    "Die Meets Hard - Single": 1268523116,
+    "Abnormalize - Single": 1354894273,
+    "Perfake Perfect - Single": 1545119206
+}.map do |k, v| 
+    album = Album.create title: k 
+    FactoryBot.create(:album_link, album: album, itunes: v)
+    FactoryBot.create(:band_album, album: album, band: band1)
+    album
+end
 user1 = FactoryBot.create(:user)
 artists1 = ["TK", "345", "ピエール中野"].map { |v| Artist.create name: v }
 artists1.each do |v| 
-    FactoryBot.create(:artist_album, artist: v, album: album1)
+    FactoryBot.create(:artist_album, artist: v, album: albums1[0])
     FactoryBot.create(:artist_band, artist: v, band: band1)
 end
 {

@@ -1,4 +1,5 @@
 class Album < ApplicationRecord
+    has_one :album_link
     has_many :musics
 
     has_many :album_musics

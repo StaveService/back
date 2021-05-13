@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_09_072433) do
+ActiveRecord::Schema.define(version: 2021_05_12_125017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_links", force: :cascade do |t|
+    t.integer "itunes"
+    t.bigint "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_links_on_album_id"
+  end
 
   create_table "album_musics", force: :cascade do |t|
     t.bigint "album_id"
@@ -26,7 +34,6 @@ ActiveRecord::Schema.define(version: 2021_05_09_072433) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.integer "itunes_collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -140,7 +147,6 @@ ActiveRecord::Schema.define(version: 2021_05_09_072433) do
 
   create_table "music_links", force: :cascade do |t|
     t.integer "itunes"
-    t.string "twitter"
     t.bigint "music_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -200,6 +206,7 @@ ActiveRecord::Schema.define(version: 2021_05_09_072433) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "album_links", "albums"
   add_foreign_key "album_musics", "albums"
   add_foreign_key "album_musics", "musics"
   add_foreign_key "artist_albums", "albums"

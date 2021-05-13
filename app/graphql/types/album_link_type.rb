@@ -1,8 +1,8 @@
 module Types
-  class AlbumType < Types::BaseObject
+  class AlbumLinkType < Types::BaseObject
     field :id, ID, null: false
-    field :title, String, null: false
-    field :album_link, Types::AlbumLinkType, null: false
+    field :itunes, Integer, null: true
+    field :album_id, Integer, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end

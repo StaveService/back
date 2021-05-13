@@ -4,19 +4,20 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
+    per = 10
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
     field :music, Types::MusicType, null: false do
       argument :id, Int, required: true
     end
     field :musics, Types::MusicsType, null: true do
-      argument :page, Int, required: false
+      argument :page, Int, required: true
     end
     field :artist, Types::ArtistType, null: false do
       argument :id, Int, required: true
     end
     field :artists, Types::ArtistsType, null: false do
-      argument :page, Int, required: false
+      argument :page, Int, required: true
     end
     field :band, Types::BandType, null: false do
       argument :id, Int, required: true
@@ -58,10 +59,7 @@ module Types
     end
     def pagination(result)
       {
-        total_count: result.total_count,
-        limit_value: result.limit_value,
         total_pages: result.total_pages,
-        current_page: result.current_page
       }
     end
   end
