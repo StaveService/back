@@ -13,7 +13,7 @@ module Types
     end
     field :artists, [Types::ArtistType], null: true 
     field :bookmark, Types::BandBookmarkType, null: true do
-      argument :current_user_id, Int, required: true
+      argument :current_user_id, Int, required: false
     end
     def musics(**args)
       musics = object.musics.page(args[:music_page]).per(10)
@@ -24,7 +24,7 @@ module Types
       { data: albums, pagination: pagination(albums) }
     end
     def bookmark(**args)
-      object.band_bookmarks.find_by(user_id: args[:current_user_id])
+      object.band_bookmarks.find_by(user_id: args[:current_user_id]) if args[:current_user_id]
     end
     def pagination(result)
       { total_pages: result.total_pages }

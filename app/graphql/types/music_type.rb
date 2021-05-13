@@ -14,10 +14,10 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :bookmark, Types::MusicBookmarkType, null: true do
-      argument :current_user_id, Int, required: true
+      argument :current_user_id, Int, required: false
     end
     def bookmark(**args)
-      object.music_bookmarks.find_by(user_id: args[:current_user_id])
+      object.music_bookmarks.find_by(user_id: args[:current_user_id]) if args[:current_user_id]
     end
   end
 end

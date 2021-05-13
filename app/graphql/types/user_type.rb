@@ -28,5 +28,15 @@ module Types
     # field :tokens, Types::JsonType, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :musics, Types::MusicsType, null: true do
+      argument :music_page, Int, required: true
+    end
+    def musics(**args)
+      musics = object.musics.page(args[:music_page]).per(10)
+      { data: musics, pagination: pagination(musics) }
+    end
+    def pagination(result)
+      { total_pages: result.total_pages }
+    end
   end
 end

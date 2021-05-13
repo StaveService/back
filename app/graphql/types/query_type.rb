@@ -25,6 +25,9 @@ module Types
     field :bands, Types::BandsType, null: false do
       argument :page, Int, required: false
     end
+    field :user, Types::UserType, null: false do
+      argument :id, Int, required: true
+    end
     field :users, Types::UsersType, null: false do
       argument :page, Int, required: false
     end
@@ -52,6 +55,9 @@ module Types
     def bands(**args)
       bands = Band.page(args[:page]).per(10)
       { data: bands, pagination: pagination(bands) }
+    end
+    def user(**args)
+      user = User.find(args[:id])
     end
     def users(**args)
       users = User.page(args[:page]).per(10)
