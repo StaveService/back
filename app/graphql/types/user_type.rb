@@ -31,11 +31,11 @@ module Types
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end
-    def musics(**args)
-      musics = object.musics.page(args[:music_page]).per(10)
+    def musics music_page:
+      musics = object.musics.page(music_page).per(10)
       { data: musics, pagination: pagination(musics) }
     end
-    def pagination(result)
+    def pagination result
       { total_pages: result.total_pages }
     end
   end

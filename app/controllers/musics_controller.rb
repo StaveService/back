@@ -3,7 +3,7 @@ class MusicsController < ApplicationController
 
   # GET /musics
   def index
-    paginate json: Music.ransack(params[:q] && JSON.parse(params[:q])).result, include: [:user, :band, :link, :composers, :lyrists], per_page: 10
+    paginate json: Music.ransack(params[:q] && JSON.parse(params[:q])).result, include: [:user, :band, :music_link, :composers, :lyrists], per_page: 10
   end
 
   # GET /musics/1

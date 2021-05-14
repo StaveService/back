@@ -16,8 +16,8 @@ module Types
     field :bookmark, Types::MusicBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
-    def bookmark(**args)
-      object.music_bookmarks.find_by(user_id: args[:current_user_id]) if args[:current_user_id]
+    def bookmark current_user_id: nil
+      object.music_bookmarks.find_by(user_id: current_user_id) if current_user_id
     end
   end
 end
