@@ -13,13 +13,4 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/requests", type: :request do
-  let(:request) { create(:request, user: create(:user)) }
-  context "GET /requests" do
-    it { is_expected.to eq(200) }
-  end
-
-  context "GET /requests/:request_id" do
-    let(:request_id) { request.id }
-    it { is_expected.to eq(200) }
-  end
 end

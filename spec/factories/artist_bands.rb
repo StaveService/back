@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :artist_band do
-    artist 
-    band 
+    artist { nil }
+    band { nil }
   end
 end

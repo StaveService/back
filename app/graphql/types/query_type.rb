@@ -20,6 +20,9 @@ module Types
       argument :page, Int, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
+    field :album, Types::BandType, null: false do
+      argument :id, Int, required: true
+    end
     field :albums, Types::AlbumsType, null: false do
       argument :page, Int, required: true
       argument :q, GraphQL::Types::JSON, required: false
@@ -49,6 +52,9 @@ module Types
     def musics page:, q:nil
       musics = Music.ransack(q).result.page(page).per(10)
       { data: musics, pagination: pagination(musics) }
+    end
+    def album id:
+      Album.find id
     end
     def albums page:, q:nil
       albums = Album.ransack(q).result.page(page).per(10)

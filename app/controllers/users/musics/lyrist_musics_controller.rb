@@ -1,6 +1,6 @@
-class LyristMusicsController < ApplicationController
+class Users::Musics::LyristMusicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_current_user_music_lyrists
+  before_action :set_lyrists
   # # GET /composers
   # def index
     # @composers = Composer.all
@@ -40,7 +40,7 @@ class LyristMusicsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_current_user_music_lyrists
+    def set_lyrists
       @lyrists = current_user.musics.find(params[:music_id]).lyrists
     end
 

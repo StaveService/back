@@ -1,5 +1,6 @@
 class BandsController < ApplicationController
-  before_action :set_band, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_band, only: [:update, :destroy]
 
   # GET /bands
   def index
@@ -45,6 +46,6 @@ class BandsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def band_params
-      params.require(:band).permit(:name, :itunes_artist_id)
+      params.require(:band).permit(:name)
     end
 end

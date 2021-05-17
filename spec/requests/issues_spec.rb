@@ -13,40 +13,4 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/issues", type: :request do
-  # This should return the minimal set of attributes required to create a valid
-  # Issue. As you add validations to Issue, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    user = create(:user)
-    music = create(:music, user: user)
-    attributes_for(:issue, user: user, music: music)
-  }
-
-  let(:invalid_attributes) {
-    attributes_for(:issue, title: "")
-  }
-
-  # This should return the minimal set of values that should be in the headers
-  # in order to pass any filters (e.g. authentication) defined in
-  # IssuesController, or in your router and rack
-  # middleware. Be sure to keep this updated too.
-  let(:valid_headers) {
-    {}
-  }
-
-  describe "GET /index" do
-    it "renders a successful response" do
-      Issue.create! valid_attributes
-      get issues_url, headers: valid_headers, as: :json
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      issue = Issue.create! valid_attributes
-      get issue_url(issue), as: :json
-      expect(response).to be_successful
-    end
-  end
 end

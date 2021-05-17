@@ -16,26 +16,9 @@ RSpec.describe "/musics", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Music. As you add validations to Music, be sure to
   # adjust the attributes here as well.
-  let(:valid_model) { build(:music) }
-
-  let(:invalid_model) {
-    build(:music, title: "")
-  }
-
   # This should return the minimal set of values that should be in the headers
   # in order to pass any filters (e.g. authentication) defined in
   # MusicsController, or in your router and rack
   # middleware. Be sure to keep this updated too.
-  let(:valid_headers) {
-    {}
-  }
-
-  describe "GET /musics" do
-    it { is_expected.to eq(200) }
-  end
-
-  describe "GET /musics/:music_id" do
-    let(:music_id) { create(:music).id }
-    it { is_expected.to eq(200) }
-  end
+  
 end

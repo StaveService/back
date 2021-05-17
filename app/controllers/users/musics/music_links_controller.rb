@@ -1,17 +1,6 @@
-class MusicLinksController < ApplicationController
-  before_action :set_music_link, only: [:show, :update, :destroy]
-
-  # GET /music_links
-  def index
-    @music_links = MusicLink.all
-
-    render json: @music_links
-  end
-
-  # GET /music_links/1
-  def show
-    render json: @music_link
-  end
+class Users::Musics::MusicLinksController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_music_link, only: [:update, :destroy]
 
   # POST /music_links
   def create

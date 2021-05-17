@@ -1,16 +1,6 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :update, :destroy]
-
-  # GET /artists
-  def index
-    render json: Artist.ransack(params[:q] && JSON.parse(params[:q])).result
-  end
-
-  # GET /artists/1
-  def show
-    @artist.current_user = current_user
-    render json: @artist, include: [:bands, :albums, musics: {include: [:user, :link, :composers, :lyrists]}], methods: [:bookmark]
-  end
+  before_action :authenticate_user!
+  before_action :set_artist, only: [:update, :destroy]
 
   # POST /artists
   def create
@@ -45,6 +35,6 @@ class ArtistsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def artist_params
-      params.require(:artist).permit(:name, :itunes_artist_id)
+      params.require(:artist).permit(:name)
     end
 end

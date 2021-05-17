@@ -1,17 +1,17 @@
-class AlbumLinksController < ApplicationController
-  before_action :set_album_link, only: [:show, :update, :destroy]
+class Albums::AlbumLinksController < ApplicationController
+  before_action :set_album_link
 
-  # GET /album_links
-  def index
-    @album_links = AlbumLink.all
+  # # GET /album_links
+  # def index
+    # @album_links = AlbumLink.all
 
-    render json: @album_links
-  end
+    # render json: @album_links
+  # end
 
-  # GET /album_links/1
-  def show
-    render json: @album_link
-  end
+  # # GET /album_links/1
+  # def show
+    # render json: @album_link
+  # end
 
   # POST /album_links
   def create
