@@ -5,6 +5,6 @@ RSpec.describe Request, type: :model do
     it { should validate_presence_of :title }
   end
   context 'associations' do
-    it { should belong_to(:user) }
+    it { should belong_to :user }
   end
 end

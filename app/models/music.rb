@@ -22,8 +22,4 @@ class Music < ApplicationRecord
   belongs_to :band, optional: true
 
   validates :title, presence: true, length: { maximum: 50 }
-
-  def bookmark
-    return music_bookmarks.find_by(user_id: current_user.id) if current_user 
-  end
 end

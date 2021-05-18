@@ -6,8 +6,13 @@ RSpec.describe Band, type: :model do
   end
 
   context 'associations' do
-    it { should have_many(:musics) }
+    it { should have_many :musics }
+    it { should have_many :artist_bands }
+    it { should have_many :band_albums }
+    it { should have_many :band_bookmarks }
     it { should have_many(:artists).through(:artist_bands) }
+    it { should have_many(:albums).through(:band_albums) }
+    it { should have_many(:bookmarks).through(:band_bookmarks).source(:band).dependent(:destroy) }
   end
 
   context "attributes" do

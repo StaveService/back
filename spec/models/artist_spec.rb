@@ -7,18 +7,19 @@ RSpec.describe Artist, type: :model do
   end
   
   context 'associations' do
-    it { should have_many(:musics).through(:roles) }
+    it { should have_many :artist_musics }
+    it { should have_many :artist_albums }
+    it { should have_many :artist_bands }
+    it { should have_many :artist_bookmarks }
+    it { should have_many(:musics).through(:artist_musics) }
     it { should have_many(:albums).through(:artist_albums) }
     it { should have_many(:bands).through(:artist_bands) }
+    it { should have_many(:bookmarks).through(:artist_bookmarks).source(:artist).dependent(:destroy) }
   end
   
   context "attributes" do
     it "has name" do
       expect(build(:artist, name: "artist")).to have_attributes(name: "artist")
-    end
-
-    it "has itunes_artist_id" do
-      expect(build(:artist, itunes_artist_id: 0)).to have_attributes(itunes_artist_id: 0)
     end
   end
 end

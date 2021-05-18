@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context "validations" do
-    subject { build(:user) } 
+    subject { build(:user) }
     it { should validate_presence_of :nickname }
     it { should validate_presence_of :familyname }
     it { should validate_presence_of :givenname }
@@ -16,6 +16,12 @@ RSpec.describe User, type: :model do
     it { should have_many :musics }
     it { should have_many :requests }
     it { should have_many :issues }
+    it { should have_many :band_bookmarks }
+    it { should have_many :music_bookmarks }
+    it { should have_many :artist_bookmarks }
+    it { should have_many(:bookmarked_bands).through(:band_bookmarks).source(:user) }
+    it { should have_many(:bookmarked_musics).through(:music_bookmarks).source(:user) }
+    it { should have_many(:bookmarked_artists).through(:artist_bookmarks).source(:user) }
   end
 
   context "attributes" do

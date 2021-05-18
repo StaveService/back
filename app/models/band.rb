@@ -12,8 +12,4 @@ class Band < ApplicationRecord
   has_many :bookmarks, through: :band_bookmarks, source: :band, dependent: :destroy
 
   validates_presence_of :name
-
-  def bookmark
-    return band_bookmarks.find_by(user_id: current_user.id) if current_user 
-  end
 end

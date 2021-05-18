@@ -8,17 +8,19 @@ RSpec.describe Album, type: :model do
   end
 
   context 'associations' do
+    it { should have_one :album_link }
     it { should have_many :musics }
+    it { should have_many :album_musics }
+    it { should have_many :band_albums }
+    it { should have_many :artist_albums }
+    it { should have_many(:musics).through(:album_musics) }
+    it { should have_many(:artists).through(:artist_albums) }
+    it { should have_many(:bands).through(:band_albums) }
   end
 
   context "attributes" do
     it "has title" do
       expect(build(:album, title: "title")).to have_attributes(title: "title")
-    end
-
-    it "has release_date" do
-      date = Date.today
-      expect(build(:album, release_date: date)).to have_attributes(release_date: date)
     end
   end
 end
