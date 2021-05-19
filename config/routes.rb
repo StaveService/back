@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     path = "bands"
     resources :artist_bands, only: [:create, :destroy], controller: path + "/artist_bands"
     resources :band_albums, only: [:create, :destroy], controller: path + "/band_albums"
+    resources :band_links, only: [:create,:update, :destroy], controller: path + "/band_links"
     resources :band_bookmarks, only: [:create, :destroy], controller: path + "/band_bookmarks"
   end
   resources :albums, only: [:create, :update, :destroy] do
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   resources :artists, only: [:create, :update, :destroy] do
     resources :artist_bookmarks, only: [:create, :destroy], controller: "artists/artist_bookmarks"
     resources :musics, only: [:index, :show], controller: "artists/musics"
+    resources :artist_links, only: [:create, :update, :destroy], controller: "artists/artist_links"
     resources :albums, controller: "artists/albums" do
       resources :musics, only: [:index, :show], controller: "artists/albums/musics"
     end

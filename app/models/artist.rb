@@ -1,5 +1,7 @@
 class Artist < ApplicationRecord
   attr_accessor :current_user
+  has_one :artist_link
+  
   has_many :artist_musics
   has_many :musics, through: :artist_musics
 

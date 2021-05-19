@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_125017) do
+ActiveRecord::Schema.define(version: 2021_05_19_103528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 2021_05_12_125017) do
     t.index ["user_id"], name: "index_artist_bookmarks_on_user_id"
   end
 
+  create_table "artist_links", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.string "itunes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_links_on_artist_id"
+  end
+
   create_table "artist_musics", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "music_id"
@@ -98,6 +106,14 @@ ActiveRecord::Schema.define(version: 2021_05_12_125017) do
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_band_bookmarks_on_band_id"
     t.index ["user_id"], name: "index_band_bookmarks_on_user_id"
+  end
+
+  create_table "band_links", force: :cascade do |t|
+    t.bigint "band_id"
+    t.string "itunes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["band_id"], name: "index_band_links_on_band_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -215,12 +231,14 @@ ActiveRecord::Schema.define(version: 2021_05_12_125017) do
   add_foreign_key "artist_bands", "bands"
   add_foreign_key "artist_bookmarks", "artists"
   add_foreign_key "artist_bookmarks", "users"
+  add_foreign_key "artist_links", "artists"
   add_foreign_key "artist_musics", "artists"
   add_foreign_key "artist_musics", "musics"
   add_foreign_key "band_albums", "albums"
   add_foreign_key "band_albums", "bands"
   add_foreign_key "band_bookmarks", "bands"
   add_foreign_key "band_bookmarks", "users"
+  add_foreign_key "band_links", "bands"
   add_foreign_key "composer_musics", "artists"
   add_foreign_key "composer_musics", "musics"
   add_foreign_key "issues", "musics"
