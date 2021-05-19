@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe BandAlbum, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'associations' do
+    it { should belong_to :band }
+    it { should belong_to :album }
+  end
 end
