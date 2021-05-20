@@ -35,6 +35,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def album_params
-      params.require(:album).permit(:title)
+      params.require(:album).permit(:title, album_link_attributes: [:itunes])
     end
 end

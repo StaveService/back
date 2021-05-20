@@ -1,5 +1,5 @@
 class Band < ApplicationRecord
-  attr_accessor :current_user
+  has_one :band_link
   has_many :musics
 
   has_many :artist_bands
@@ -12,4 +12,6 @@ class Band < ApplicationRecord
   has_many :bookmarks, through: :band_bookmarks, source: :band, dependent: :destroy
 
   validates_presence_of :name
+
+  accepts_nested_attributes_for :band_link
 end

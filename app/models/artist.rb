@@ -1,5 +1,4 @@
 class Artist < ApplicationRecord
-  attr_accessor :current_user
   has_one :artist_link
   
   has_many :artist_musics
@@ -15,4 +14,6 @@ class Artist < ApplicationRecord
   has_many :bookmarks, through: :artist_bookmarks, source: :artist, dependent: :destroy
   
   validates :name, presence: true, length: { maximum: 50 }
+
+  accepts_nested_attributes_for :artist_link
 end

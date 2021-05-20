@@ -3,7 +3,6 @@ module Types
     field :id, ID, null: false
     field :title, String, null: false
     field :tab, String, null: false
-    field :itunes_track_id, Integer, null: true
     field :user, Types::UserType, null: true
     field :music_link, Types::MusicLinkType, null: true
     field :band, Types::BandType, null: true

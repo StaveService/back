@@ -20,7 +20,7 @@ module Types
       argument :page, Int, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
-    field :album, Types::BandType, null: false do
+    field :album, Types::AlbumType, null: false do
       argument :id, Int, required: true
     end
     field :albums, Types::AlbumsType, null: false do

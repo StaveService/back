@@ -1,13 +1,12 @@
 class Users::MusicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_musics
   before_action :set_music, only: [:update, :destroy]
   # POST /musics
   def create
-    @music = @musics.new music_params
+    @music = current_user.musics.new music_params
 
     if @music.save
-      render json: @music, status: :created, location: @music
+      render json: @music, status: :created
     else
       render json: @music.errors, status: :unprocessable_entity
     end
@@ -36,6 +35,6 @@ class Users::MusicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def music_params
-      params.require(:music).permit(:user_id, :title, :tab, :itunes_track_id)
+      params.require(:music).permit(:title, :tab, music_link_attributes: [:itunes])
     end
 end

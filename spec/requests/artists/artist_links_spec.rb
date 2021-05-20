@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-
-RSpec.describe "Artists", type: :request do
+RSpec.describe "/artist_links", type: :request do
   let(:user) { create(:user) }
   let(:artist) { create(:artist) }
+  let(:artist_link) { create(:artist_link, artist: artist) }
   context "POST /artists" do
     context "with Authorization header" do
       before(:each) do
@@ -81,4 +81,3 @@ RSpec.describe "Artists", type: :request do
     end
   end
 end
-

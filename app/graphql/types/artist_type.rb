@@ -2,7 +2,7 @@ module Types
   class ArtistType < Types::BaseObject
     field :id, ID, null: false
     field :name, String, null: false
-    field :itunes_artist_id, Integer, null: true
+    field :artist_link, Types::ArtistLinkType, null: true 
     field :bands, Types::BandsType, null: false
     field :albums, Types::AlbumsType, null: false do
       argument :album_page, Int, required: true

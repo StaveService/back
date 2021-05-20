@@ -2,17 +2,6 @@ class BandsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_band, only: [:update, :destroy]
 
-  # GET /bands
-  def index
-    render json: Band.ransack(params[:q] && JSON.parse(params[:q])).result
-  end
-
-  # GET /bands/1
-  def show
-    @band.current_user = current_user
-    render json: @band, include: [:artists, :albums, musics: {include: [:user, :composers, :lyrists]}], methods: [:bookmark]
-  end
-
   # POST /bands
   def create
     @band = Band.new(band_params)
@@ -46,6 +35,6 @@ class BandsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def band_params
-      params.require(:band).permit(:name)
+      params.require(:band).permit(:name, band_link_attributes: [:itunes])
     end
 end

@@ -1,5 +1,4 @@
 class Music < ApplicationRecord
-  attr_accessor :current_user
   has_one :music_link, dependent: :destroy
   has_many :issues, dependent: :destroy
 
@@ -22,4 +21,6 @@ class Music < ApplicationRecord
   belongs_to :band, optional: true
 
   validates :title, presence: true, length: { maximum: 50 }
+
+  accepts_nested_attributes_for :music_link
 end
