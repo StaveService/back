@@ -1,51 +1,31 @@
 class Users::Musics::LyristMusicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_lyrists
-  # # GET /composers
-  # def index
-    # @composers = Composer.all
-
-    # render json: @composers
-  # end
-
-  # # GET /composers/1
-  # def show
-    # render json: @composer
-  # end
+  before_action :set_lyrist_musics
 
   # POST /composers
   def create
-    @lyrist = @lyrists.new(artist_id: lyrist_params[:id])
+    @lyrist_music = @lyrist_musics.new(artist_id: lyrist_music_params[:id])
 
-    if @lyrist.save
-      render json: @lyrist, status: :created
+    if @lyrist_music.save
+      render json: @lyrist_music, status: :created
     else
-      render json: @lyrist.errors, status: :unprocessable_entity
+      render json: @lyrist_music.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /composers/1
-  # def update
-    # if @composer.update(composer_params)
-      # render json: @composer
-    # else
-      # render json: @composer.errors, status: :unprocessable_entity
-    # end
-  # end
-
   # DELETE /composers/1
   def destroy
-    @lyrists.find_by(artist_id: params[:id]).destroy
+    @lyrist_musics.find_by(artist_id: params[:id]).destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_lyrists
-      @lyrists = current_user.musics.find(params[:music_id]).lyrists
+    def set_lyrist_musics
+      @lyrist_musics = current_user.musics.find(params[:music_id]).lyrist_musics
     end
 
     # Only allow a trusted parameter "white list" through.
-    def lyrist_params
-      params.require(:lyrist).permit(:id, :user_id, :music_id, :artist_id)
+    def lyrist_music_params
+      params.require(:lyrist_music).permit(:id, :user_id, :music_id, :artist_id)
     end
 end
