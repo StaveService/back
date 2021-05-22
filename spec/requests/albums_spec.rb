@@ -75,7 +75,7 @@ RSpec.describe "Albums", type: :request do
       end
     end
     it "without Authorization header" do
-      patch album_path(album), params: { album: attributes_for(:album) }
+      delete album_path(album), params: { album: attributes_for(:album) }
       expect(response).to have_http_status :unauthorized
     end
   end

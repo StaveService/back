@@ -25,6 +25,6 @@ class Users::Musics::ComposerMusicsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def composer_music_params
-      params.require(:composer_music).permit(:id, :user_id, :music_id, :artist_id)
+      params.require(:composer_music).permit(:id, :music_id, :artist_id)
     end
 end
