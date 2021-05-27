@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   }
   resources :bands do
     path = 'bands'
-    resources :artist_bands, only: %i[create destroy], controller: path + '/artist_bands'
-    resources :band_albums, only: %i[create destroy], controller: path + '/band_albums'
-    resources :band_links, only: %i[create update destroy], controller: path + '/band_links'
-    resources :band_bookmarks, only: %i[create destroy], controller: path + '/band_bookmarks'
+    resources :artist_bands, only: %i[create destroy], controller: "#{path}/artist_bands"
+    resources :band_albums, only: %i[create destroy], controller: "#{path}/band_albums"
+    resources :band_links, only: %i[create update destroy], controller: "#{path}/band_links"
+    resources :band_bookmarks, only: %i[create destroy], controller: "#{path}/band_bookmarks"
   end
   resources :albums, only: %i[create update destroy] do
     resources :musics, only: %i[create update destroy], controller: 'albums/musics'
@@ -20,14 +20,14 @@ Rails.application.routes.draw do
   resources :users do
     path = 'users/musics'
     resources :musics, only: %i[create update destroy], controller: path do
-      resources :composer_musics, only: %i[create destroy], controller: path + '/composer_musics'
-      resources :lyrist_musics, only: %i[create destroy], controller: path + '/lyrist_musics'
-      resources :bands, only: %i[create destroy], controller: path + '/bands'
-      resources :artist_musics, only: %i[create destroy], controller: path + '/artist_musics'
-      resources :album_musics, only: %i[create destroy], controller: path + '/album_musics'
-      resources :music_bookmarks, only: %i[create destroy], controller: path + '/music_bookmarks'
-      resources :music_links, only: %i[create update destroy], controller: path + '/music_links'
-      resources :issues, controller: path + '/issues'
+      resources :composer_musics, only: %i[create destroy], controller: "#{path}/composer_musics"
+      resources :lyrist_musics, only: %i[create destroy], controller: "#{path}/lyrist_musics"
+      resources :bands, only: %i[create destroy], controller: "#{path}/bands"
+      resources :artist_musics, only: %i[create destroy], controller: "#{path}/artist_musics"
+      resources :album_musics, only: %i[create destroy], controller: "#{path}/album_musics"
+      resources :music_bookmarks, only: %i[create destroy], controller: "#{path}/music_bookmarks"
+      resources :music_links, only: %i[create update destroy], controller: "#{path}/music_links"
+      resources :issues, controller: "#{path}/issues"
     end
     resources :requests, only: %i[create update destroy], controller: 'users/requests'
   end
