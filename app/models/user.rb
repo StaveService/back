@@ -7,13 +7,13 @@ class User < ApplicationRecord
   has_many :issues
 
   has_many :band_bookmarks
-  has_many :bookmarked_bands, through: :band_bookmarks, source: :user
+  has_many :bookmarked_bands, through: :band_bookmarks, source: :band
 
   has_many :music_bookmarks
-  has_many :bookmarked_musics, through: :music_bookmarks, source: :user
+  has_many :bookmarked_musics, through: :music_bookmarks, source: :music
 
   has_many :artist_bookmarks
-  has_many :bookmarked_artists, through: :artist_bookmarks, source: :user
+  has_many :bookmarked_artists, through: :artist_bookmarks, source: :artist
 
   validates :nickname, length: 4..30
   validates :familyname, length: { maximum: 35 }

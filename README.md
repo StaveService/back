@@ -47,3 +47,9 @@ docker-compose run web bundle exec rspec spec/controllers/accounts_controller_sp
 
 docker-compose run web bundle exec rspec spec/controllers/accounts_controller_spec.rb:8
 ```
+
+## Lint
+
+```sh
+docker-compose run web rubocop -a
+```

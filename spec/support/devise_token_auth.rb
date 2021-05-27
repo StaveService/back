@@ -4,6 +4,7 @@ module DeviseTokenAuthHelpers
                             headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
   end
 
+  # rubocop:disable Metrics/MethodLength
   def get_auth_params_from_login_response_headers(response)
     client = response.headers['client']
     token = response.headers['access-token']
@@ -19,6 +20,7 @@ module DeviseTokenAuthHelpers
       'token-type' => token_type
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
 
 RSpec.configure do |config|

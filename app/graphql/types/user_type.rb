@@ -31,17 +31,33 @@ module Types
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end
-    field :music_bookmarks, Types::MusicsType, null: true do
-      argument :music_bookmark_page, Int, required: true
+    field :bookmarked_musics, Types::MusicsType, null: true do
+      argument :bookmarked_music_page, Int, required: true
+    end
+    field :bookmarked_bands, Types::BandsType, null: true do
+      argument :bookmarked_band_page, Int, required: true
+    end
+    field :bookmarked_artists, Types::ArtistsType, null: true do
+      argument :bookmarked_artist_page, Int, required: true
     end
     def musics(music_page:)
       musics = object.musics.page(music_page).per(10)
       { data: musics, pagination: pagination(musics) }
     end
 
-    def music_bookmarks(music_bookmark_page:)
-      music_bookmarks = object.music_bookmarks.page(music_bookmark_page).per(10)
-      { data: music_bookmarks, pagination: pagination(music_bookmarks) }
+    def bookmarked_musics(bookmarked_music_page:)
+      bookmarked_musics = object.bookmarked_musics.page(bookmarked_music_page).per(10)
+      { data: bookmarked_musics, pagination: pagination(bookmarked_musics) }
+    end
+
+    def bookmarked_bands(bookmarked_band_page:)
+      bookmarked_bands = object.bookmarked_bands.page(bookmarked_band_page).per(10)
+      { data: bookmarked_bands, pagination: pagination(bookmarked_bands) }
+    end
+
+    def bookmarked_artists(bookmarked_artist_page:)
+      bookmarked_artists = object.bookmarked_artists.page(bookmarked_artist_page).per(10)
+      { data: bookmarked_artists, pagination: pagination(bookmarked_artists) }
     end
 
     def pagination(result)
