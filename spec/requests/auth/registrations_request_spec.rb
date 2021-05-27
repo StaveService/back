@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "Auth::Registrations", type: :request do
-
+RSpec.describe 'Auth::Registrations', type: :request do
 end

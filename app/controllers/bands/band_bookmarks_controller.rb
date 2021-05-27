@@ -4,14 +4,14 @@ class Bands::BandBookmarksController < ApplicationController
 
   # # GET /band_bookmarks
   # def index
-    # @band_bookmarks = BandBookmark.all
+  # @band_bookmarks = BandBookmark.all
 
-    # render json: @band_bookmarks
+  # render json: @band_bookmarks
   # end
 
   # # GET /band_bookmarks/1
   # def show
-    # render json: @band_bookmark
+  # render json: @band_bookmark
   # end
 
   # POST /band_bookmarks
@@ -27,11 +27,11 @@ class Bands::BandBookmarksController < ApplicationController
 
   # # PATCH/PUT /band_bookmarks/1
   # def update
-    # if @band_bookmark.update(band_bookmark_params)
-      # render json: @band_bookmark
-    # else
-      # render json: @band_bookmark.errors, status: :unprocessable_entity
-    # end
+  # if @band_bookmark.update(band_bookmark_params)
+  # render json: @band_bookmark
+  # else
+  # render json: @band_bookmark.errors, status: :unprocessable_entity
+  # end
   # end
 
   # DELETE /band_bookmarks/1
@@ -40,13 +40,14 @@ class Bands::BandBookmarksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_band_bookmarks
-      @band_bookmarks = Band.find(params[:band_id]).band_bookmarks
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def band_bookmark_params
-      params.require(:band_bookmark).permit(:user_id, :band_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_band_bookmarks
+    @band_bookmarks = Band.find(params[:band_id]).band_bookmarks
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def band_bookmark_params
+    params.require(:band_bookmark).permit(:user_id, :band_id)
+  end
 end

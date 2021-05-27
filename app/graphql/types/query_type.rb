@@ -46,46 +46,57 @@ module Types
       argument :music_id, Int, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
-    def music id:
+    def music(id:)
       Music.find id
     end
-    def musics page:, q:nil
+
+    def musics(page:, q: nil)
       musics = Music.ransack(q).result.page(page).per(10)
       { data: musics, pagination: pagination(musics) }
     end
-    def album id:
+
+    def album(id:)
       Album.find id
     end
-    def albums page:, q:nil
+
+    def albums(page:, q: nil)
       albums = Album.ransack(q).result.page(page).per(10)
       { data: albums, pagination: pagination(albums) }
     end
-    def artist id:
+
+    def artist(id:)
       Artist.find id
     end
-    def artists page:, q:nil
+
+    def artists(page:, q: nil)
       artists = Artist.ransack(q).result.page(page).per(10)
       { data: artists, pagination: pagination(artists) }
     end
-    def band id:
+
+    def band(id:)
       Band.find id
     end
-    def bands page:, q:nil
+
+    def bands(page:, q: nil)
       bands = Band.ransack(q).result.page(page).per(10)
       { data: bands, pagination: pagination(bands) }
     end
-    def user id:
+
+    def user(id:)
       User.find id
     end
-    def users page:, q:nil
+
+    def users(page:, q: nil)
       users = User.ransack(q).result.page(page).per(10)
       { data: users, pagination: pagination(users) }
     end
-    def issues music_id:, page:, q:nil
+
+    def issues(music_id:, page:, q: nil)
       issues = Music.find(music_id).issues.ransack(q).result.page(page).per(10)
       { data: issues, pagination: pagination(issues) }
     end
-    def pagination result
+
+    def pagination(result)
       { total_pages: result.total_pages }
     end
   end

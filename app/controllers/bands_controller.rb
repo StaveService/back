@@ -1,6 +1,6 @@
 class BandsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_band, only: [:update, :destroy]
+  before_action :set_band, only: %i[update destroy]
 
   # POST /bands
   def create
@@ -28,13 +28,14 @@ class BandsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_band
-      @band = Band.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def band_params
-      params.require(:band).permit(:name, band_link_attributes: [:itunes])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_band
+    @band = Band.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def band_params
+    params.require(:band).permit(:name, band_link_attributes: [:itunes])
+  end
 end

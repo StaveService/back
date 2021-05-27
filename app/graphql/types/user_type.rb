@@ -31,11 +31,20 @@ module Types
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end
-    def musics music_page:
+    field :music_bookmarks, Types::MusicsType, null: true do
+      argument :music_bookmark_page, Int, required: true
+    end
+    def musics(music_page:)
       musics = object.musics.page(music_page).per(10)
       { data: musics, pagination: pagination(musics) }
     end
-    def pagination result
+
+    def music_bookmarks(music_bookmark_page:)
+      music_bookmarks = object.music_bookmarks.page(music_bookmark_page).per(10)
+      { data: music_bookmarks, pagination: pagination(music_bookmarks) }
+    end
+
+    def pagination(result)
       { total_pages: result.total_pages }
     end
   end

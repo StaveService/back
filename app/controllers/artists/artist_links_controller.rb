@@ -1,17 +1,17 @@
 class Artists::ArtistLinksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_artist_link, only: [:update, :destroy]
+  before_action :set_artist_link, only: %i[update destroy]
 
   # # GET /artist_links
   # def index
-    # @artist_links = ArtistLink.all
+  # @artist_links = ArtistLink.all
 
-    # render json: @artist_links
+  # render json: @artist_links
   # end
 
   # # GET /artist_links/1
   # def show
-    # render json: @artist_link
+  # render json: @artist_link
   # end
 
   # POST /artist_links
@@ -40,13 +40,14 @@ class Artists::ArtistLinksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artist_link
-      @artist_link = ArtistLink.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def artist_link_params
-      params.require(:artist_link).permit(:artist_id, :itunes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artist_link
+    @artist_link = ArtistLink.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def artist_link_params
+    params.require(:artist_link).permit(:artist_id, :itunes)
+  end
 end

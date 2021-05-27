@@ -1,3 +1,8 @@
 {
-   "[ruby]":{}
+   "[ruby]": {
+      "editor.tabSize": 4
+   },
+   "ruby.useLanguageServer": true,
+   "ruby.lint": "rubocop",
+   "ruby.format": "rubocop"
 }

@@ -1,7 +1,7 @@
 class Users::Musics::IssuesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :authenticate_user!, only: %i[create destroy]
   before_action :set_issues
-  before_action :set_issue, only: [:show, :update, :destroy]
+  before_action :set_issue, only: %i[show update destroy]
 
   # GET /issues
   def index
@@ -38,17 +38,18 @@ class Users::Musics::IssuesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_issues
-      @issues = User.find(params[:user_id]).musics.find(params[:music_id]).issues
-    end
 
-    def set_issue
-      @issue = @issues.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_issues
+    @issues = User.find(params[:user_id]).musics.find(params[:music_id]).issues
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def issue_params
-      params.require(:issue).permit(:user_id, :music_id, :title, :description)
-    end
+  def set_issue
+    @issue = @issues.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def issue_params
+    params.require(:issue).permit(:user_id, :music_id, :title, :description)
+  end
 end

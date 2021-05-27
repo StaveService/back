@@ -4,14 +4,14 @@ class Artists::ArtistBookmarksController < ApplicationController
 
   # # GET /artist_bookmarks
   # def index
-    # @artist_bookmarks = ArtistBookmark.all
+  # @artist_bookmarks = ArtistBookmark.all
 
-    # render json: @artist_bookmarks
+  # render json: @artist_bookmarks
   # end
 
   # # GET /artist_bookmarks/1
   # def show
-    # render json: @artist_bookmark
+  # render json: @artist_bookmark
   # end
 
   # POST /artist_bookmarks
@@ -27,11 +27,11 @@ class Artists::ArtistBookmarksController < ApplicationController
 
   # # PATCH/PUT /artist_bookmarks/1
   # def update
-    # if @artist_bookmark.update(artist_bookmark_params)
-      # render json: @artist_bookmark
-    # else
-      # render json: @artist_bookmark.errors, status: :unprocessable_entity
-    # end
+  # if @artist_bookmark.update(artist_bookmark_params)
+  # render json: @artist_bookmark
+  # else
+  # render json: @artist_bookmark.errors, status: :unprocessable_entity
+  # end
   # end
 
   # DELETE /artist_bookmarks/1
@@ -40,13 +40,14 @@ class Artists::ArtistBookmarksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artist_bookmarks
-      @artist_bookmarks = Artist.find(params[:artist_id]).artist_bookmarks
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def artist_bookmark_params
-      params.require(:artist_bookmark).permit(:user_id, :artist_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artist_bookmarks
+    @artist_bookmarks = Artist.find(params[:artist_id]).artist_bookmarks
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def artist_bookmark_params
+    params.require(:artist_bookmark).permit(:user_id, :artist_id)
+  end
 end

@@ -7,6 +7,6 @@ class ArtistMusic < ApplicationRecord
     base: 2,
     drum: 3,
     vocal_guitar: 4,
-    vocal_base: 5,
+    vocal_base: 5
   }
 end

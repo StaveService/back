@@ -4,14 +4,14 @@ class Albums::ArtistAlbumsController < ApplicationController
 
   # # GET /band_albums
   # def index
-    # @band_albums = BandAlbum.all
+  # @band_albums = BandAlbum.all
 
-    # render json: @band_albums
+  # render json: @band_albums
   # end
 
   # # GET /band_albums/1
   # def show
-    # render json: @band_album
+  # render json: @band_album
   # end
 
   # POST /band_albums
@@ -27,11 +27,11 @@ class Albums::ArtistAlbumsController < ApplicationController
 
   # # PATCH/PUT /band_albums/1
   # def update
-    # if @band_album.update(band_album_params)
-      # render json: @band_album
-    # else
-      # render json: @band_album.errors, status: :unprocessable_entity
-    # end
+  # if @band_album.update(band_album_params)
+  # render json: @band_album
+  # else
+  # render json: @band_album.errors, status: :unprocessable_entity
+  # end
   # end
 
   # DELETE /band_albums/1
@@ -40,13 +40,14 @@ class Albums::ArtistAlbumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artist_albums
-      @artist_albums = Album.find(params[:album_id]).artist_albums
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def artist_album_params
-      params.require(:artist_album).permit(:artist_id, :album_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artist_albums
+    @artist_albums = Album.find(params[:album_id]).artist_albums
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def artist_album_params
+    params.require(:artist_album).permit(:artist_id, :album_id)
+  end
 end

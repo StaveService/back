@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_album, only: [:update, :destroy]
+  before_action :set_album, only: %i[update destroy]
 
   # POST /albums
   def create
@@ -28,13 +28,14 @@ class AlbumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album
-      @album = Album.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def album_params
-      params.require(:album).permit(:title, album_link_attributes: [:itunes])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album
+    @album = Album.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def album_params
+    params.require(:album).permit(:title, album_link_attributes: [:itunes])
+  end
 end

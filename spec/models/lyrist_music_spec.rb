@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe LyristMusic, type: :model do
   context 'associations' do
-    it { should belong_to :artist }
-    it { should belong_to :music }
+    it { is_expected.to belong_to :artist }
+    it { is_expected.to belong_to :music }
   end
 end

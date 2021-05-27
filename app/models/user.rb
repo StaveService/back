@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   validates :nickname, length: 4..30
   validates :familyname, length: { maximum: 35 }
   validates :givenname, length: { maximum: 35 }
-  validates_presence_of :nickname, :familyname, :givenname
-  validates_uniqueness_of :nickname
+  validates :nickname, :familyname, :givenname, presence: true
+  validates :nickname, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

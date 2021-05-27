@@ -19,13 +19,14 @@ class Users::Musics::LyristMusicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lyrist_musics
-      @lyrist_musics = current_user.musics.find(params[:music_id]).lyrist_musics
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def lyrist_music_params
-      params.require(:lyrist_music).permit(:id, :user_id, :music_id, :artist_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lyrist_musics
+    @lyrist_musics = current_user.musics.find(params[:music_id]).lyrist_musics
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def lyrist_music_params
+    params.require(:lyrist_music).permit(:id, :user_id, :music_id, :artist_id)
+  end
 end

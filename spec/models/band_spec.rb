@@ -1,23 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Band, type: :model do
-  context "validations" do
-    it { should validate_presence_of :name }
+  context 'validations' do
+    it { is_expected.to validate_presence_of :name }
   end
 
   context 'associations' do
-    it { should have_many :musics }
-    it { should have_many :artist_bands }
-    it { should have_many :band_albums }
-    it { should have_many :band_bookmarks }
-    it { should have_many(:artists).through(:artist_bands) }
-    it { should have_many(:albums).through(:band_albums) }
-    it { should have_many(:bookmarks).through(:band_bookmarks).source(:band).dependent(:destroy) }
+    it { is_expected.to have_many :musics }
+    it { is_expected.to have_many :artist_bands }
+    it { is_expected.to have_many :band_albums }
+    it { is_expected.to have_many :band_bookmarks }
+    it { is_expected.to have_many(:artists).through(:artist_bands) }
+    it { is_expected.to have_many(:albums).through(:band_albums) }
+    it { is_expected.to have_many(:bookmarks).through(:band_bookmarks).source(:band).dependent(:destroy) }
   end
 
-  context "attributes" do
-    it "has name" do
-      expect(build(:band, name: "band")).to have_attributes(name: "band")
+  context 'attributes' do
+    it 'has name' do
+      expect(build(:band, name: 'band')).to have_attributes(name: 'band')
     end
   end
 end

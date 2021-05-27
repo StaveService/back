@@ -1,6 +1,6 @@
 class Users::Musics::MusicLinksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_music_link, only: [:update, :destroy]
+  before_action :set_music_link, only: %i[update destroy]
 
   # POST /music_links
   def create
@@ -28,13 +28,14 @@ class Users::Musics::MusicLinksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_music_link
-      @music_link = MusicLink.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def music_link_params
-      params.require(:music_link).permit(:itunes, :twitter, :music_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_music_link
+    @music_link = MusicLink.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def music_link_params
+    params.require(:music_link).permit(:itunes, :twitter, :music_id)
+  end
 end

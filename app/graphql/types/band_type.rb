@@ -11,22 +11,25 @@ module Types
     field :albums, Types::AlbumsType, null: true do
       argument :album_page, Int, required: true
     end
-    field :artists, [Types::ArtistType], null: true 
+    field :artists, [Types::ArtistType], null: true
     field :bookmark, Types::BandBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
-    def musics music_page:
+    def musics(music_page:)
       musics = object.musics.page(music_page).per(10)
       { data: musics, pagination: pagination(musics) }
     end
-    def albums album_page:
+
+    def albums(album_page:)
       albums = object.albums.page(album_page).per(10)
       { data: albums, pagination: pagination(albums) }
     end
-    def bookmark current_user_id: nil
+
+    def bookmark(current_user_id: nil)
       object.band_bookmarks.find_by(user_id: current_user_id) if current_user_id
     end
-    def pagination result
+
+    def pagination(result)
       { total_pages: result.total_pages }
     end
   end

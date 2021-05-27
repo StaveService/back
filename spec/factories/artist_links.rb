@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :artist_link do
     artist { nil }
-    itunes { "MyString" }
+    itunes { 'MyString' }
   end
 end

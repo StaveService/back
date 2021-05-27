@@ -1,6 +1,6 @@
 class Users::MusicsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_music, only: [:update, :destroy]
+  before_action :set_music, only: %i[update destroy]
   # POST /musics
   def create
     @music = current_user.musics.new music_params
@@ -28,13 +28,14 @@ class Users::MusicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_music
-      @music = current_user.musics.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def music_params
-      params.require(:music).permit(:title, :tab, music_link_attributes: [:itunes])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_music
+    @music = current_user.musics.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def music_params
+    params.require(:music).permit(:title, :tab, music_link_attributes: [:itunes])
+  end
 end

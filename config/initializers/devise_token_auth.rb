@@ -5,9 +5,7 @@ DeviseTokenAuth.setup do |config|
   # client is responsible for keeping track of the changing tokens. Change
   # this to false to prevent the Authorization header from changing after
   # each request.
-  if Rails.env.test?
-    config.change_headers_on_each_request = false
-  end
+  config.change_headers_on_each_request = false if Rails.env.test?
 
   # By default, users will need to re-authenticate after 2 weeks. This setting
   # determines how long tokens will remain valid after they are issued.

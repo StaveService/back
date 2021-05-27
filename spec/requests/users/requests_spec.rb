@@ -12,7 +12,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/requests", type: :request do
-    describe"#create" do
-    end
+RSpec.describe '/requests', type: :request do
+  describe '#create' do
+  end
 end

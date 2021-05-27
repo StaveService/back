@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_artist, only: [:update, :destroy]
+  before_action :set_artist, only: %i[update destroy]
 
   # POST /artists
   def create
@@ -28,13 +28,14 @@ class ArtistsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artist
-      @artist = Artist.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def artist_params
-      params.require(:artist).permit(:name, artist_link_attributes: [:itunes])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artist
+    @artist = Artist.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def artist_params
+    params.require(:artist).permit(:name, artist_link_attributes: [:itunes])
+  end
 end

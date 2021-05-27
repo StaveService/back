@@ -11,7 +11,7 @@ class Band < ApplicationRecord
   has_many :band_bookmarks
   has_many :bookmarks, through: :band_bookmarks, source: :band, dependent: :destroy
 
-  validates_presence_of :name
+  validates :name, presence: true
 
   accepts_nested_attributes_for :band_link
 end

@@ -1,6 +1,6 @@
 class Albums::MusicsController < ApplicationController
   before_action :set_musics
-  before_action :set_music, only: [:show, :update, :destroy]
+  before_action :set_music, only: %i[show update destroy]
 
   # GET /musics
   def index
@@ -38,17 +38,18 @@ class Albums::MusicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_musics
-      @musics = Album.find(params[:album_id]).musics
-    end
 
-    def set_music
-      @music = @musics.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_musics
+    @musics = Album.find(params[:album_id]).musics
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def music_params
-      params.require(:music).permit(:user_id, :album_id, :title, :bpm, :length)
-    end
+  def set_music
+    @music = @musics.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def music_params
+    params.require(:music).permit(:user_id, :album_id, :title, :bpm, :length)
+  end
 end

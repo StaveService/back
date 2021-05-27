@@ -1,7 +1,7 @@
 class Users::RequestsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: %i[create update destroy]
   before_action :set_requests
-  before_action :set_request, only: [:show, :update, :destroy]
+  before_action :set_request, only: %i[show update destroy]
 
   # GET /requests
   def index
@@ -39,17 +39,18 @@ class Users::RequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_requests
-      @requests = User.find(params[:user_id]).requests
-    end
 
-    def set_request
-      @request = @requests.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_requests
+    @requests = User.find(params[:user_id]).requests
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def request_params
-      params.require(:request).permit(:user_id, :title)
-    end
+  def set_request
+    @request = @requests.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def request_params
+    params.require(:request).permit(:user_id, :title)
+  end
 end
