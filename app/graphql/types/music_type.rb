@@ -1,5 +1,6 @@
 module Types
   class MusicType < Types::BaseObject
+    include Helpers
     field :id, ID, null: false
     field :title, String, null: false
     field :tab, String, null: false
@@ -17,7 +18,7 @@ module Types
       argument :current_user_id, Int, required: false
     end
     def bookmark(current_user_id: nil)
-      object.music_bookmarks.find_by(user_id: current_user_id) if current_user_id
+      bookmark_current_user(object.music_bookmarks, current_user_id)
     end
   end
 end

@@ -1,9 +1,10 @@
 module Types
   class ArtistType < Types::BaseObject
+    include Helpers
     field :id, ID, null: false
     field :name, String, null: false
     field :artist_link, Types::ArtistLinkType, null: true
-    field :bands, Types::BandsType, null: false
+    field :bands, [Types::BandType], null: false 
     field :albums, Types::AlbumsType, null: false do
       argument :album_page, Int, required: true
     end
@@ -16,21 +17,13 @@ module Types
       argument :current_user_id, Int, required: false
     end
     def musics(music_page:)
-      musics = object.musics.page(music_page).per(10)
-      { data: musics, pagination: pagination(musics) }
+      index(object.musics, music_page)
     end
-
     def albums(album_page:)
-      albums = object.albums.page(album_page).per(10)
-      { data: albums, pagination: pagination(albums) }
+      index(object.albums, album_page)
     end
-
     def bookmark(current_user_id: nil)
-      object.artist_bookmarks.find_by(user_id: current_user_id) if current_user_id
-    end
-
-    def pagination(result)
-      { total_pages: result.total_pages }
+      bookmark_current_user(object.artist_bookmarks, current_user_id)
     end
   end
 end

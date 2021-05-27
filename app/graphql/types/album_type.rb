@@ -1,5 +1,6 @@
 module Types
   class AlbumType < Types::BaseObject
+    include Helpers
     field :id, ID, null: false
     field :title, String, null: false
     field :album_link, Types::AlbumLinkType, null: true
@@ -9,12 +10,7 @@ module Types
       argument :music_page, Int, required: true
     end
     def musics(music_page:)
-      musics = object.musics.page(music_page).per(10)
-      { data: musics, pagination: pagination(musics) }
-    end
-
-    def pagination(result)
-      { total_pages: result.total_pages }
+      index(object.musics, music_page)
     end
   end
 end

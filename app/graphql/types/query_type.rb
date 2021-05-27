@@ -3,6 +3,7 @@ module Types
     # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
+    include Helpers
 
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
@@ -51,8 +52,7 @@ module Types
     end
 
     def musics(page:, q: nil)
-      musics = Music.ransack(q).result.page(page).per(10)
-      { data: musics, pagination: pagination(musics) }
+      search(Music, page, q)
     end
 
     def album(id:)
@@ -60,8 +60,7 @@ module Types
     end
 
     def albums(page:, q: nil)
-      albums = Album.ransack(q).result.page(page).per(10)
-      { data: albums, pagination: pagination(albums) }
+      search(Album, page, q)
     end
 
     def artist(id:)
@@ -69,8 +68,7 @@ module Types
     end
 
     def artists(page:, q: nil)
-      artists = Artist.ransack(q).result.page(page).per(10)
-      { data: artists, pagination: pagination(artists) }
+      search(Artist, page, q)
     end
 
     def band(id:)
@@ -78,8 +76,7 @@ module Types
     end
 
     def bands(page:, q: nil)
-      bands = Band.ransack(q).result.page(page).per(10)
-      { data: bands, pagination: pagination(bands) }
+      search(Band, page, q)
     end
 
     def user(id:)
@@ -87,17 +84,12 @@ module Types
     end
 
     def users(page:, q: nil)
-      users = User.ransack(q).result.page(page).per(10)
-      { data: users, pagination: pagination(users) }
+      search(User, page, q)
     end
 
     def issues(music_id:, page:, q: nil)
-      issues = Music.find(music_id).issues.ransack(q).result.page(page).per(10)
-      { data: issues, pagination: pagination(issues) }
+      search(Music.find(music_id).issues, page, q)
     end
 
-    def pagination(result)
-      { total_pages: result.total_pages }
-    end
   end
 end

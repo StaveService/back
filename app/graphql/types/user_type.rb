@@ -1,5 +1,6 @@
 module Types
   class UserType < Types::BaseObject
+    include Helpers
     field :id, ID, null: false
     field :provider, String, null: false
     field :uid, String, null: false
@@ -41,27 +42,19 @@ module Types
       argument :bookmarked_artist_page, Int, required: true
     end
     def musics(music_page:)
-      musics = object.musics.page(music_page).per(10)
-      { data: musics, pagination: pagination(musics) }
+      index(object.musics, music_page)
     end
 
     def bookmarked_musics(bookmarked_music_page:)
-      bookmarked_musics = object.bookmarked_musics.page(bookmarked_music_page).per(10)
-      { data: bookmarked_musics, pagination: pagination(bookmarked_musics) }
+      index(object.bookmarked_musics, bookmarked_music_page)
     end
 
     def bookmarked_bands(bookmarked_band_page:)
-      bookmarked_bands = object.bookmarked_bands.page(bookmarked_band_page).per(10)
-      { data: bookmarked_bands, pagination: pagination(bookmarked_bands) }
+      index(object.bookmarked_bands, bookmarked_band_page)
     end
 
     def bookmarked_artists(bookmarked_artist_page:)
-      bookmarked_artists = object.bookmarked_artists.page(bookmarked_artist_page).per(10)
-      { data: bookmarked_artists, pagination: pagination(bookmarked_artists) }
-    end
-
-    def pagination(result)
-      { total_pages: result.total_pages }
+      index(object.bookmarked_artists, bookmarked_artists_page)
     end
   end
 end

@@ -1,5 +1,6 @@
 module Types
   class BandType < Types::BaseObject
+    include Helpers
     field :id, ID, null: false
     field :name, String, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
@@ -16,21 +17,15 @@ module Types
       argument :current_user_id, Int, required: false
     end
     def musics(music_page:)
-      musics = object.musics.page(music_page).per(10)
-      { data: musics, pagination: pagination(musics) }
+      index(object.musics, music_page)
     end
 
     def albums(album_page:)
-      albums = object.albums.page(album_page).per(10)
-      { data: albums, pagination: pagination(albums) }
+      index(object.albums, music_page)
     end
 
     def bookmark(current_user_id: nil)
-      object.band_bookmarks.find_by(user_id: current_user_id) if current_user_id
-    end
-
-    def pagination(result)
-      { total_pages: result.total_pages }
+      bookmark_current_user(object.band_bookmarks, current_user_id)
     end
   end
 end
