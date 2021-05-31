@@ -49,7 +49,7 @@ module Artists
 
     # Only allow a trusted parameter "white list" through.
     def artist_bookmark_params
-      params.require(:artist_bookmark).permit(:user_id, :artist_id)
+      params.require(:artist_bookmark).permit(:artist_id)
     end
   end
 end

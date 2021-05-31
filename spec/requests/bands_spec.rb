@@ -2,21 +2,20 @@ require 'rails_helper'
 RSpec.describe '/bands', type: :request do
   let(:user) { create(:user) }
   let(:band) { create(:band) }
+  let(:headers) do
+    login user
+    get_auth_params_from_login_response_headers(response)
+  end
 
   context 'POST /bands' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        post bands_path, params: { band: attributes_for(:band) }, headers: @headers
+        post bands_path, params: { band: attributes_for(:band) }, headers: headers
         expect(response).to have_http_status :created
       end
 
       it 'without name' do
-        post bands_path, params: { band: attributes_for(:band, :without_name) }, headers: @headers
+        post bands_path, params: { band: attributes_for(:band, :without_name) }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
@@ -29,18 +28,13 @@ RSpec.describe '/bands', type: :request do
 
   context 'PUT /bands' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        put band_path(band), params: { band: attributes_for(:band) }, headers: @headers
+        put band_path(band), params: { band: attributes_for(:band) }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        put band_path(band), params: { band: attributes_for(:band, :without_name) }, headers: @headers
+        put band_path(band), params: { band: attributes_for(:band, :without_name) }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
@@ -53,18 +47,13 @@ RSpec.describe '/bands', type: :request do
 
   context 'PATCH /bands' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        patch band_path(band), params: { band: attributes_for(:band) }, headers: @headers
+        patch band_path(band), params: { band: attributes_for(:band) }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        patch band_path(band), params: { band: attributes_for(:band, :without_name) }, headers: @headers
+        patch band_path(band), params: { band: attributes_for(:band, :without_name) }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
@@ -77,13 +66,8 @@ RSpec.describe '/bands', type: :request do
 
   context 'DELETE /bands' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        delete band_path(band), headers: @headers
+        delete band_path(band), headers: headers
         expect(response).to have_http_status :no_content
       end
     end
