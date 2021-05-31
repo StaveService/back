@@ -20,9 +20,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many :band_bookmarks }
     it { is_expected.to have_many :music_bookmarks }
     it { is_expected.to have_many :artist_bookmarks }
-    it { is_expected.to have_many(:bookmarked_bands).through(:band_bookmarks).source(:user) }
-    it { is_expected.to have_many(:bookmarked_musics).through(:music_bookmarks).source(:user) }
-    it { is_expected.to have_many(:bookmarked_artists).through(:artist_bookmarks).source(:user) }
+    it { is_expected.to have_many(:bookmarked_bands).through(:band_bookmarks).source(:band) }
+    it { is_expected.to have_many(:bookmarked_musics).through(:music_bookmarks).source(:music) }
+    it { is_expected.to have_many(:bookmarked_artists).through(:artist_bookmarks).source(:artist) }
   end
 
   context 'attributes' do

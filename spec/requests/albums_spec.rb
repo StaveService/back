@@ -3,21 +3,20 @@ require 'rails_helper'
 RSpec.describe 'Albums', type: :request do
   let(:user) { create(:user) }
   let(:album) { create(:album) }
+  let(:headers) do
+    login user
+    get_auth_params_from_login_response_headers(response)
+  end
 
   context 'POST /albums' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        post albums_path, params: { album: attributes_for(:album) }, headers: @headers
+        post albums_path, params: { album: attributes_for(:album) }, headers: headers
         expect(response).to have_http_status :created
       end
 
       it 'without name' do
-        post albums_path, params: { album: attributes_for(:album, :without_title) }, headers: @headers
+        post albums_path, params: { album: attributes_for(:album, :without_title) }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
@@ -30,18 +29,13 @@ RSpec.describe 'Albums', type: :request do
 
   context 'PUT /albums' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        put album_path(album), params: { album: attributes_for(:album) }, headers: @headers
+        put album_path(album), params: { album: attributes_for(:album) }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        put album_path(album), params: { album: attributes_for(:album, :without_title) }, headers: @headers
+        put album_path(album), params: { album: attributes_for(:album, :without_title) }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
@@ -54,18 +48,13 @@ RSpec.describe 'Albums', type: :request do
 
   context 'PATCH /albums' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        patch album_path(album), params: { album: attributes_for(:album) }, headers: @headers
+        patch album_path(album), params: { album: attributes_for(:album) }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        patch album_path(album), params: { album: attributes_for(:album, :without_title) }, headers: @headers
+        patch album_path(album), params: { album: attributes_for(:album, :without_title) }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
@@ -78,13 +67,8 @@ RSpec.describe 'Albums', type: :request do
 
   context 'DELETE /albums' do
     context 'with Authorization header' do
-      before do
-        login user
-        @headers = get_auth_params_from_login_response_headers(response)
-      end
-
       it do
-        delete album_path(album), headers: @headers
+        delete album_path(album), headers: headers
         expect(response).to have_http_status :no_content
       end
     end

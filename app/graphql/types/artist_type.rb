@@ -4,7 +4,7 @@ module Types
     field :id, ID, null: false
     field :name, String, null: false
     field :artist_link, Types::ArtistLinkType, null: true
-    field :bands, [Types::BandType], null: false 
+    field :bands, [Types::BandType], null: false
     field :albums, Types::AlbumsType, null: false do
       argument :album_page, Int, required: true
     end
@@ -19,9 +19,11 @@ module Types
     def musics(music_page:)
       index(object.musics, music_page)
     end
+
     def albums(album_page:)
       index(object.albums, album_page)
     end
+
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.artist_bookmarks, current_user_id)
     end

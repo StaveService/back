@@ -21,7 +21,7 @@ module Types
     end
 
     def albums(album_page:)
-      index(object.albums, music_page)
+      index(object.albums, album_page)
     end
 
     def bookmark(current_user_id: nil)

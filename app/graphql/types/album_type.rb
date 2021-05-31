@@ -6,6 +6,7 @@ module Types
     field :album_link, Types::AlbumLinkType, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :artists, [Types::ArtistType], null: true
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end

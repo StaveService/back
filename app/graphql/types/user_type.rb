@@ -54,7 +54,7 @@ module Types
     end
 
     def bookmarked_artists(bookmarked_artist_page:)
-      index(object.bookmarked_artists, bookmarked_artists_page)
+      index(object.bookmarked_artists, bookmarked_artist_page)
     end
   end
 end
