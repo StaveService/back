@@ -9,15 +9,15 @@ Rails.application.routes.draw do
     scope module: :bands do
       resources :artist_bands, path: :artists, only: %i[create destroy]
       resources :band_albums, path: :albums, only: %i[create destroy]
-      resources :band_links, path: :links, only: %i[create update destroy]
+      resources :band_links, path: :links, only: %i[update]
       resources :band_bookmarks, path: :bookmarks, only: %i[create destroy]
     end
   end
   resources :albums, only: %i[create update destroy] do
-    scope module: :bands do
+    scope module: :albums do
       resources :musics, only: %i[create update destroy]
       resources :artist_albums, path: :artists, only: %i[create destroy]
-      resources :album_links, path: :links, only: %i[create destroy]
+      resources :album_links, path: :links, only: %i[update]
     end
   end
   resources :users do
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
           resources :artist_musics, path: :artists, only: %i[create destroy]
           resources :album_musics, path: :albums, only: %i[create destroy]
           resources :music_bookmarks, path: :bookmarks, only: %i[create destroy]
-          resources :music_links, path: :links, only: %i[create update destroy]
+          resources :music_links, path: :links, only: %i[update]
           resources :issues
         end
       end
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     scope module: :artists do
       resources :musics, only: %i[index show]
       resources :artist_bookmarks, path: :bookmarks, only: %i[create destroy]
-      resources :artist_links, path: :links, only: %i[create update destroy]
+      resources :artist_links, path: :links, only: %i[update]
       resources :albums do
         scope module: :albums do
           resources :musics, only: %i[index show]

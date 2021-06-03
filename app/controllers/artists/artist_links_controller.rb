@@ -1,7 +1,7 @@
 module Artists
   class ArtistLinksController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_artist_link, only: %i[update destroy]
+    before_action :set_artist_link
 
     # # GET /artist_links
     # def index
@@ -15,16 +15,16 @@ module Artists
     # render json: @artist_link
     # end
 
-    # POST /artist_links
-    def create
-      @artist_link = ArtistLink.new(artist_link_params)
+    # # POST /artist_links
+    # def create
+      # @artist_link = ArtistLink.new(artist_link_params)
 
-      if @artist_link.save
-        render json: @artist_link, status: :created, location: @artist_link
-      else
-        render json: @artist_link.errors, status: :unprocessable_entity
-      end
-    end
+      # if @artist_link.save
+        # render json: @artist_link, status: :created, location: @artist_link
+      # else
+        # render json: @artist_link.errors, status: :unprocessable_entity
+      # end
+    # end
 
     # PATCH/PUT /artist_links/1
     def update
@@ -35,10 +35,10 @@ module Artists
       end
     end
 
-    # DELETE /artist_links/1
-    def destroy
-      @artist_link.destroy
-    end
+    # # DELETE /artist_links/1
+    # def destroy
+      # @artist_link.destroy
+    # end
 
     private
 
