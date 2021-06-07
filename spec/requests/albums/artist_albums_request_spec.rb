@@ -13,7 +13,7 @@ RSpec.describe 'Albums::ArtistAlbums', type: :request do
   context 'POST /bands/artists' do
     it 'with headers' do
       post band_artist_bands_path(band_id: band.id), params: { artist_band: { artist_id: artist.id } },
-                                                      headers: headers
+                                                     headers: headers
       expect(response).to have_http_status :created
     end
 

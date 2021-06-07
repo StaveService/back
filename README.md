@@ -13,8 +13,14 @@
 
 ## Credentials
 
-```cmd
+```sh
 docker-compose run web rails credentials:edit
+```
+
+## graphql-rails
+
+```sh
+rails g graphql:object Post title:String rating:Int comments:[Comment]
 ```
 
 ## Testing

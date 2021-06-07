@@ -2,6 +2,9 @@
 
 class User < ApplicationRecord
   extend Devise::Models
+  after_create :after_create_user_link
+  has_one :user_link
+
   has_many :musics
   has_many :requests
   has_many :issues
@@ -25,4 +28,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+  def after_create_user_link
+    create_user_link
+  end
 end

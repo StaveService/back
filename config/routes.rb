@@ -35,6 +35,7 @@ Rails.application.routes.draw do
         end
       end
       resources :requests, only: %i[create update destroy]
+      resources :user_links, path: :links, only: %i[update]
     end
   end
   resources :artists, only: %i[create update destroy] do

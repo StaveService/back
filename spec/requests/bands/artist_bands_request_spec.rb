@@ -12,8 +12,8 @@ RSpec.describe 'Bands::ArtistBands', type: :request do
 
   context 'POST /bands/artists' do
     it 'with header' do
-      post band_artist_bands_path(band_id: band.id), params: { artist_band: { artist_id: artist.id }},
-                                                                                headers: headers
+      post band_artist_bands_path(band_id: band.id), params: { artist_band: { artist_id: artist.id } },
+                                                     headers: headers
       expect(response).to have_http_status :created
     end
 
@@ -26,7 +26,7 @@ RSpec.describe 'Bands::ArtistBands', type: :request do
   context 'DELETE /bands/artists' do
     it do
       delete band_artist_band_path(band_id: artist_band.band_id, id: artist_band.artist_id),
-              headers: headers
+             headers: headers
       expect(response).to have_http_status :no_content
     end
 
