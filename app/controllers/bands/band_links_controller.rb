@@ -21,7 +21,7 @@ module Bands
 
     # Only allow a trusted parameter "white list" through.
     def band_link_params
-      params.require(:band_link).permit(:band_id, :itunes)
+      params.require(:band_link).permit(:band_id, :itunes, :twitter)
     end
   end
 end

@@ -8,7 +8,7 @@
 require 'factory_bot_rails'
 
 # Ling tosite Sigure
-band1 = Band.create(name: 'Ling tosite sigure')
+band1 = Band.create(name: 'Ling tosite sigure', band_link_attributes: {})
 albums1 = {
   "#4": nil,
   "i'mperfect": 1_535_532_368,
@@ -28,7 +28,7 @@ albums1 = {
   album
 end
 user1 = FactoryBot.create(:user)
-artists1 = %w[TK 345 ピエール中野].map { |v| Artist.create name: v }
+artists1 = %w[TK 345 ピエール中野].map { |v| Artist.create name: v, artist_link_attributes: {} }
 artists1.each do |v|
   FactoryBot.create(:artist_album, artist: v, album: albums1[0])
   FactoryBot.create(:artist_band, artist: v, band: band1)

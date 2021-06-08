@@ -67,7 +67,8 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
 
   create_table "artist_links", force: :cascade do |t|
     t.bigint "artist_id"
-    t.string "itunes"
+    t.integer "itunes"
+    t.string "twitter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_artist_links_on_artist_id"
@@ -109,7 +110,8 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
 
   create_table "band_links", force: :cascade do |t|
     t.bigint "band_id"
-    t.string "itunes"
+    t.integer "itunes"
+    t.string "twitter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_band_links_on_band_id"
