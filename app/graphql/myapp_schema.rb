@@ -1,6 +1,7 @@
 class MyappSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
+  GraphQL::Batch.use(self)
 
   # Union and Interface Resolution
   def self.resolve_type(_abstract_type, _obj, _ctx)

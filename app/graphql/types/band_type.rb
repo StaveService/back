@@ -16,14 +16,12 @@ module Types
     field :bookmark, Types::BandBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
-    def musics(music_page:)
-      index(object.musics, music_page)
+    def musics(music_page:) 
+        index(object.musics, music_page)
     end
-
     def albums(album_page:)
       index(object.albums, album_page)
     end
-
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.band_bookmarks, current_user_id)
     end

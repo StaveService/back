@@ -43,6 +43,7 @@ gems
 - [factory_bot](https://github.com/thoughtbot/factory_bot)
 - [faker](https://github.com/faker-ruby/faker)
 - [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
+- [graphql-batch](https://github.com/Shopify/graphql-batch)
 
 ```sh
 docker-compose run web bundle exec rspec
