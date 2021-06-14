@@ -10,6 +10,7 @@ module Types
     def artist
       Loaders::AssociationLoader.for(ArtistMusic, :artist).load(object)
     end
+
     def music
       Loaders::AssociationLoader.for(ArtistMusic, :music).load(object)
     end

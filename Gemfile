@@ -3,12 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.8'
 
-gem 'api-pagination'
 gem 'devise_token_auth'
 gem 'graphiql-rails'
-gem 'graphql-batch'
 gem 'graphql'
+gem 'graphql-batch'
 gem 'kaminari'
+gem 'olive_branch'
 gem 'ransack'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

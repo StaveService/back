@@ -13,6 +13,7 @@ module Types
     def musics(music_page:)
       index(object.musics, music_page)
     end
+
     def album_link
       Loaders::AssociationLoader.for(Album, :album_link).load(object)
     end

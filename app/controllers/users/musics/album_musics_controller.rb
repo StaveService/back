@@ -8,7 +8,8 @@ module Users
         @album_music = @album_musics.new(album_id: album_music_params[:album_id])
 
         if @album_music.save
-          render json: @album_music, status: :created, include: :album
+          render json: @album_music, status: :created, include: { album: { include: :album_link } },
+                 key_transform: :camel_lowers
         else
           render json: @album_music.errors, status: :unprocessable_entity
         end
@@ -22,7 +23,7 @@ module Users
 
       # Use callbacks to share common setup or constraints between actions.
       def set_current_user_music_album_musics
-        @album_musics = current_user.musics.find(params[:music_id]).album_musics
+        @album_musics = User.find(params[:user_id]).musics.find(params[:music_id]).album_musics
       end
 
       # Only allow a trusted parameter "white list" through.

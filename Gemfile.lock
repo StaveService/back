@@ -42,7 +42,6 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    api-pagination (4.8.2)
     arel (9.0.0)
     ast (2.4.2)
     bcrypt (3.1.16)
@@ -119,10 +118,14 @@ GEM
     mini_portile2 (2.5.1)
     minitest (5.14.4)
     msgpack (1.4.2)
+    multi_json (1.15.0)
     nio4r (2.5.7)
     nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    olive_branch (4.0.0)
+      multi_json
+      rails (>= 4.0)
     orm_adapter (0.5.0)
     parallel (1.20.1)
     parser (3.0.1.1)
@@ -241,7 +244,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  api-pagination
   bootsnap (>= 1.1.0)
   bullet
   byebug
@@ -254,6 +256,7 @@ DEPENDENCIES
   graphql-batch
   kaminari
   listen (>= 3.0.5, < 3.2)
+  olive_branch
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rack-cors

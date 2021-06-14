@@ -2,14 +2,30 @@
 
 [ER](https://drive.google.com/file/d/1KcrZQ3ejE4QzUY7tAJzDBRrklgK9Sui4/view?usp=sharing)
 
+## Functions
+
+- 会員登録
+- ログイン
+- ログアウト
+- ページネーション
+- お気に入り
+- 検索
+- 楽譜閲覧
+- 楽譜再生
+- 楽譜イシュー投稿
+- 楽譜リクエスト投稿
+- iTunes API
+- Wiki API
+
 ## Gems
 
 - [devise_token_auth](https://devise-token-auth.gitbook.io/devise-token-auth/)
 - [ransack](https://github.com/activerecord-hackery/ransack)
 - [kaminari](https://github.com/kaminari/kaminari)
-- [api-pagination](https://github.com/davidcelis/api-pagination)
+- [olive_branch](https://github.com/vigetlabs/olive_branch)
 - [graphql](https://github.com/rmosolgo/graphql-ruby)
 - [graphiql-rails](https://github.com/rmosolgo/graphiql-rails)
+- [graphql-batch](https://github.com/Shopify/graphql-batch)
 
 ## Credentials
 
@@ -43,7 +59,6 @@ gems
 - [factory_bot](https://github.com/thoughtbot/factory_bot)
 - [faker](https://github.com/faker-ruby/faker)
 - [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
-- [graphql-batch](https://github.com/Shopify/graphql-batch)
 
 ```sh
 docker-compose run web bundle exec rspec
