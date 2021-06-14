@@ -24,7 +24,7 @@ module Users
 
       # Use callbacks to share common setup or constraints between actions.
       def set_lyrist_musics
-        @lyrist_musics = current_user.musics.find(params[:music_id]).lyrist_musics
+        @lyrist_musics = User.find(params[:user_id]).musics.find(params[:music_id]).lyrist_musics
       end
 
       # Only allow a trusted parameter "white list" through.
