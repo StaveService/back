@@ -22,10 +22,10 @@
 - [devise_token_auth](https://devise-token-auth.gitbook.io/devise-token-auth/)
 - [ransack](https://github.com/activerecord-hackery/ransack)
 - [kaminari](https://github.com/kaminari/kaminari)
-- [olive_branch](https://github.com/vigetlabs/olive_branch)
 - [graphql](https://github.com/rmosolgo/graphql-ruby)
 - [graphiql-rails](https://github.com/rmosolgo/graphiql-rails)
 - [graphql-batch](https://github.com/Shopify/graphql-batch)
+- [olive_branch](https://github.com/vigetlabs/olive_branch)
 
 ## Credentials
 
