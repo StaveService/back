@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
   create_table "music_links", force: :cascade do |t|
     t.integer "itunes"
     t.integer "musixmatch"
+    t.string "spotify"
     t.bigint "music_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -38,7 +38,7 @@ module Users
 
       # Only allow a trusted parameter "white list" through.
       def music_link_params
-        params.require(:music_link).permit(:itunes, :musixmatch, :music_id)
+        params.require(:music_link).permit(:itunes, :musixmatch, :spotify, :music_id)
       end
     end
   end
