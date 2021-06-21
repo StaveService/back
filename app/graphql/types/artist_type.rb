@@ -3,7 +3,7 @@ module Types
     include Helpers
     field :id, ID, null: false
     field :name, String, null: false
-    field :artist_link, Types::ArtistLinkType, null: true
+    field :link, Types::ArtistLinkType, null: true
     field :bands, [Types::BandType], null: false
     field :albums, Types::AlbumsType, null: false do
       argument :album_page, Int, required: true

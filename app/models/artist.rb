@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  has_one :artist_link
+  has_one :link, class_name: :ArtistLink
 
   has_many :artist_musics
   has_many :musics, through: :artist_musics
@@ -15,5 +15,5 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
 
-  accepts_nested_attributes_for :artist_link
+  accepts_nested_attributes_for :link
 end

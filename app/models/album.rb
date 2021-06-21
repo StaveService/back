@@ -1,5 +1,5 @@
 class Album < ApplicationRecord
-  has_one :album_link
+  has_one :link, class_name: :AlbumLink
   has_many :musics
 
   has_many :album_musics
@@ -13,5 +13,5 @@ class Album < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
 
-  accepts_nested_attributes_for :album_link
+  accepts_nested_attributes_for :link
 end

@@ -36,6 +36,6 @@ class BandsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def band_params
-    params.require(:band).permit(:name, band_link_attributes: [:itunes])
+    params.require(:band).permit(:name, link_attributes: [:itunes])
   end
 end

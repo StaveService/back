@@ -29,7 +29,7 @@ module Types
     # field :tokens, Types::JsonType, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :user_link, Types::UserLinkType, null: true
+    field :link, Types::UserLinkType, null: true
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end

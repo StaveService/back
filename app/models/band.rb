@@ -1,5 +1,5 @@
 class Band < ApplicationRecord
-  has_one :band_link
+  has_one :link, class_name: :BandLink
   has_many :musics
 
   has_many :artist_bands
@@ -13,5 +13,5 @@ class Band < ApplicationRecord
 
   validates :name, presence: true
 
-  accepts_nested_attributes_for :band_link
+  accepts_nested_attributes_for :link
 end

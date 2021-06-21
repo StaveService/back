@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   extend Devise::Models
   after_create :after_create_user_link
-  has_one :user_link
+  has_one :link, class_name: :UserLink
 
   has_many :musics
   has_many :requests

@@ -1,5 +1,5 @@
 class Music < ApplicationRecord
-  has_one :music_link, dependent: :destroy
+  has_one :link, class_name: :MusicLink
   has_many :issues, dependent: :destroy
 
   has_many :artist_musics
@@ -22,5 +22,5 @@ class Music < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 50 }
 
-  accepts_nested_attributes_for :music_link
+  accepts_nested_attributes_for :link
 end

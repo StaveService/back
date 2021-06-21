@@ -5,7 +5,7 @@ module Types
     field :name, String, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :band_link, Types::BandLinkType, null: true
+    field :link, Types::BandLinkType, null: true
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end

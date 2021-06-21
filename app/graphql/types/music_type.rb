@@ -5,7 +5,7 @@ module Types
     field :title, String, null: false
     field :tab, String, null: false
     field :user, Types::UserType, null: true
-    field :music_link, Types::MusicLinkType, null: true
+    field :link, Types::MusicLinkType, null: true
     field :band, Types::BandType, null: true
     field :composers, [Types::ArtistType], null: true
     field :lyrists, [Types::ArtistType], null: true
