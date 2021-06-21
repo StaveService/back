@@ -8,7 +8,7 @@
 require 'factory_bot_rails'
 
 # Ling tosite Sigure
-band1 = Band.create(name: 'Ling tosite sigure', band_link_attributes: {})
+band1 = Band.create(name: 'Ling tosite sigure', link_attributes: {})
 albums1 = {
   "#4": nil,
   "i'mperfect": 1_535_532_368,
@@ -28,7 +28,7 @@ albums1 = {
   album
 end
 user1 = FactoryBot.create(:user)
-artists1 = %w[TK 345 ピエール中野].map { |v| Artist.create name: v, artist_link_attributes: {} }
+artists1 = %w[TK 345 ピエール中野].map { |v| Artist.create name: v, link_attributes: {} }
 artists1.each do |v|
   FactoryBot.create(:artist_album, artist: v, album: albums1[0])
   FactoryBot.create(:artist_band, artist: v, band: band1)
@@ -62,12 +62,12 @@ artist4 = Artist.create(name: '野田 洋二郎')
 FactoryBot.create(:artist_band, artist: artist4, band: band2)
 
 user2 = FactoryBot.create(:user)
-user2_music1 = FactoryBot.create(:music, user: user2, band: band2, title: 'おしゃかしゃま', music_link_attributes: {})
+user2_music1 = FactoryBot.create(:music, user: user2, band: band2, title: 'おしゃかしゃま', link_attributes: {})
 FactoryBot.create(:composer_music, artist: artist4, music: user2_music1)
 FactoryBot.create(:lyrist_music, artist: artist4, music: user2_music1)
 FactoryBot.create(:artist_music, artist: artist4, music: user2_music1, role: 1)
 
-user2_music2 = FactoryBot.create(:music, user: user2, band: band2, title: '君と青と羊', music_link_attributes: {})
+user2_music2 = FactoryBot.create(:music, user: user2, band: band2, title: '君と青と羊', link_attributes: {})
 FactoryBot.create(:composer_music, artist: artist4, music: user2_music2)
 FactoryBot.create(:lyrist_music, artist: artist4, music: user2_music2)
 FactoryBot.create(:artist_music, artist: artist4, music: user2_music2, role: 1)
