@@ -21,7 +21,7 @@ module Artists
 
     # Only allow a trusted parameter "white list" through.
     def artist_link_params
-      params.require(:artist_link).permit(:artist_id, :itunes, :twitter, :wikipedia)
+      params.require(:artist_link).permit(:artist_id, :itunes, :twitter, :wikipedia, :spotify)
     end
   end
 end

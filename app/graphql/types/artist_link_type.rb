@@ -5,6 +5,7 @@ module Types
     field :itunes, String, null: true
     field :twitter, String, null: true
     field :wikipedia, String, null: true
+    field :spotify, String, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
