@@ -8,7 +8,7 @@ module Users
         @album_music = @album_musics.new(album_id: album_music_params[:album_id])
 
         if @album_music.save
-          render json: @album_music, status: :created, include: { album: { include: :album_link } },
+          render json: @album_music, status: :created, include: { album: { include: :link } },
                  key_transform: :camel_lowers
         else
           render json: @album_music.errors, status: :unprocessable_entity
@@ -28,7 +28,7 @@ module Users
 
       # Only allow a trusted parameter "white list" through.
       def album_music_params
-        params.permit(:album_id, :user_id, :music_id)
+        params.require(:album_music).permit(:album_id, :user_id, :music_id)
       end
     end
   end

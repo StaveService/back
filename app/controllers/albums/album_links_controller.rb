@@ -21,7 +21,7 @@ module Albums
 
     # Only allow a trusted parameter "white list" through.
     def album_link_params
-      params.require(:album_link).permit(:album_id, :itunes)
+      params.require(:link).permit(:album_id, :itunes)
     end
   end
 end

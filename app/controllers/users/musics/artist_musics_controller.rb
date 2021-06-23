@@ -9,7 +9,7 @@ module Users
         @artist_music = @artist_musics.new(role: role_params[:role], artist_id: role_params[:artist_id])
 
         if @artist_music.save
-          render json: @artist_music, status: :created, include: { artist: { include: :artist_link } }
+          render json: @artist_music, status: :created, include: { artist: { include: :link } }
         else
           render json: @artist_music.errors, status: :unprocessable_entity
         end

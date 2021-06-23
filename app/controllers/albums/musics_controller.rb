@@ -51,7 +51,7 @@ module Albums
 
     # Only allow a trusted parameter "white list" through.
     def music_params
-      params.require(:music).permit(:user_id, :album_id, :title, :bpm, :length)
+      params.require(:music).permit(:user_id, :album_id, :title)
     end
   end
 end
