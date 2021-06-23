@@ -57,7 +57,7 @@ end
 end
 
 # RADWIMPS
-band2 = Band.create(name: 'RADWIMPS')
+band2 = Band.create(name: 'RADWIMPS',link_attributes: {})
 artist4 = Artist.create(name: '野田 洋二郎')
 FactoryBot.create(:artist_band, artist: artist4, band: band2)
 

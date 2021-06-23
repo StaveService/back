@@ -4,6 +4,7 @@ class CreateBandLinks < ActiveRecord::Migration[5.2]
       t.references :band, foreign_key: true
       t.integer :itunes
       t.string :twitter
+      t.string :spotify
       t.integer :wikipedia
 
       t.timestamps

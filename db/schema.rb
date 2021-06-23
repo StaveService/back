@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
 
   create_table "album_links", force: :cascade do |t|
     t.integer "itunes"
+    t.string "spotify"
     t.bigint "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.bigint "artist_id"
     t.integer "itunes"
     t.string "twitter"
+    t.string "spotify"
     t.integer "wikipedia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.bigint "band_id"
     t.integer "itunes"
     t.string "twitter"
+    t.string "spotify"
     t.integer "wikipedia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
