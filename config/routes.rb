@@ -40,14 +40,8 @@ Rails.application.routes.draw do
   end
   resources :artists, only: %i[create update destroy] do
     scope module: :artists do
-      resources :musics, only: %i[index show]
       resources :artist_bookmarks, path: :bookmarks, only: %i[create destroy]
       resources :artist_links, path: :links, only: %i[update]
-      resources :albums do
-        scope module: :albums do
-          resources :musics, only: %i[index show]
-        end
-      end
     end
   end
 end

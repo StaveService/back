@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_one(:link).class_name("UserLink").dependent(:destroy) }
+    it { is_expected.to have_one(:link).class_name('UserLink').dependent(:destroy) }
     it { is_expected.to have_many(:musics) }
     it { is_expected.to have_many(:requests).dependent(:destroy) }
     it { is_expected.to have_many(:issues).dependent(:destroy) }
