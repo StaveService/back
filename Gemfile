@@ -13,6 +13,7 @@ gem 'ransack'
 
 # TODO: should be dev
 gem 'factory_bot_rails'
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.5'
@@ -43,7 +44,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'faker'
   gem 'rspec-rails', '~> 4.0.2'
 end
 
