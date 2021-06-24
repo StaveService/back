@@ -31,6 +31,19 @@
 
 ```sh
 docker-compose run web rails credentials:edit
+
+```
+
+- linux
+
+```sh
+heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
+```
+
+- windows
+
+```sh
+heroku config:set RAILS_MASTER_KEY=`type config/master.key`
 ```
 
 ## graphql-rails
