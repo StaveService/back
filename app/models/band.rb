@@ -1,5 +1,5 @@
 class Band < ApplicationRecord
-  has_one :link, class_name: :BandLink
+  has_one :link, class_name: :BandLink, dependent: :destroy
   has_many :musics
 
   has_many :artist_bands

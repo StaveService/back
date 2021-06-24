@@ -14,15 +14,16 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_many :musics }
-    it { is_expected.to have_many :requests }
-    it { is_expected.to have_many :issues }
-    it { is_expected.to have_many :band_bookmarks }
-    it { is_expected.to have_many :music_bookmarks }
-    it { is_expected.to have_many :artist_bookmarks }
-    it { is_expected.to have_many(:bookmarked_bands).through(:band_bookmarks).source(:band) }
-    it { is_expected.to have_many(:bookmarked_musics).through(:music_bookmarks).source(:music) }
-    it { is_expected.to have_many(:bookmarked_artists).through(:artist_bookmarks).source(:artist) }
+    it { is_expected.to have_one(:link).class_name("UserLink").dependent(:destroy) }
+    it { is_expected.to have_many(:musics) }
+    it { is_expected.to have_many(:requests).dependent(:destroy) }
+    it { is_expected.to have_many(:issues).dependent(:destroy) }
+    it { is_expected.to have_many(:band_bookmarks) }
+    it { is_expected.to have_many(:music_bookmarks) }
+    it { is_expected.to have_many(:artist_bookmarks) }
+    it { is_expected.to have_many(:bookmarked_bands).through(:band_bookmarks).source(:band).dependent(:destroy) }
+    it { is_expected.to have_many(:bookmarked_musics).through(:music_bookmarks).source(:music).dependent(:destroy) }
+    it { is_expected.to have_many(:bookmarked_artists).through(:artist_bookmarks).source(:artist).dependent(:destroy) }
   end
 
   context 'attributes' do

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user_link do
-    references { '' }
+    user { nil }
     twitter { 'MyString' }
   end
 end

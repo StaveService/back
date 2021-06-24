@@ -7,7 +7,7 @@ RSpec.describe Album, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_one :album_link }
+    it { is_expected.to have_one(:link).class_name(:AlbumLink).dependent(:destroy) }
     it { is_expected.to have_many :musics }
     it { is_expected.to have_many :album_musics }
     it { is_expected.to have_many :band_albums }

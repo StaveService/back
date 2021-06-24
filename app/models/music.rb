@@ -1,5 +1,5 @@
 class Music < ApplicationRecord
-  has_one :link, class_name: :MusicLink
+  has_one :link, class_name: :MusicLink, dependent: :destroy
   has_many :issues, dependent: :destroy
 
   has_many :artist_musics

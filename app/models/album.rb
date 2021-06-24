@@ -1,5 +1,5 @@
 class Album < ApplicationRecord
-  has_one :link, class_name: :AlbumLink
+  has_one :link, class_name: :AlbumLink, dependent: :destroy
   has_many :musics
 
   has_many :album_musics

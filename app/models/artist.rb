@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  has_one :link, class_name: :ArtistLink
+  has_one :link, class_name: :ArtistLink, dependent: :destroy
 
   has_many :artist_musics
   has_many :musics, through: :artist_musics

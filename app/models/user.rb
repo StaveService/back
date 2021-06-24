@@ -3,20 +3,20 @@
 class User < ApplicationRecord
   extend Devise::Models
   after_create :after_create_link
-  has_one :link, class_name: :UserLink
+  has_one :link, class_name: :UserLink, dependent: :destroy
 
   has_many :musics
-  has_many :requests
-  has_many :issues
+  has_many :requests, dependent: :destroy
+  has_many :issues, dependent: :destroy
 
   has_many :band_bookmarks
-  has_many :bookmarked_bands, through: :band_bookmarks, source: :band
+  has_many :bookmarked_bands, through: :band_bookmarks, source: :band, dependent: :destroy
 
   has_many :music_bookmarks
-  has_many :bookmarked_musics, through: :music_bookmarks, source: :music
+  has_many :bookmarked_musics, through: :music_bookmarks, source: :music, dependent: :destroy
 
   has_many :artist_bookmarks
-  has_many :bookmarked_artists, through: :artist_bookmarks, source: :artist
+  has_many :bookmarked_artists, through: :artist_bookmarks, source: :artist, dependent: :destroy
 
   validates :nickname, length: 4..30
   validates :familyname, length: { maximum: 35 }
