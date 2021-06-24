@@ -31,7 +31,6 @@
 
 ```sh
 docker-compose run web rails credentials:edit
-
 ```
 
 - linux
