@@ -5,7 +5,7 @@ module Users
       before_action :set_current_user_music_album_musics
 
       def create
-        @album_music = @album_musics.new(album_id: album_music_params[:album_id])
+        @album_music = @album_musics.new(album_id: params[:album_id])
 
         if @album_music.save
           render json: @album_music, status: :created, include: { album: { include: :link } },

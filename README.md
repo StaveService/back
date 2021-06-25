@@ -27,6 +27,14 @@
 - [graphql-batch](https://github.com/Shopify/graphql-batch)
 - [olive_branch](https://github.com/vigetlabs/olive_branch)
 
+## Heroku
+
+```sh
+heroku pg:reset postgresql-tetrahedral-48567 --confirm stave-back
+heroku run rails db:migrate
+heroku run rails db:seed
+```
+
 ## Credentials
 
 ```sh

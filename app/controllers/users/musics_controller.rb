@@ -7,7 +7,7 @@ module Users
       @music = current_user.musics.new music_params
 
       if @music.save
-        render json: @music, status: :created
+        render json: @music, include: :link, status: :created
       else
         render json: @music.errors, status: :unprocessable_entity
       end
