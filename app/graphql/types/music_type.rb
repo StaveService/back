@@ -14,11 +14,16 @@ module Types
     field :bookmarks, [Types::MusicBookmarkType], null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :bookmarks_count, Int, null: true
     field :bookmark, Types::MusicBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.music_bookmarks, current_user_id)
+    end
+
+    def bookmarks_count
+      object.bookmarks.count
     end
 
     def music_link

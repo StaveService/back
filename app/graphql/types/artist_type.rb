@@ -13,6 +13,7 @@ module Types
     end
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :bookmarks_count, Int, null: true
     field :bookmark, Types::ArtistBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
@@ -26,6 +27,10 @@ module Types
 
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.artist_bookmarks, current_user_id)
+    end
+
+    def bookmarks_count
+      object.bookmarks.count
     end
   end
 end

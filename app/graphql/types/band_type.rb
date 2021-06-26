@@ -13,6 +13,7 @@ module Types
       argument :album_page, Int, required: true
     end
     field :artists, [Types::ArtistType], null: true
+    field :bookmarks_count, Int, null: true
     field :bookmark, Types::BandBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
@@ -26,6 +27,10 @@ module Types
 
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.band_bookmarks, current_user_id)
+    end
+
+    def bookmarks_count
+      object.bookmarks.count
     end
   end
 end

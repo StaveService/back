@@ -10,6 +10,7 @@ module Types
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end
+    
     def musics(music_page:)
       index(object.musics, music_page)
     end
