@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.bigint "music_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["album_id", "music_id"], name: "index_album_musics_on_album_id_and_music_id", unique: true
     t.index ["album_id"], name: "index_album_musics_on_album_id"
     t.index ["music_id"], name: "index_album_musics_on_music_id"
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_artist_albums_on_album_id"
+    t.index ["artist_id", "album_id"], name: "index_artist_albums_on_artist_id_and_album_id", unique: true
     t.index ["artist_id"], name: "index_artist_albums_on_artist_id"
   end
 
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.bigint "band_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id", "band_id"], name: "index_artist_bands_on_artist_id_and_band_id", unique: true
     t.index ["artist_id"], name: "index_artist_bands_on_artist_id"
     t.index ["band_id"], name: "index_artist_bands_on_band_id"
   end
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_artist_bookmarks_on_artist_id"
+    t.index ["user_id", "artist_id"], name: "index_artist_bookmarks_on_user_id_and_artist_id", unique: true
     t.index ["user_id"], name: "index_artist_bookmarks_on_user_id"
   end
 
@@ -83,6 +87,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id", "music_id"], name: "index_artist_musics_on_artist_id_and_music_id", unique: true
     t.index ["artist_id"], name: "index_artist_musics_on_artist_id"
     t.index ["music_id"], name: "index_artist_musics_on_music_id"
   end
@@ -99,6 +104,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_band_albums_on_album_id"
+    t.index ["band_id", "album_id"], name: "index_band_albums_on_band_id_and_album_id", unique: true
     t.index ["band_id"], name: "index_band_albums_on_band_id"
   end
 
@@ -108,6 +114,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_band_bookmarks_on_band_id"
+    t.index ["user_id", "band_id"], name: "index_band_bookmarks_on_user_id_and_band_id", unique: true
     t.index ["user_id"], name: "index_band_bookmarks_on_user_id"
   end
 
@@ -133,6 +140,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.bigint "music_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id", "music_id"], name: "index_composer_musics_on_artist_id_and_music_id", unique: true
     t.index ["artist_id"], name: "index_composer_musics_on_artist_id"
     t.index ["music_id"], name: "index_composer_musics_on_music_id"
   end
@@ -153,6 +161,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.bigint "music_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artist_id", "music_id"], name: "index_lyrist_musics_on_artist_id_and_music_id", unique: true
     t.index ["artist_id"], name: "index_lyrist_musics_on_artist_id"
     t.index ["music_id"], name: "index_lyrist_musics_on_music_id"
   end
@@ -163,6 +172,7 @@ ActiveRecord::Schema.define(version: 2021_06_04_122320) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["music_id"], name: "index_music_bookmarks_on_music_id"
+    t.index ["user_id", "music_id"], name: "index_music_bookmarks_on_user_id_and_music_id", unique: true
     t.index ["user_id"], name: "index_music_bookmarks_on_user_id"
   end
 

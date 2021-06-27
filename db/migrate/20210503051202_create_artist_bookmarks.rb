@@ -5,6 +5,7 @@ class CreateArtistBookmarks < ActiveRecord::Migration[5.2]
       t.references :artist, foreign_key: true
 
       t.timestamps
+      t.index [:user_id, :artist_id], unique: true
     end
   end
 end

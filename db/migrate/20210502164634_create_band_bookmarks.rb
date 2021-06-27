@@ -5,6 +5,7 @@ class CreateBandBookmarks < ActiveRecord::Migration[5.2]
       t.references :band, foreign_key: true
 
       t.timestamps
+      t.index [:user_id, :band_id], unique: true
     end
   end
 end

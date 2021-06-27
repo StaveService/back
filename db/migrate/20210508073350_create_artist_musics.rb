@@ -6,6 +6,7 @@ class CreateArtistMusics < ActiveRecord::Migration[5.2]
       t.integer :role
 
       t.timestamps
+      t.index [:artist_id, :music_id], unique: true
     end
   end
 end
