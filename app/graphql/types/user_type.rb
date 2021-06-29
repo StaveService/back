@@ -30,6 +30,11 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :link, Types::UserLinkType, null: true
+    field :following, Types::UsersType, null: true
+    field :followers, Types::UsersType, null: true
+    field :followed, Types::UserRelationshipType, null: true do
+      argument :current_user_id, Int, required: false
+    end
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end
@@ -44,6 +49,10 @@ module Types
     end
     def musics(music_page:)
       index(object.musics, music_page)
+    end
+
+    def followed(current_user_id: nil)
+      User.find(current_user_id).active_relationships.find_by(followed_id: object.id)
     end
 
     def bookmarked_musics(bookmarked_music_page:)

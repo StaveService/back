@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       end
       resources :requests, only: %i[create update destroy]
       resources :user_links, path: :links, only: %i[update]
+      resources :user_relationships, path: :relationships, only: %i[create destroy]
     end
   end
   resources :artists, only: %i[create update destroy] do
