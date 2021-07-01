@@ -30,8 +30,12 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :link, Types::UserLinkType, null: true
-    field :following, Types::UsersType, null: true
-    field :followers, Types::UsersType, null: true
+    field :following, Types::UsersType, null: true do
+      argument :following_page, Int, required: true
+    end
+    field :followers, Types::UsersType, null: true do
+      argument :follower_page, Int, required: true
+    end
     field :followed, Types::UserRelationshipType, null: true do
       argument :current_user_id, Int, required: false
     end
@@ -49,6 +53,14 @@ module Types
     end
     def musics(music_page:)
       index(object.musics, music_page)
+    end
+
+    def followers(follower_page:)
+      index(object.followers, follower_page)
+    end
+
+    def following(following_page:)
+      index(object.following, following_page)
     end
 
     def followed(current_user_id: nil)

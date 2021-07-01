@@ -30,7 +30,7 @@
 ## Heroku
 
 ```sh
-heroku pg:reset postgresql-tetrahedral-48567 --confirm stave-back
+heroku pg:reset DATABASE --confirm stave-back
 heroku run rails db:migrate
 heroku run rails db:seed
 ```
