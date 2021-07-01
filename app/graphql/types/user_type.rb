@@ -64,7 +64,7 @@ module Types
     end
 
     def followed(current_user_id: nil)
-      User.find(current_user_id).active_relationships.find_by(followed_id: object.id)
+      User.find(current_user_id).active_relationships.find_by(followed_id: object.id) if current_user_id
     end
 
     def bookmarked_musics(bookmarked_music_page:)
