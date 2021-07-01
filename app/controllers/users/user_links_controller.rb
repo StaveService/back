@@ -1,7 +1,7 @@
 module Users
   class UserLinksController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_user_link, only: %i[show update destroy]
+    before_action :set_user_link
 
     # PATCH/PUT /user_links/1
     def update

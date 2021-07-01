@@ -93,6 +93,7 @@ module Types
     def issues(music_id:, page:, q: nil)
       search(Music.find(music_id).issues, page, q)
     end
+
     def issue(id:)
       Issue.find id
     end

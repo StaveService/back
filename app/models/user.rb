@@ -18,12 +18,12 @@ class User < ApplicationRecord
   has_many :artist_bookmarks
   has_many :bookmarked_artists, through: :artist_bookmarks, source: :artist, dependent: :destroy
 
-  has_many :active_relationships, class_name:  :UserRelationship,
+  has_many :active_relationships, class_name: :UserRelationship,
                                   foreign_key: :follower_id,
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  :UserRelationship,
-                                  foreign_key: :followed_id,
-                                  dependent:   :destroy
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: :UserRelationship,
+                                   foreign_key: :followed_id,
+                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 

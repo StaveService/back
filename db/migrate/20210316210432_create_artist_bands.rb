@@ -5,7 +5,7 @@ class CreateArtistBands < ActiveRecord::Migration[5.2]
       t.references :band, foreign_key: true
 
       t.timestamps
-      t.index [:artist_id, :band_id], unique: true
+      t.index %i[artist_id band_id], unique: true
     end
   end
 end
