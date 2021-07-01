@@ -42,6 +42,9 @@ module Types
       argument :page, Int, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
+    field :issue, Types::IssueType, null: false do
+      argument :id, Int, required: true
+    end
     field :issues, Types::IssuesType, null: false do
       argument :page, Int, required: true
       argument :music_id, Int, required: true
@@ -89,6 +92,9 @@ module Types
 
     def issues(music_id:, page:, q: nil)
       search(Music.find(music_id).issues, page, q)
+    end
+    def issue(id:)
+      Issue.find id
     end
   end
 end
