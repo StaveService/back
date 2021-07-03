@@ -5,6 +5,7 @@ module Helpers
   end
 
   def search(object, page, q)
+    p q
     index(object.ransack(q).result, page)
   end
 

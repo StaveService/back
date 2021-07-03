@@ -55,6 +55,7 @@ module Types
     end
 
     def musics(page:, q: nil)
+      p q
       search(Music, page, q)
     end
 

@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :artist_bookmarks
   has_many :bookmarked_artists, through: :artist_bookmarks, source: :artist, dependent: :destroy
 
+  has_many :album_bookmarks
+  has_many :bookmarked_albums, through: :album_bookmarks, source: :album, dependent: :destroy
+
   has_many :active_relationships, class_name: :UserRelationship,
                                   foreign_key: :follower_id,
                                   dependent: :destroy

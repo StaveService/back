@@ -28,9 +28,5 @@ module Types
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.band_bookmarks, current_user_id)
     end
-
-    def bookmarks_count
-      object.bookmarks.count
-    end
   end
 end

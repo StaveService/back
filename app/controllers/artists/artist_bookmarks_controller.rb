@@ -3,18 +3,6 @@ module Artists
     before_action :authenticate_user!
     before_action :set_artist_bookmarks
 
-    # # GET /artist_bookmarks
-    # def index
-    # @artist_bookmarks = ArtistBookmark.all
-
-    # render json: @artist_bookmarks
-    # end
-
-    # # GET /artist_bookmarks/1
-    # def show
-    # render json: @artist_bookmark
-    # end
-
     # POST /artist_bookmarks
     def create
       @artist_bookmark = @artist_bookmarks.new user_id: current_user.id
@@ -25,15 +13,6 @@ module Artists
         render json: @artist_bookmark.errors, status: :unprocessable_entity
       end
     end
-
-    # # PATCH/PUT /artist_bookmarks/1
-    # def update
-    # if @artist_bookmark.update(artist_bookmark_params)
-    # render json: @artist_bookmark
-    # else
-    # render json: @artist_bookmark.errors, status: :unprocessable_entity
-    # end
-    # end
 
     # DELETE /artist_bookmarks/1
     def destroy

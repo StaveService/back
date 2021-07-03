@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :musics, only: %i[create update destroy]
       resources :artist_albums, path: :artists, only: %i[create destroy]
       resources :album_links, path: :links, only: %i[update]
+      resources :album_bookmarks, path: :bookmarks, only: %i[create destroy]
     end
   end
   resources :users do

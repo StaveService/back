@@ -10,9 +10,17 @@ module Types
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end
+    field :bookmarks_count, Int, null: true
+    field :bookmark, Types::ArtistBookmarkType, null: true do
+      argument :current_user_id, Int, required: false
+    end
 
     def musics(music_page:)
       index(object.musics, music_page)
+    end
+
+    def bookmark(current_user_id: nil)
+      bookmark_current_user(object.album_bookmarks, current_user_id)
     end
 
     def album_link

@@ -51,6 +51,9 @@ module Types
     field :bookmarked_artists, Types::ArtistsType, null: true do
       argument :bookmarked_artist_page, Int, required: true
     end
+    field :bookmarked_albums, Types::AlbumsType, null: true do
+      argument :bookmarked_album_page, Int, required: true
+    end
     def musics(music_page:)
       index(object.musics, music_page)
     end
@@ -77,6 +80,10 @@ module Types
 
     def bookmarked_artists(bookmarked_artist_page:)
       index(object.bookmarked_artists, bookmarked_artist_page)
+    end
+
+    def bookmarked_albums(bookmarked_album_page:)
+      index(object.bookmarked_albums, bookmarked_album_page)
     end
   end
 end

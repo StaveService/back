@@ -22,10 +22,6 @@ module Types
       bookmark_current_user(object.music_bookmarks, current_user_id)
     end
 
-    def bookmarks_count
-      object.bookmarks.count
-    end
-
     def music_link
       Loaders::AssociationLoader.for(Music, :music_link).load(object)
     end
