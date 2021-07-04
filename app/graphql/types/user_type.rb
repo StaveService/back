@@ -30,6 +30,8 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :link, Types::UserLinkType, null: true
+    field :following_count, Int, null: false
+    field :followers_count, Int, null: false
     field :following, Types::UsersType, null: true do
       argument :following_page, Int, required: true
     end

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["album_id", "user_id"], name: "index_album_bookmarks_on_album_id_and_user_id", unique: true
     t.index ["album_id"], name: "index_album_bookmarks_on_album_id"
     t.index ["user_id"], name: "index_album_bookmarks_on_user_id"
   end
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.integer "bookmarks_count"
+    t.integer "bookmarks_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -104,7 +105,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.integer "bookmarks_count"
+    t.integer "bookmarks_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -142,7 +143,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
 
   create_table "bands", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.integer "bookmarks_count"
+    t.integer "bookmarks_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -160,8 +161,8 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
   create_table "issues", force: :cascade do |t|
     t.bigint "music_id"
     t.bigint "user_id"
-    t.string "title"
-    t.string "description"
+    t.string "title", default: "", null: false
+    t.string "description", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["music_id"], name: "index_issues_on_music_id"
@@ -203,7 +204,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
     t.bigint "band_id"
     t.string "title", default: "", null: false
     t.string "tab", default: "", null: false
-    t.integer "bookmarks_count"
+    t.integer "bookmarks_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_musics_on_band_id"
@@ -258,9 +259,11 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
     t.string "email"
     t.string "familyname", default: "", null: false
     t.string "givenname", default: "", null: false
-    t.string "introduction"
+    t.string "introduction", default: ""
     t.date "birthday"
     t.integer "gender"
+    t.integer "following_count", default: 0, null: false
+    t.integer "followers_count", default: 0, null: false
     t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

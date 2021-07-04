@@ -42,9 +42,11 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :familyname, default: '', null: false
       t.string :givenname, default: '', null: false
-      t.string :introduction
+      t.string :introduction, default: ''
       t.date :birthday
       t.integer :gender
+      t.integer :following_count, default: 0, null: false
+      t.integer :followers_count, default: 0, null: false
 
       ## Tokens
       t.json :tokens

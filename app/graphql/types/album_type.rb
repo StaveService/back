@@ -23,8 +23,8 @@ module Types
       bookmark_current_user(object.album_bookmarks, current_user_id)
     end
 
-    def album_link
-      Loaders::AssociationLoader.for(Album, :album_link).load(object)
+    def link
+      Loaders::AssociationLoader.for(Album, :link).load(object)
     end
   end
 end
