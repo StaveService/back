@@ -4,8 +4,8 @@ module Types
     field :id, ID, null: false
     field :title, String, null: false
     field :tab, String, null: false
-    field :user, Types::UserType, null: true
-    field :link, Types::MusicLinkType, null: true
+    field :user, Types::UserType, null: false
+    field :link, Types::MusicLinkType, null: false
     field :band, Types::BandType, null: true
     field :composers, [Types::ArtistType], null: true
     field :lyrists, [Types::ArtistType], null: true

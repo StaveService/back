@@ -259,7 +259,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
     t.string "email"
     t.string "familyname", default: "", null: false
     t.string "givenname", default: "", null: false
-    t.string "introduction", default: ""
+    t.string "introduction", default: "", null: false
     t.date "birthday"
     t.integer "gender"
     t.integer "following_count", default: 0, null: false

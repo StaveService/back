@@ -3,7 +3,7 @@ module Types
     include Helpers
     field :id, ID, null: false
     field :title, String, null: false
-    field :link, Types::AlbumLinkType, null: true
+    field :link, Types::AlbumLinkType, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :artists, [Types::ArtistType], null: true
