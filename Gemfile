@@ -10,6 +10,9 @@ gem 'graphql-batch'
 gem 'kaminari'
 gem 'olive_branch'
 gem 'ransack'
+gem 'carrierwave', '~> 2.0'
+gem 'rugged', '~> 1.1'
+gem 'unicorn'
 
 # TODO: should be dev
 gem 'factory_bot_rails'

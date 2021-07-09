@@ -5,6 +5,11 @@ module Users
     # POST /musics
     def create
       @music = current_user.musics.new music_params
+      
+      repo_path = Rails.root.join("repositories", current_user.id.to_s, @music.title + '.git')
+      FileUtils.mkdir_p(repo_path)
+      repository=Rugged::Repository.init_at(repo_path, :bare)
+      repository.config['http.receivepack'] = true
 
       if @music.save
         render json: @music, include: :link, status: :created

@@ -29,6 +29,12 @@
 - [graphiql-rails](https://github.com/rmosolgo/graphiql-rails)
 - [graphql-batch](https://github.com/Shopify/graphql-batch)
 - [olive_branch](https://github.com/vigetlabs/olive_branch)
+- [rugged](https://github.com/libgit2/rugged)
+- [carrierwave](https://github.com/carrierwaveuploader/carrierwaves)
+
+## Docker Container
+
+- [docker-nginx-git](https://github.com/marcopompili/docker-nginx-git)
 
 ## Heroku
 

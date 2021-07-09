@@ -1,5 +1,7 @@
 FROM ruby:2.5.8
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client vim
+
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client vim cmake pkg-config 
+
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
@@ -11,6 +13,3 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-
-# Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]

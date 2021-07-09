@@ -1,4 +1,10 @@
 {
     "ruby.format": "rubocop",
     "ruby.useLanguageServer": true,
+    "[markdown]": {
+      "editor.formatOnSave": true,
+    },
+    "[json]": {
+      "editor.formatOnSave": true,
+    },
 }

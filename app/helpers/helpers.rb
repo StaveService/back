@@ -1,6 +1,6 @@
 module Helpers
   def index(object, page)
-    items = object.order(created_at: :desc).page(page).per(10)
+    items = object.page(page).per(10)
     { data: items, pagination: pagination(items) }
   end
 
