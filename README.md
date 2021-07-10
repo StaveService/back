@@ -31,6 +31,7 @@
 - [olive_branch](https://github.com/vigetlabs/olive_branch)
 - [rugged](https://github.com/libgit2/rugged)
 - [carrierwave](https://github.com/carrierwaveuploader/carrierwaves)
+- [unicorn](https://github.com/defunkt/unicorn)
 
 ## Docker Container
 

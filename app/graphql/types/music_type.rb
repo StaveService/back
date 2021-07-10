@@ -17,6 +17,7 @@ module Types
     field :bookmark, Types::MusicBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
+    field :score, String, null: true
     field :root_tree, [Types::TreeType], null: true 
     field :tree, [Types::TreeType], null: true do
       argument :oid, String, required: true
@@ -29,32 +30,11 @@ module Types
       bookmark_current_user(object.music_bookmarks, current_user_id)
     end
 
-    def link
-      Loaders::AssociationLoader.for(Music, :link).load(object)
-    end
-
-    def user
-      Loaders::AssociationLoader.for(Music, :user).load(object)
-    end
-
-    def band
-      Loaders::AssociationLoader.for(Music, :band).load(object)
-    end
-
-    def composers
-      Loaders::AssociationLoader.for(Music, :composers).load(object)
-    end
-
-    def lyrists
-      Loaders::AssociationLoader.for(Music, :lyrists).load(object)
-    end
-
-    def albums
-      Loaders::AssociationLoader.for(Music, :albums).load(object)
-    end
-
-    def artist_musics
-      Loaders::AssociationLoader.for(Music, :artist_musics).load(object)
+    def score
+      repo = repository
+      revision = repo.last_commit.oid
+      blob = repo.blob_at(revision, "index.tex")
+      blob.text
     end
 
     def root_tree
@@ -83,6 +63,34 @@ module Types
 
     def repository_path
       Rails.root.join("repositories", object.user.id.to_s, object.title+".git")
+    end
+
+    def link
+      Loaders::AssociationLoader.for(Music, :link).load(object)
+    end
+
+    def user
+      Loaders::AssociationLoader.for(Music, :user).load(object)
+    end
+
+    def band
+      Loaders::AssociationLoader.for(Music, :band).load(object)
+    end
+
+    def composers
+      Loaders::AssociationLoader.for(Music, :composers).load(object)
+    end
+
+    def lyrists
+      Loaders::AssociationLoader.for(Music, :lyrists).load(object)
+    end
+
+    def albums
+      Loaders::AssociationLoader.for(Music, :albums).load(object)
+    end
+
+    def artist_musics
+      Loaders::AssociationLoader.for(Music, :artist_musics).load(object)
     end
   end
 end
