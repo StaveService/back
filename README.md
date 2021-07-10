@@ -48,7 +48,7 @@ heroku run rails db:seed
 ## Credentials
 
 ```sh
-docker-compose run web rails credentials:edit
+docker-compose run app rails credentials:edit
 ```
 
 - linux
@@ -91,17 +91,17 @@ gems
 - [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
 
 ```sh
-docker-compose run web bundle exec rspec
+docker-compose run app bundle exec rspec
 
-docker-compose run web bundle exec rspec spec/models
+docker-compose run app bundle exec rspec spec/models
 
-docker-compose run web bundle exec rspec spec/controllers/accounts_controller_spec.rb
+docker-compose run app bundle exec rspec spec/controllers/accounts_controller_spec.rb
 
-docker-compose run web bundle exec rspec spec/controllers/accounts_controller_spec.rb:8
+docker-compose run app bundle exec rspec spec/controllers/accounts_controller_spec.rb:8
 ```
 
 ## Lint
 
 ```sh
-docker-compose run web rubocop -a
+docker-compose run app rubocop -a
 ```

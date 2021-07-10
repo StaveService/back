@@ -18,7 +18,7 @@ module Types
       argument :current_user_id, Int, required: false
     end
     field :score, String, null: true
-    field :root_tree, [Types::TreeType], null: true 
+    field :root_tree, [Types::TreeType], null: true
     field :tree, [Types::TreeType], null: true do
       argument :oid, String, required: true
     end
@@ -33,13 +33,13 @@ module Types
     def score
       repo = repository
       revision = repo.last_commit.oid
-      blob = repo.blob_at(revision, "index.tex")
+      blob = repo.blob_at(revision, 'index.tex')
       blob.text
     end
 
     def root_tree
       repo = repository
-      if !repo.head_unborn? 
+      unless repo.head_unborn?
         ref = repo.head
         commit = ref.target
         commit.tree
@@ -62,7 +62,7 @@ module Types
     end
 
     def repository_path
-      Rails.root.join("repositories", object.user.id.to_s, object.title+".git")
+      Rails.root.join('repositories', object.user.id.to_s, "#{object.title}.git")
     end
 
     def link
