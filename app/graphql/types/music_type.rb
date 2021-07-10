@@ -3,7 +3,6 @@ module Types
     include Helpers
     field :id, ID, null: false
     field :title, String, null: false
-    field :tab, String, null: false
     field :user, Types::UserType, null: false
     field :link, Types::MusicLinkType, null: false
     field :band, Types::BandType, null: true
@@ -18,6 +17,14 @@ module Types
     field :bookmark, Types::MusicBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
+    field :root_tree, [Types::TreeType], null: true 
+    field :tree, [Types::TreeType], null: true do
+      argument :oid, String, required: true
+    end
+    field :blob, String, null: true do
+      argument :oid, String, required: true
+    end
+
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.music_bookmarks, current_user_id)
     end
@@ -48,6 +55,34 @@ module Types
 
     def artist_musics
       Loaders::AssociationLoader.for(Music, :artist_musics).load(object)
+    end
+
+    def root_tree
+      repo = repository
+      if !repo.head_unborn? 
+        ref = repo.head
+        commit = ref.target
+        commit.tree
+      end
+    end
+
+    def tree(oid:)
+      repo = repository
+      tree = repo.lookup(oid)
+    end
+
+    def blob(oid:)
+      repo = repository
+      blob = repo.lookup(oid)
+      blob.text
+    end
+
+    def repository
+      Rugged::Repository.new(repository_path)
+    end
+
+    def repository_path
+      Rails.root.join("repositories", object.user.id.to_s, object.title+".git")
     end
   end
 end

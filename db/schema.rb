@@ -203,7 +203,6 @@ ActiveRecord::Schema.define(version: 2021_07_03_181458) do
     t.bigint "user_id"
     t.bigint "band_id"
     t.string "title", default: "", null: false
-    t.string "tab", default: "", null: false
     t.integer "bookmarks_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
