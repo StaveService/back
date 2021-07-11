@@ -18,6 +18,7 @@ module Types
       argument :current_user_id, Int, required: false
     end
     field :score, String, null: true
+    field :score_exist, Boolean, null: false 
     field :root_tree, [Types::TreeType], null: true
     field :tree, [Types::TreeType], null: true do
       argument :oid, String, required: true
@@ -35,6 +36,15 @@ module Types
       revision = repo.last_commit.oid
       blob = repo.blob_at(revision, 'index.tex')
       blob.text
+    end
+
+    def score_exist
+      begin
+        score
+        true
+      rescue
+        false
+      end
     end
 
     def root_tree
