@@ -30,7 +30,6 @@ services:
       # - ./htpasswd:/srv/htpasswd
       # if you want to use a custom configuration
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-    volumes_from:
-      - app
+      - ./:/myapp
     # environment:
       # GIT_POSTBUFFER: 1048576
