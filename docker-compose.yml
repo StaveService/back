@@ -23,6 +23,7 @@ services:
     image: emarcs/nginx-git
     ports:
       - 80:80
+      - "443:443"
     volumes:
       # - /srv/git:/srv/git
       - ./nginx/logs:/var/log/nginx
