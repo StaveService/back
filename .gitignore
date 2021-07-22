@@ -5,7 +5,6 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 repositories/*
-nginx/logs/*
 # Ignore bundler config.
 /.bundle
 
@@ -23,5 +22,3 @@ nginx/logs/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-/nginx/ssl/server.key

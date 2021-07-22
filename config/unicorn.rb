@@ -21,24 +21,24 @@ worker_processes 4
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-# working_directory "/myapp" # available in 0.94.0+
+# working_directory "/back" # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen '/myapp/tmp/sockets/.unicorn.sock', backlog: 64
+listen '/back/tmp/sockets/.unicorn.sock', backlog: 64
 # listen 8080, :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid '/myapp/tmp/pids/unicorn.pid'
+pid '/back/tmp/pids/unicorn.pid'
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path '/myapp/tmp/log/unicorn.stderr.log'
-stdout_path '/myapp/tmp/log/unicorn.stdout.log'
+stderr_path '/back/tmp/log/unicorn.stderr.log'
+stdout_path '/back/tmp/log/unicorn.stdout.log'
 
 # combine Ruby 2.0.0+ with "preload_app true" for memory savings
 preload_app true
