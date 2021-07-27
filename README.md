@@ -33,6 +33,7 @@
 - [rugged](https://github.com/libgit2/rugged)
 - [carrierwave](https://github.com/carrierwaveuploader/carrierwaves)
 - [unicorn](https://github.com/defunkt/unicorn)
+- [noticed](https://github.com/excid3/noticed)
 
 ## Docker Container
 

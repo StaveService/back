@@ -41,6 +41,9 @@ module Types
     field :followed, Types::UserRelationshipType, null: true do
       argument :current_user_id, Int, required: false
     end
+    field :notifications, Types::NotificationsType, null: true do
+      argument :notification_page, Int, required: true
+    end
     field :musics, Types::MusicsType, null: true do
       argument :music_page, Int, required: true
     end
@@ -56,6 +59,11 @@ module Types
     field :bookmarked_albums, Types::AlbumsType, null: true do
       argument :bookmarked_album_page, Int, required: true
     end
+
+    def notifications(notification_page:)
+      index(object.notifications, notification_page)
+    end
+
     def musics(music_page:)
       index(object.musics, music_page)
     end

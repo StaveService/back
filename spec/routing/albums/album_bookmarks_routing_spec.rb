@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AlbumBookmarksController, type: :routing do
+RSpec.describe Albums::AlbumBookmarksController, type: :routing do
   describe 'routing' do
     it 'routes to #index' do
       expect(get: '/album_bookmarks').to route_to('album_bookmarks#index')

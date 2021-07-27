@@ -41,12 +41,12 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
-    user_name:            Rails.application.credentials.gmail[:user_name],
-    password:             Rails.application.credentials.gmail[:password],
-    domain: "gmail.com",
-    address: "smtp.gmail.com",
+    user_name: Rails.application.credentials.gmail[:user_name],
+    password: Rails.application.credentials.gmail[:password],
+    domain: 'gmail.com',
+    address: 'smtp.gmail.com',
     port: 587,
     authentication: 'plain',
     enable_starttls_auto: true

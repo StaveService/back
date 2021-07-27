@@ -18,7 +18,7 @@ module Types
       argument :current_user_id, Int, required: false
     end
     field :score, String, null: true
-    field :score_exist, Boolean, null: false 
+    field :score_exist, Boolean, null: false
     field :root_tree, [Types::TreeType], null: true
     field :tree, [Types::TreeType], null: true do
       argument :oid, String, required: true
@@ -39,12 +39,10 @@ module Types
     end
 
     def score_exist
-      begin
-        score
-        true
-      rescue
-        false
-      end
+      score
+      true
+    rescue StandardError
+      false
     end
 
     def root_tree
