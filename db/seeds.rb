@@ -46,7 +46,7 @@ end
   "Beautiful Circus": 1_535_532_369,
   "Ultra Overcorrection": 1_341_020_204
 }.each do |k, v|
-  music = Music.create(:music, user: user1, band: band1, title: k)
+  music = FactoryBot.create(:music, user: user1, band: band1, title: k)
   FactoryBot.create(:music_link, music: music, itunes: v)
   %i[composer_music lyrist_music].each do |v|
     FactoryBot.create(v, artist: artists1[0], music: music)
@@ -62,12 +62,12 @@ artist4 = Artist.create(name: '野田 洋二郎', link_attributes: {})
 FactoryBot.create(:artist_band, artist: artist4, band: band2)
 
 user2 = FactoryBot.create(:user)
-user2_music1 = Music.create(:music, user: user2, band: band2, title: 'おしゃかしゃま', link_attributes: {})
+user2_music1 = FactoryBot.create(:music, user: user2, band: band2, title: 'おしゃかしゃま', link_attributes: {})
 FactoryBot.create(:composer_music, artist: artist4, music: user2_music1)
 FactoryBot.create(:lyrist_music, artist: artist4, music: user2_music1)
 FactoryBot.create(:artist_music, artist: artist4, music: user2_music1, role: 1)
 
-user2_music2 = Music.create(:music, user: user2, band: band2, title: '君と青と羊', link_attributes: {})
+user2_music2 = FactoryBot.create(:music, user: user2, band: band2, title: '君と青と羊', link_attributes: {})
 FactoryBot.create(:composer_music, artist: artist4, music: user2_music2)
 FactoryBot.create(:lyrist_music, artist: artist4, music: user2_music2)
 FactoryBot.create(:artist_music, artist: artist4, music: user2_music2, role: 1)

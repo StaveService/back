@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
   resources :users do
     scope module: :users do
+      resources :notifications, only: %i[update]
       resources :musics, only: %i[create update destroy] do
         scope module: :musics do
           resources :bands, only: %i[create destroy]
