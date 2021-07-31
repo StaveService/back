@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   end
   resources :albums, only: %i[create update destroy] do
     scope module: :albums do
-      resources :musics, only: %i[create update destroy]
       resources :artist_albums, path: :artists, only: %i[create destroy]
       resources :album_links, path: :links, only: %i[update]
       resources :album_bookmarks, path: :bookmarks, only: %i[create destroy]
