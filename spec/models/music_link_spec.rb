@@ -6,6 +6,10 @@ RSpec.describe MusicLink, type: :model do
   end
 
   context 'attributes' do
+    it 'has music_id' do
+      expect(build(:music_link, music_id: 1)).to have_attributes(music_id: 1)
+    end
+
     it 'has spotify' do
       expect(build(:music_link, spotify: 'spotify')).to have_attributes(spotify: 'spotify')
     end

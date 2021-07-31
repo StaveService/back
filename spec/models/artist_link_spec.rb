@@ -6,6 +6,10 @@ RSpec.describe ArtistLink, type: :model do
   end
 
   context 'attributes' do
+    it 'has artist_id' do
+      expect(build(:artist_link, artist_id: 1)).to have_attributes(artist_id: 1)
+    end
+
     it 'has twitter' do
       expect(build(:artist_link, twitter: 'twitter')).to have_attributes(twitter: 'twitter')
     end

@@ -22,5 +22,9 @@ RSpec.describe Artist, type: :model do
     it 'has name' do
       expect(build(:artist, name: 'artist')).to have_attributes(name: 'artist')
     end
+
+    it 'has bookmarks_count' do
+      expect(build(:artist)).to have_attributes(bookmarks_count: 0)
+    end
   end
 end

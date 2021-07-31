@@ -7,6 +7,14 @@ RSpec.describe ArtistMusic, type: :model do
   end
 
   context 'attributes' do
+    it 'has artist_id' do
+      expect(build(:artist_music, artist_id: 1)).to have_attributes(artist_id: 1)
+    end
+
+    it 'has music_id' do
+      expect(build(:artist_music, music_id: 1)).to have_attributes(music_id: 1)
+    end
+
     it 'has role' do
       expect(build(:artist_music, role: 0)).to have_attributes(role: 'vocal')
     end

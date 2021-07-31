@@ -6,6 +6,10 @@ RSpec.describe AlbumLink, type: :model do
   end
 
   context 'attributes' do
+    it 'has album_id' do
+      expect(build(:album_link, album_id: 1)).to have_attributes(album_id: 1)
+    end
+
     it 'has spotify' do
       expect(build(:album_link, spotify: 'spotify')).to have_attributes(spotify: 'spotify')
     end

@@ -20,5 +20,9 @@ RSpec.describe Band, type: :model do
     it 'has name' do
       expect(build(:band, name: 'band')).to have_attributes(name: 'band')
     end
+
+    it 'has bookmarks_count' do
+      expect(build(:band)).to have_attributes(bookmarks_count: 0)
+    end
   end
 end

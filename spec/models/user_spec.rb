@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_one(:link).class_name('UserLink').dependent(:destroy) }
+    it { is_expected.to have_one(:link).class_name(:UserLink).dependent(:destroy) }
     it { is_expected.to have_many(:musics) }
     it { is_expected.to have_many(:requests).dependent(:destroy) }
     it { is_expected.to have_many(:issues).dependent(:destroy) }
@@ -46,6 +46,14 @@ RSpec.describe User, type: :model do
     it 'has birthday' do
       date = DateTime.now
       expect(build(:user, birthday: date)).to have_attributes(birthday: date)
+    end
+
+    it 'has following_count' do
+      expect(build(:user)).to have_attributes(following_count: 0)
+    end
+
+    it 'has followers_count' do
+      expect(build(:user)).to have_attributes(followers_count: 0)
     end
   end
 end

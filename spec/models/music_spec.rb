@@ -28,16 +28,16 @@ RSpec.describe Music, type: :model do
       expect(build(:music, title: 'title')).to have_attributes(title: 'title')
     end
 
-    it 'has tab' do
-      expect(build(:music, tab: 'tab')).to have_attributes(tab: 'tab')
-    end
-
     it 'has user_id' do
       expect(build(:music, user_id: 1)).to have_attributes(user_id: 1)
     end
 
     it 'has band_id' do
       expect(build(:music, band_id: 1)).to have_attributes(band_id: 1)
+    end
+
+    it 'has bookmarks_count' do
+      expect(build(:music)).to have_attributes(bookmarks_count: 0)
     end
   end
 end

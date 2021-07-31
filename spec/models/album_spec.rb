@@ -21,5 +21,9 @@ RSpec.describe Album, type: :model do
     it 'has title' do
       expect(build(:album, title: 'title')).to have_attributes(title: 'title')
     end
+
+    it 'has bookmarks_count' do
+      expect(build(:album)).to have_attributes(bookmarks_count: 0)
+    end
   end
 end
