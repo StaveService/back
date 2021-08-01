@@ -14,33 +14,32 @@ require 'rails_helper'
 
 RSpec.describe '/user_links', type: :request do
   let(:user) { create(:user)}
-  let(:music) {create(:music, user: user)}
-  let(:music_link) { create(:music_link, music: music) }
+  let(:user_link) { create(:user_link, user: user) }
   let(:headers) do
     login user
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'PUT /user/music/links' do
+  context 'PUT /user/links' do
     it 'with Authorization header' do
-      put user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }, headers: headers
+      put user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) }, headers: headers
       expect(response).to have_http_status :ok
     end
 
     it 'without Authorization header' do
-      put user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }
+      put user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) }
       expect(response).to have_http_status :unauthorized
     end
   end
 
-  context 'PATCH /user/music/links' do
+  context 'PATCH /user/links' do
     it 'with Authorization header' do
-      patch user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }, headers: headers
+      patch user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) }, headers: headers
       expect(response).to have_http_status :ok
     end
 
     it 'without Authorization header' do
-      patch user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }
+      patch user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) }
       expect(response).to have_http_status :unauthorized
     end
   end

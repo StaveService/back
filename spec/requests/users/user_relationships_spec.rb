@@ -12,35 +12,35 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/user_links', type: :request do
-  let(:user) { create(:user)}
-  let(:music) {create(:music, user: user)}
-  let(:music_link) { create(:music_link, music: music) }
+RSpec.describe '/user_relationships', type: :request do
+  let(:current_user) { create(:user) }
+  let(:target_user) { create(:user) }
+  let(:user_relationship) { create(:user_relationship, followed: target_user, follower: current_user) }
   let(:headers) do
-    login user
+    login current_user
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'PUT /user/music/links' do
+  context 'POST /users/relationships' do
     it 'with Authorization header' do
-      put user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }, headers: headers
-      expect(response).to have_http_status :ok
+      post user_user_relationships_path(user_id: target_user.id), headers: headers
+      expect(response).to have_http_status :created
     end
 
     it 'without Authorization header' do
-      put user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }
+      post user_user_relationships_path(user_id: target_user.id)
       expect(response).to have_http_status :unauthorized
     end
   end
 
-  context 'PATCH /user/music/links' do
+  context 'DELETE /users/relationships' do
     it 'with Authorization header' do
-      patch user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }, headers: headers
-      expect(response).to have_http_status :ok
+      delete user_user_relationship_path(user_id: target_user.id, id: user_relationship.id), headers: headers
+      expect(response).to have_http_status :no_content
     end
 
     it 'without Authorization header' do
-      patch user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id), params: { music_link: attributes_for(:music_link) }
+      delete user_user_relationship_path(user_id: target_user.id, id: user_relationship.id)
       expect(response).to have_http_status :unauthorized
     end
   end

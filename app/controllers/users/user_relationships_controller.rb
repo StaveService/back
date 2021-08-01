@@ -15,7 +15,7 @@ module Users
 
     # DELETE /user_relationships/1
     def destroy
-      current_user.active_relationships.find_by(id: params[:id]).destroy
+      current_user.active_relationships.find(params[:id]).destroy
     end
   end
 end
