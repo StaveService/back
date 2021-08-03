@@ -15,6 +15,7 @@ gem 'ransack'
 gem 'rugged', '~> 1.1'
 gem 'unicorn'
 gem 'mobility'
+gem 'mobility-ransack'
 
 # TODO: should be dev
 gem 'factory_bot_rails'

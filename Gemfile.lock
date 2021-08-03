@@ -151,6 +151,9 @@ GEM
     mobility (1.1.2)
       i18n (>= 0.6.10, < 2)
       request_store (~> 1.0)
+    mobility-ransack (1.1.0)
+      mobility (>= 1.0.1, < 2.0)
+      ransack (>= 1.8.0, < 3.0)
     msgpack (1.4.2)
     multi_json (1.15.0)
     nio4r (2.5.7)
@@ -309,6 +312,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   mobility
+  mobility-ransack
   noticed
   olive_branch
   pg (>= 0.18, < 2.0)

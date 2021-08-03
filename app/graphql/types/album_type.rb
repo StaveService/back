@@ -17,7 +17,7 @@ module Types
       argument :current_user_id, Int, required: false
     end
 
-    def title(locale: nil)
+    def title(locale:)
       object.title(locale: locale)
     end
 

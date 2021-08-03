@@ -20,7 +20,7 @@ module Types
       argument :current_user_id, Int, required: false
     end
     
-    def name(locale: nil)
+    def name(locale:)
       object.name(locale: locale)
     end
 

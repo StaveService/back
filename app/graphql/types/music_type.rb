@@ -29,7 +29,7 @@ module Types
       argument :oid, String, required: true
     end
 
-    def title(locale: nil)
+    def title(locale:)
       object.title(locale: locale)
     end
 

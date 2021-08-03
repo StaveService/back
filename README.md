@@ -35,6 +35,8 @@
 - [carrierwave](https://github.com/carrierwaveuploader/carrierwaves)
 - [unicorn](https://github.com/defunkt/unicorn)
 - [noticed](https://github.com/excid3/noticed)
+- [mobility](https://github.com/shioyama/mobility)
+- [mobility-ransack](https://github.com/shioyama/mobility-ransack)
 
 ## Docker Container
 

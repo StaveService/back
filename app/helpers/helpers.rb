@@ -4,7 +4,8 @@ module Helpers
     { data: items, pagination: pagination(items) }
   end
 
-  def search(object, page, q)
+  def search(object, page, locale, q)
+    I18n.locale = locale if locale
     index(object.ransack(q).result, page)
   end
 
