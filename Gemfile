@@ -14,6 +14,7 @@ gem 'olive_branch'
 gem 'ransack'
 gem 'rugged', '~> 1.1'
 gem 'unicorn'
+gem 'mobility'
 
 # TODO: should be dev
 gem 'factory_bot_rails'
