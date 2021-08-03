@@ -16,4 +16,7 @@ class Artist < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
 
   accepts_nested_attributes_for :link
+
+  extend Mobility
+  translates :name
 end
