@@ -11,18 +11,18 @@ RSpec.describe 'Albums', type: :request do
   context 'POST /albums' do
     context 'with Authorization header' do
       it do
-        post albums_path, params: { album: attributes_for(:album) }, headers: headers
+        post albums_path, params: { album: attributes_for(:album), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :created
       end
 
       it 'without name' do
-        post albums_path, params: { album: attributes_for(:album, :without_title) }, headers: headers
+        post albums_path, params: { album: attributes_for(:album, :without_title), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      post albums_path, params: { album: attributes_for(:album) }
+      post albums_path, params: { album: attributes_for(:album), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end
@@ -30,18 +30,18 @@ RSpec.describe 'Albums', type: :request do
   context 'PUT /albums' do
     context 'with Authorization header' do
       it do
-        put album_path(album), params: { album: attributes_for(:album) }, headers: headers
+        put album_path(album), params: { album: attributes_for(:album), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        put album_path(album), params: { album: attributes_for(:album, :without_title) }, headers: headers
+        put album_path(album), params: { album: attributes_for(:album, :without_title), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      put album_path(album), params: { album: attributes_for(:album) }
+      put album_path(album), params: { album: attributes_for(:album), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end
@@ -49,18 +49,19 @@ RSpec.describe 'Albums', type: :request do
   context 'PATCH /albums' do
     context 'with Authorization header' do
       it do
-        patch album_path(album), params: { album: attributes_for(:album) }, headers: headers
+        patch album_path(album), params: { album: attributes_for(:album), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        patch album_path(album), params: { album: attributes_for(:album, :without_title) }, headers: headers
+        patch album_path(album), params: { album: attributes_for(:album, :without_title), locale: 'ja' },
+                                 headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      patch album_path(album), params: { album: attributes_for(:album) }
+      patch album_path(album), params: { album: attributes_for(:album), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end

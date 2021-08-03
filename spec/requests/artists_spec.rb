@@ -11,18 +11,18 @@ RSpec.describe 'Artists', type: :request do
   context 'POST /artists' do
     context 'with Authorization header' do
       it do
-        post artists_path, params: { artist: attributes_for(:artist) }, headers: headers
+        post artists_path, params: { artist: attributes_for(:artist), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :created
       end
 
       it 'without name' do
-        post artists_path, params: { artist: attributes_for(:artist, :without_name) }, headers: headers
+        post artists_path, params: { artist: attributes_for(:artist, :without_name), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      post artists_path, params: { artist: attributes_for(:artist) }
+      post artists_path, params: { artist: attributes_for(:artist), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end
@@ -30,18 +30,19 @@ RSpec.describe 'Artists', type: :request do
   context 'PUT /artists' do
     context 'with Authorization header' do
       it do
-        put artist_path(artist), params: { artist: attributes_for(:artist) }, headers: headers
+        put artist_path(artist), params: { artist: attributes_for(:artist), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        put artist_path(artist), params: { artist: attributes_for(:artist, :without_name) }, headers: headers
+        put artist_path(artist), params: { artist: attributes_for(:artist, :without_name), locale: 'ja' },
+                                 headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      put artist_path(artist), params: { artist: attributes_for(:artist) }
+      put artist_path(artist), params: { artist: attributes_for(:artist), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end
@@ -49,18 +50,19 @@ RSpec.describe 'Artists', type: :request do
   context 'PATCH /artists' do
     context 'with Authorization header' do
       it do
-        patch artist_path(artist), params: { artist: attributes_for(:artist) }, headers: headers
+        patch artist_path(artist), params: { artist: attributes_for(:artist), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        patch artist_path(artist), params: { artist: attributes_for(:artist, :without_name) }, headers: headers
+        patch artist_path(artist), params: { artist: attributes_for(:artist, :without_name), locale: 'ja' },
+                                   headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      patch artist_path(artist), params: { artist: attributes_for(:artist) }
+      patch artist_path(artist), params: { artist: attributes_for(:artist), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end
@@ -74,7 +76,7 @@ RSpec.describe 'Artists', type: :request do
     end
 
     it 'without Authorization header' do
-      patch artist_path(artist), params: { artist: attributes_for(:artist) }
+      patch artist_path(artist), params: { artist: attributes_for(:artist), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end

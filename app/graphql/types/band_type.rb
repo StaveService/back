@@ -19,7 +19,7 @@ module Types
     field :bookmark, Types::BandBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
-    
+
     def name(locale:)
       object.name(locale: locale)
     end
