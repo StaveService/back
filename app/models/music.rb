@@ -27,6 +27,9 @@ class Music < ApplicationRecord
   after_create :after_create_git
   after_destroy :after_destroy_git
 
+  extend Mobility
+  translates :title
+
   def after_create_git
     repo_path = Rails.root.join('repositories', user.id.to_s, "#{title}.git")
     FileUtils.mkdir_p(repo_path)

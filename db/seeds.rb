@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'factory_bot_rails'
 
+I18n.locale = :ja
+
 # Ling tosite Sigure
 band1 = Band.create(name: 'Ling tosite sigure', link_attributes: {})
 albums1 = {

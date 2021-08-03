@@ -2,7 +2,9 @@ module Types
   class MusicType < Types::BaseObject
     include Helpers
     field :id, ID, null: false
-    field :title, String, null: false
+    field :title, String, null: false do
+      argument :locale, String, required: true
+    end
     field :user, Types::UserType, null: false
     field :link, Types::MusicLinkType, null: false
     field :band, Types::BandType, null: true
@@ -25,6 +27,10 @@ module Types
     end
     field :blob, String, null: true do
       argument :oid, String, required: true
+    end
+
+    def title(locale: nil)
+      object.title(locale: locale)
     end
 
     def bookmark(current_user_id: nil)

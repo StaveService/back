@@ -14,4 +14,7 @@ class Band < ApplicationRecord
   validates :name, presence: true
 
   accepts_nested_attributes_for :link
+
+  extend Mobility
+  translates :name
 end

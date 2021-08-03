@@ -4,6 +4,7 @@ module Users
     before_action :set_music, only: %i[update destroy]
     # POST /musics
     def create
+      I18n.locale = params[:locale]
       @music = current_user.musics.new music_params
 
       if @music.save
