@@ -2,7 +2,9 @@ module Types
   class BandType < Types::BaseObject
     include Helpers
     field :id, ID, null: false
-    field :name, String, null: true
+    field :name, String, null: true do
+      argument :locale, String, required: true
+    end
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :link, Types::BandLinkType, null: true
@@ -17,6 +19,11 @@ module Types
     field :bookmark, Types::BandBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
+    
+    def name(locale: nil)
+      object.name(locale: locale)
+    end
+
     def musics(music_page:)
       index(object.musics, music_page)
     end

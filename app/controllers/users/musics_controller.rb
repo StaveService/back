@@ -16,6 +16,7 @@ module Users
 
     # PATCH/PUT /musics/1
     def update
+      I18n.locale = params[:locale]
       if @music.update(music_params)
         render json: @music
       else
