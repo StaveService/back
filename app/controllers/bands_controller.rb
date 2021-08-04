@@ -4,6 +4,7 @@ class BandsController < ApplicationController
 
   # POST /bands
   def create
+    Mobility.locale = params[:locale]
     @band = Band.new(band_params)
 
     if @band.save
@@ -15,6 +16,7 @@ class BandsController < ApplicationController
 
   # PATCH/PUT /bands/1
   def update
+    Mobility.locale = params[:locale]
     if @band.update(band_params)
       render json: @band
     else

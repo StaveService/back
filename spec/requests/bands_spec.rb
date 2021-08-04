@@ -10,18 +10,18 @@ RSpec.describe '/bands', type: :request do
   context 'POST /bands' do
     context 'with Authorization header' do
       it do
-        post bands_path, params: { band: attributes_for(:band) }, headers: headers
+        post bands_path, params: { band: attributes_for(:band), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :created
       end
 
       it 'without name' do
-        post bands_path, params: { band: attributes_for(:band, :without_name) }, headers: headers
+        post bands_path, params: { band: attributes_for(:band, :without_name), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      post bands_path, params: { band: attributes_for(:band) }
+      post bands_path, params: { band: attributes_for(:band), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end
@@ -29,18 +29,18 @@ RSpec.describe '/bands', type: :request do
   context 'PUT /bands' do
     context 'with Authorization header' do
       it do
-        put band_path(band), params: { band: attributes_for(:band) }, headers: headers
+        put band_path(band), params: { band: attributes_for(:band), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        put band_path(band), params: { band: attributes_for(:band, :without_name) }, headers: headers
+        put band_path(band), params: { band: attributes_for(:band, :without_name), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      put band_path(band), params: { band: attributes_for(:band) }
+      put band_path(band), params: { band: attributes_for(:band), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end
@@ -48,18 +48,18 @@ RSpec.describe '/bands', type: :request do
   context 'PATCH /bands' do
     context 'with Authorization header' do
       it do
-        patch band_path(band), params: { band: attributes_for(:band) }, headers: headers
+        patch band_path(band), params: { band: attributes_for(:band), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :ok
       end
 
       it 'without name' do
-        patch band_path(band), params: { band: attributes_for(:band, :without_name) }, headers: headers
+        patch band_path(band), params: { band: attributes_for(:band, :without_name), locale: 'ja' }, headers: headers
         expect(response).to have_http_status :unprocessable_entity
       end
     end
 
     it 'without Authorization header' do
-      patch band_path(band), params: { band: attributes_for(:band) }
+      patch band_path(band), params: { band: attributes_for(:band), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end

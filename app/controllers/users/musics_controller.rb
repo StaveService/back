@@ -1,9 +1,10 @@
 module Users
   class MusicsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_music, only: %i[update destroy]
+    before_action :set_music, only: %i[destroy]
     # POST /musics
     def create
+      Mobility.locale = params[:locale]
       @music = current_user.musics.new music_params
 
       if @music.save
@@ -15,6 +16,9 @@ module Users
 
     # PATCH/PUT /musics/1
     def update
+      Mobility.locale = params[:locale]
+      @music = User.find(params[:user_id]).musics.find(params[:id])
+      
       if @music.update(music_params)
         render json: @music
       else

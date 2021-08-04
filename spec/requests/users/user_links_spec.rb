@@ -13,7 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/user_links', type: :request do
-  let(:user) { create(:user)}
+  let(:user) { create(:user) }
   let(:user_link) { create(:user_link, user: user) }
   let(:headers) do
     login user
@@ -22,7 +22,8 @@ RSpec.describe '/user_links', type: :request do
 
   context 'PUT /user/links' do
     it 'with Authorization header' do
-      put user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) }, headers: headers
+      put user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) },
+                                                                   headers: headers
       expect(response).to have_http_status :ok
     end
 
@@ -34,7 +35,8 @@ RSpec.describe '/user_links', type: :request do
 
   context 'PATCH /user/links' do
     it 'with Authorization header' do
-      patch user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) }, headers: headers
+      patch user_user_link_path(user_id: user.id, id: user_link.id), params: { user_link: attributes_for(:user_link) },
+                                                                     headers: headers
       expect(response).to have_http_status :ok
     end
 

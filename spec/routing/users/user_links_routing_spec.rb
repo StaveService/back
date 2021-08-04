@@ -7,7 +7,7 @@ RSpec.describe Users::UserLinksController, type: :routing do
     end
 
     it 'routes to #update via PATCH' do
-      expect(patch: 'users/1/links/1').to route_to('users/user_links#update', user_id:'1', id: '1')
+      expect(patch: 'users/1/links/1').to route_to('users/user_links#update', user_id: '1', id: '1')
     end
   end
 end

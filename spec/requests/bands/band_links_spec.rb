@@ -13,8 +13,8 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/band_links', type: :request do
-	let(:user){create(:user)}
-  let(:band) { create(:band)}
+  let(:user) { create(:user) }
+  let(:band) { create(:band) }
   let(:band_link) { create(:band_link, band: band) }
   let(:headers) do
     login user
@@ -23,7 +23,8 @@ RSpec.describe '/band_links', type: :request do
 
   context 'PUT /band/links' do
     it 'with Authorization header' do
-      put band_band_link_path(band_id: band.id, id: band_link.id), params: { band_link: attributes_for(:band_link) }, headers: headers
+      put band_band_link_path(band_id: band.id, id: band_link.id), params: { band_link: attributes_for(:band_link) },
+                                                                   headers: headers
       expect(response).to have_http_status :ok
     end
 
@@ -35,7 +36,8 @@ RSpec.describe '/band_links', type: :request do
 
   context 'PATCH /band/links' do
     it 'with Authorization header' do
-      patch band_band_link_path(band_id: band.id, id: band_link.id), params: { band_link: attributes_for(:band_link) }, headers: headers
+      patch band_band_link_path(band_id: band.id, id: band_link.id), params: { band_link: attributes_for(:band_link) },
+                                                                     headers: headers
       expect(response).to have_http_status :ok
     end
 
