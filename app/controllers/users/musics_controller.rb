@@ -4,7 +4,7 @@ module Users
     before_action :set_music, only: %i[update destroy]
     # POST /musics
     def create
-      I18n.locale = params[:locale]
+      Mobility.locale = params[:locale]
       @music = current_user.musics.new music_params
 
       if @music.save
@@ -16,7 +16,7 @@ module Users
 
     # PATCH/PUT /musics/1
     def update
-      I18n.locale = params[:locale]
+      Mobility.locale = params[:locale]
       if @music.update(music_params)
         render json: @music
       else

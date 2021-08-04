@@ -12,7 +12,7 @@ module Types
     end
     field :musics, Types::MusicsType, null: true do
       argument :page, Int, required: true
-      argument :locale, String, reauired: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :artist, Types::ArtistType, null: false do
@@ -20,7 +20,7 @@ module Types
     end
     field :artists, Types::ArtistsType, null: false do
       argument :page, Int, required: true
-      argument :locale, String, reauired: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :album, Types::AlbumType, null: false do
@@ -28,7 +28,7 @@ module Types
     end
     field :albums, Types::AlbumsType, null: false do
       argument :page, Int, required: true
-      argument :locale, String, reauired: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :band, Types::BandType, null: false do
@@ -36,7 +36,7 @@ module Types
     end
     field :bands, Types::BandsType, null: false do
       argument :page, Int, required: true
-      argument :locale, String, reauired: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :user, Types::UserType, null: false do

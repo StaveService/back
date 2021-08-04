@@ -18,5 +18,5 @@ class Artist < ApplicationRecord
   accepts_nested_attributes_for :link
 
   extend Mobility
-  translates :name
+  translates :name, fallbacks: { en: :ja, ja: :en }
 end

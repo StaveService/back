@@ -19,5 +19,5 @@ class Album < ApplicationRecord
   accepts_nested_attributes_for :link
 
   extend Mobility
-  translates :title
+  translates :title, fallbacks: { en: :ja, ja: :en }
 end

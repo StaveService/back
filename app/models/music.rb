@@ -28,7 +28,7 @@ class Music < ApplicationRecord
   after_destroy :after_destroy_git
 
   extend Mobility
-  translates :title
+  translates :title, fallbacks: { en: :ja, ja: :en }
 
   def after_create_git
     repo_path = Rails.root.join('repositories', user.id.to_s, "#{title}.git")

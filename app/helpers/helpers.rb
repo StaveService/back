@@ -5,7 +5,7 @@ module Helpers
   end
 
   def search(object, page, locale, q)
-    I18n.locale = locale if locale
+    Mobility.locale = locale if locale
     index(object.ransack(q).result, page)
   end
 

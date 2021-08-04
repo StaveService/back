@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
 
   # POST /artists
   def create
-    I18n.locale = params[:locale]
+    Mobility.locale = params[:locale]
     @artist = Artist.new(artist_params)
 
     if @artist.save
@@ -16,7 +16,7 @@ class ArtistsController < ApplicationController
 
   # PATCH/PUT /artists/1
   def update
-    I18n.locale = params[:locale]
+    Mobility.locale = params[:locale]
     if @artist.update(artist_params)
       render json: @artist
     else

@@ -2,7 +2,7 @@ module Types
   class BandType < Types::BaseObject
     include Helpers
     field :id, ID, null: false
-    field :name, String, null: true do
+    field :name, String, null: false do
       argument :locale, String, required: true
     end
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
@@ -19,9 +19,18 @@ module Types
     field :bookmark, Types::BandBookmarkType, null: true do
       argument :current_user_id, Int, required: false
     end
+    field :localed, Boolean, null: false do
+      argument :locale, String, required: true
+    end
 
     def name(locale:)
-      object.name(locale: locale)
+      Mobility.with_locale(locale) do
+        object.name
+      end
+    end
+
+    def localed(locale:)
+      object.name(locale: locale).nil?
     end
 
     def musics(music_page:)
@@ -34,6 +43,14 @@ module Types
 
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.band_bookmarks, current_user_id)
+    end
+
+    def link
+      Loaders::AssociationLoader.for(Band, :link).load(object)
+    end
+
+    def string_translations
+      Loaders::AssociationLoader.for(Band, :string_translations).load(object)
     end
   end
 end
