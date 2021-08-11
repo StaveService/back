@@ -6,6 +6,7 @@ class CreateArtistLinks < ActiveRecord::Migration[5.2]
       t.string :twitter
       t.string :spotify
       t.integer :wikipedia
+      t.string :youtube
 
       t.timestamps
     end
