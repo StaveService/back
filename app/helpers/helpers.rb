@@ -16,8 +16,4 @@ module Helpers
   def bookmark_current_user(object, current_user_id)
     object.find_by(user_id: current_user_id) if current_user_id
   end
-
-  def set_locale
-    Mobility.locale = params[:locale]
-  end
 end

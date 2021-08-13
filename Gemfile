@@ -15,6 +15,7 @@ gem 'noticed'
 gem 'olive_branch'
 gem 'ransack'
 gem 'rugged', '~> 1.1'
+gem 'seed-fu'
 gem 'unicorn'
 
 # TODO: should be dev

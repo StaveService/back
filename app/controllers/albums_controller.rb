@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_album, only: %i[update destroy]
-  before_action :set_locale 
+  before_action :set_locale
 
   # POST /albums
   def create

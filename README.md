@@ -37,6 +37,7 @@
 - [noticed](https://github.com/excid3/noticed)
 - [mobility](https://github.com/shioyama/mobility)
 - [mobility-ransack](https://github.com/shioyama/mobility-ransack)
+- [seed-fu](https://github.com/mbleigh/seed-fu)
 
 ## Docker Container
 
