@@ -75,5 +75,10 @@ FactoryBot.create(:lyrist_music, artist: artist4, music: user2_music2)
 FactoryBot.create(:artist_music, artist: artist4, music: user2_music2, role: 1)
 
 # Test User
-User.create(email: 'test@test.com', familyname: 'test', givenname: 'tester', nickname: 'IamTester',
+testUser = User.create(email: 'test@test.com', familyname: 'test', givenname: 'tester', nickname: 'IamTester',
             password: 'password', password_confirmation: 'password')
+
+## Test User Notification
+FactoryBot.create(:user_relationship, followed: testUser, follower: user1)
+FactoryBot.create(:user_relationship, followed: testUser, follower: user2)
+
