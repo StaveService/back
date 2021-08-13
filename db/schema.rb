@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_060901) do
     t.string "twitter"
     t.string "spotify"
     t.integer "wikipedia"
+    t.string "youtube"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_artist_links_on_artist_id"
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_060901) do
     t.string "twitter"
     t.string "spotify"
     t.integer "wikipedia"
+    t.string "youtube"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["band_id"], name: "index_band_links_on_band_id"
@@ -225,6 +227,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_060901) do
     t.integer "itunes"
     t.integer "musixmatch"
     t.string "spotify"
+    t.string "youtube"
     t.bigint "music_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
