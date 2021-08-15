@@ -63,16 +63,16 @@ module Types
 
     def root_tree
       repo = repository
-      unless repo.head_unborn?
-        ref = repo.head
-        commit = ref.target
-        commit.tree
-      end
+      return if repo.head_unborn?
+
+      ref = repo.head
+      commit = ref.target
+      commit.tree
     end
 
     def tree(oid:)
       repo = repository
-      tree = repo.lookup(oid)
+      repo.lookup(oid)
     end
 
     def blob(oid:)

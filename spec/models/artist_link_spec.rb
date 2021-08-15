@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ArtistLink, type: :model do
-  context 'associations' do
+  context 'when associations' do
     it { is_expected.to belong_to :artist }
   end
 
-  context 'attributes' do
+  context 'when attributes' do
     it 'has artist_id' do
       expect(build(:artist_link, artist_id: 1)).to have_attributes(artist_id: 1)
     end

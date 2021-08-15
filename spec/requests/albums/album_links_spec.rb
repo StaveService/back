@@ -9,7 +9,7 @@ RSpec.describe '/album_links', type: :request do
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'PUT /album/links' do
+  context 'when PUT /album/links' do
     it 'with Authorization header' do
       put album_album_link_path(album_id: album.id, id: album_link.id),
           params: { album_link: attributes_for(:album_link) }, headers: headers
@@ -23,7 +23,7 @@ RSpec.describe '/album_links', type: :request do
     end
   end
 
-  context 'PATCH /album/links' do
+  context 'when PATCH /album/links' do
     it 'with Authorization header' do
       patch album_album_link_path(album_id: album.id, id: album_link.id),
             params: { album_link: attributes_for(:album_link) }, headers: headers

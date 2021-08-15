@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe BandLink, type: :model do
-  context 'associations' do
+  context 'when associations' do
     it { is_expected.to belong_to :band }
   end
 
-  context 'attributes' do
+  context 'when attributes' do
     it 'has band_id' do
       expect(build(:band_link, band_id: 1)).to have_attributes(band_id: 1)
     end
@@ -23,7 +23,7 @@ RSpec.describe BandLink, type: :model do
     end
 
     it 'has wikipedia' do
-      expect(build(:band_link, wikipedia: 0)).to have_attributes(wikipedia: 0)
+      expect(build(:band_link, wikipedia: '0')).to have_attributes(wikipedia: '0')
     end
   end
 end

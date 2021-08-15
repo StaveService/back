@@ -10,4 +10,33 @@ Documentation:
 
 AllCops:
   Exclude:
+    - 'app/graphqol/loaders/*.rb'
+    - 'bin/*'
     - 'app/graphql/loaders/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'db/**/*.rb'
+    - 'config/**/*.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'app/graphql/**/*.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.rb'
+
+Naming/MethodParameterName:
+  Exclude:
+    - 'app/graphql/**/*.rb'
+
+RSpec/NamedSubject:
+  Enabled: false
+
+

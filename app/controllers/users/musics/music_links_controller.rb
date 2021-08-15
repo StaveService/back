@@ -2,7 +2,7 @@ module Users
   module Musics
     class MusicLinksController < ApplicationController
       before_action :authenticate_user!
-      before_action :set_music_link, only: %i[update destroy]
+      before_action :set_music_link
 
       # PATCH/PUT /music_links/1
       def update

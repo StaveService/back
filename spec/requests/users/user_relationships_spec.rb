@@ -21,7 +21,7 @@ RSpec.describe '/user_relationships', type: :request do
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'POST /users/relationships' do
+  context 'when POST /users/relationships' do
     it 'with Authorization header' do
       post user_user_relationships_path(user_id: target_user.id), headers: headers
       expect(response).to have_http_status :created
@@ -33,7 +33,7 @@ RSpec.describe '/user_relationships', type: :request do
     end
   end
 
-  context 'DELETE /users/relationships' do
+  context 'when DELETE /users/relationships' do
     it 'with Authorization header' do
       delete user_user_relationship_path(user_id: target_user.id, id: user_relationship.id), headers: headers
       expect(response).to have_http_status :no_content
