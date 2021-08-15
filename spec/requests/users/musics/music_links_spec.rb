@@ -21,7 +21,7 @@ RSpec.describe '/user_links', type: :request do
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'PUT /user/music/links' do
+  context 'when PUT /user/music/links' do
     it 'with Authorization header' do
       put user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id),
           params: { music_link: attributes_for(:music_link) }, headers: headers
@@ -35,7 +35,7 @@ RSpec.describe '/user_links', type: :request do
     end
   end
 
-  context 'PATCH /user/music/links' do
+  context 'when PATCH /user/music/links' do
     it 'with Authorization header' do
       patch user_music_music_link_path(user_id: user.id, music_id: music.id, id: music_link.id),
             params: { music_link: attributes_for(:music_link) }, headers: headers

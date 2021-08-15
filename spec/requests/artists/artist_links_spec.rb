@@ -9,7 +9,7 @@ RSpec.describe '/artist_links', type: :request do
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'PUT /artist/links' do
+  context 'when PUT /artist/links' do
     it 'with Authorization header' do
       put artist_artist_link_path(artist_id: artist.id, id: artist_link.id),
           params: { artist_link: attributes_for(:artist_link) }, headers: headers
@@ -23,7 +23,7 @@ RSpec.describe '/artist_links', type: :request do
     end
   end
 
-  context 'PATCH /artist/links' do
+  context 'when PATCH /artist/links' do
     it 'with Authorization header' do
       patch artist_artist_link_path(artist_id: artist.id, id: artist_link.id),
             params: { artist_link: attributes_for(:artist_link) }, headers: headers

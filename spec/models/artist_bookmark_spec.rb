@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe ArtistBookmark, type: :model do
-  context 'associations' do
+  context 'when associations' do
     it { is_expected.to belong_to :artist }
     it { is_expected.to belong_to :user }
   end
 
-  context 'attributes' do
+  context 'when attributes' do
     it 'has artist_id' do
       expect(build(:artist_bookmark, artist_id: 1)).to have_attributes(artist_id: 1)
     end

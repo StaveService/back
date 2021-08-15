@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Issue, type: :model do
-  context 'associations' do
+  context 'when associations' do
     it { is_expected.to belong_to :user }
     it { is_expected.to belong_to :music }
   end
 
-  context 'attributes' do
+  context 'when attributes' do
     it 'has user_id' do
       expect(build(:issue, user_id: 1)).to have_attributes(user_id: 1)
     end

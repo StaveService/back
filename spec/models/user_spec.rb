@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'validations' do
+  context 'when validations' do
     subject { build(:user) }
 
     it { is_expected.to validate_presence_of :nickname }
@@ -13,20 +13,35 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of :nickname }
   end
 
-  context 'associations' do
+  context 'when associations' do
     it { is_expected.to have_one(:link).class_name(:UserLink).dependent(:destroy) }
-    it { is_expected.to have_many(:musics) }
+    it { is_expected.to have_many(:musics).dependent(:destroy) }
     it { is_expected.to have_many(:requests).dependent(:destroy) }
     it { is_expected.to have_many(:issues).dependent(:destroy) }
-    it { is_expected.to have_many(:band_bookmarks) }
-    it { is_expected.to have_many(:music_bookmarks) }
-    it { is_expected.to have_many(:artist_bookmarks) }
-    it { is_expected.to have_many(:bookmarked_bands).through(:band_bookmarks).source(:band).dependent(:destroy) }
-    it { is_expected.to have_many(:bookmarked_musics).through(:music_bookmarks).source(:music).dependent(:destroy) }
-    it { is_expected.to have_many(:bookmarked_artists).through(:artist_bookmarks).source(:artist).dependent(:destroy) }
+    it { is_expected.to have_many(:band_bookmarks).dependent(:destroy) }
+    it { is_expected.to have_many(:music_bookmarks).dependent(:destroy) }
+    it { is_expected.to have_many(:artist_bookmarks).dependent(:destroy) }
+    it { is_expected.to have_many(:album_bookmarks).dependent(:destroy) }
+
+    it {
+      expect(subject).to have_many(:active_relationships).class_name(:UserRelationship).with_foreign_key(:follower_id)
+                                                         .inverse_of(:follower).dependent(:destroy)
+    }
+
+    it {
+      expect(subject).to have_many(:passive_relationships).class_name(:UserRelationship).with_foreign_key(:followed_id)
+                                                          .inverse_of(:followed).dependent(:destroy)
+    }
+
+    it { is_expected.to have_many(:bookmarked_bands).through(:band_bookmarks).source(:band) }
+    it { is_expected.to have_many(:bookmarked_musics).through(:music_bookmarks).source(:music) }
+    it { is_expected.to have_many(:bookmarked_artists).through(:artist_bookmarks).source(:artist) }
+    it { is_expected.to have_many(:bookmarked_albums).through(:album_bookmarks).source(:album) }
+    it { is_expected.to have_many(:following).through(:active_relationships).source(:followed) }
+    it { is_expected.to have_many(:followers).through(:passive_relationships).source(:follower) }
   end
 
-  context 'attributes' do
+  context 'when attributes' do
     it 'has nickname' do
       expect(build(:user, nickname: 'nickname')).to have_attributes(nickname: 'nickname')
     end

@@ -10,7 +10,7 @@ RSpec.describe '/lyrist_musics', type: :request do
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'POST /lyrist_musics' do
+  context 'when POST /lyrist_musics' do
     context 'with Authorization header' do
       it do
         post user_music_lyrist_musics_path(user_id: user.id, music_id: music.id),
@@ -26,13 +26,12 @@ RSpec.describe '/lyrist_musics', type: :request do
     end
   end
 
-  context 'DELETE /lyrist_musics' do
-    context 'with Authorization header' do
-      it do
-        delete user_music_lyrist_music_path(user_id: user.id, music_id: lyrist_music.music_id, id: lyrist_music.artist_id),
-               headers: headers
-        expect(response).to have_http_status :no_content
-      end
+  context 'when DELETE /lyrist_musics' do
+    it 'with Authorization header' do
+      delete user_music_lyrist_music_path(user_id: user.id, music_id: lyrist_music.music_id,
+                                          id: lyrist_music.artist_id),
+             headers: headers
+      expect(response).to have_http_status :no_content
     end
 
     it 'without Authorization header' do

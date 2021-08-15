@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
-  context 'attributes' do
+  context 'when attributes' do
     it 'has title' do
       expect(build(:contact, email: 'email')).to have_attributes(email: 'email')
     end
