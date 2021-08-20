@@ -10,9 +10,9 @@ Documentation:
 
 AllCops:
   Exclude:
-    - 'app/graphqol/loaders/*.rb'
-    - 'bin/*'
     - 'app/graphql/loaders/*.rb'
+    - 'bin/*'
+    - "db/schema.rb"
 
 Metrics/BlockLength:
   Exclude:
