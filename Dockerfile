@@ -1,6 +1,6 @@
 FROM ruby:2.5.8
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client vim cmake pkg-config 
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client vim cmake pkg-config graphviz
 
 WORKDIR /back
 COPY Gemfile /back/Gemfile
