@@ -1,5 +1,5 @@
 module Users
-  class RequestsController < ApplicationController
+  class RequestsController < ApiController
     before_action :authenticate_user!, only: %i[create update destroy]
     before_action :set_requests
     before_action :set_request, only: %i[show update destroy]

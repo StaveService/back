@@ -1,6 +1,6 @@
 module Users
   module Musics
-    class ComposerMusicsController < ApplicationController
+    class ComposerMusicsController < ApiController
       before_action :authenticate_user!
       before_action :set_composer_musics
 

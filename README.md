@@ -24,6 +24,7 @@
 
 ## Gems
 
+- [activeadmin](https://activeadmin.info/index.html)
 - [devise_token_auth](https://devise-token-auth.gitbook.io/devise-token-auth/)
 - [ransack](https://github.com/activerecord-hackery/ransack)
 - [kaminari](https://github.com/kaminari/kaminari)

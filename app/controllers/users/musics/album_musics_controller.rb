@@ -1,6 +1,6 @@
 module Users
   module Musics
-    class AlbumMusicsController < ApplicationController
+    class AlbumMusicsController < ApiController
       before_action :authenticate_user!
       before_action :set_current_user_music_album_musics
 

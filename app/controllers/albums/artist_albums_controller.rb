@@ -1,5 +1,5 @@
 module Albums
-  class ArtistAlbumsController < ApplicationController
+  class ArtistAlbumsController < ApiController
     before_action :authenticate_user!
     before_action :set_artist_albums
 

@@ -1,5 +1,5 @@
 module Bands
-  class ArtistBandsController < ApplicationController
+  class ArtistBandsController < ApiController
     before_action :authenticate_user!
     before_action :set_artist_bands
 

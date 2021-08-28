@@ -1,5 +1,5 @@
 module Albums
-  class AlbumBookmarksController < ApplicationController
+  class AlbumBookmarksController < ApiController
     before_action :authenticate_user!
     before_action :set_album_bookmarks
 

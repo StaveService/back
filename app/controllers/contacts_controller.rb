@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class ContactsController < ApiController
   def create
     contact = Contact.new(contact_params)
     ContactMailer.create(contact).deliver if contact.valid?
