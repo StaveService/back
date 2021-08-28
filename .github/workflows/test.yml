@@ -1,0 +1,42 @@
+name: test
+on: [pull_request]
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PASSWORD: password
+
+    env:
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      RAILS_ENV: test
+      POSTGRES_HOST: localhost
+      POSTGRES_PASSWORD: password
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.5.8
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Setup DB
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+
+      - name: rubocop
+        run: bundle exec rubocop
+        
+      - name: rspec
+        run: bundle exec rspec
