@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < ApiController
   before_action :authenticate_user!
   before_action :set_user
   # PATCH/PUT /bands/1

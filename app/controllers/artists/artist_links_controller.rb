@@ -1,5 +1,5 @@
 module Artists
-  class ArtistLinksController < ApplicationController
+  class ArtistLinksController < ApiController
     before_action :authenticate_user!
     before_action :set_artist_link
     before_action :set_locale

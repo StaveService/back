@@ -3,7 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.8'
 
+gem 'activeadmin'
 gem 'carrierwave', '~> 2.0'
+gem 'devise'
 gem 'devise_token_auth'
 gem 'graphiql-rails'
 gem 'graphql'
@@ -15,6 +17,7 @@ gem 'noticed'
 gem 'olive_branch'
 gem 'ransack'
 gem 'rugged', '~> 1.1'
+gem 'sass-rails'
 gem 'seed-fu'
 gem 'unicorn'
 

@@ -1,5 +1,5 @@
 module Users
-  class MusicsController < ApplicationController
+  class MusicsController < ApiController
     before_action :authenticate_user!
     before_action :set_music, only: %i[destroy]
     before_action :set_locale

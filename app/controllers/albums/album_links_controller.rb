@@ -1,5 +1,5 @@
 module Albums
-  class AlbumLinksController < ApplicationController
+  class AlbumLinksController < ApiController
     before_action :authenticate_user!
     before_action :set_album_link
 

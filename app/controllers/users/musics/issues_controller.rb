@@ -1,6 +1,6 @@
 module Users
   module Musics
-    class IssuesController < ApplicationController
+    class IssuesController < ApiController
       before_action :authenticate_user!, only: %i[create destroy]
       before_action :set_issues
       before_action :set_issue, only: %i[show update destroy]

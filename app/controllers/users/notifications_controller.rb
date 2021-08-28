@@ -1,5 +1,5 @@
 module Users
-  class NotificationsController < ApplicationController
+  class NotificationsController < ApiController
     def update
       Notification.find(params[:id]).mark_as_read!
     end

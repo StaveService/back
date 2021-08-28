@@ -1,4 +1,4 @@
-class ArtistsController < ApplicationController
+class ArtistsController < ApiController
   before_action :authenticate_user!
   before_action :set_artist, only: %i[update destroy]
   before_action :set_locale

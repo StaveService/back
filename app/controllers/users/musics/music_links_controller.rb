@@ -1,6 +1,6 @@
 module Users
   module Musics
-    class MusicLinksController < ApplicationController
+    class MusicLinksController < ApiController
       before_action :authenticate_user!
       before_action :set_music_link
 

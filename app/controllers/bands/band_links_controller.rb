@@ -1,5 +1,5 @@
 module Bands
-  class BandLinksController < ApplicationController
+  class BandLinksController < ApiController
     before_action :authenticate_user!
     before_action :set_band_link
     before_action :set_locale
