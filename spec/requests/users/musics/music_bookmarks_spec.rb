@@ -10,7 +10,7 @@ RSpec.describe '/music_bookmarks', type: :request do
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'POST /users/musics/music_bookmarks' do
+  context 'when POST /users/musics/music_bookmarks' do
     it 'with Authorization header' do
       post user_music_music_bookmarks_path(user_id: user.id, music_id: music.id), headers: headers
       expect(response).to have_http_status :created
@@ -22,9 +22,10 @@ RSpec.describe '/music_bookmarks', type: :request do
     end
   end
 
-  context 'DELETE /users/musics/music_bookmarks' do
+  context 'when DELETE /users/musics/music_bookmarks' do
     it 'with Authorization header' do
-      delete user_music_music_bookmark_path(user_id: music_bookmark.user_id, music_id: music_bookmark.music_id, id: music_bookmark.id),
+      delete user_music_music_bookmark_path(user_id: music_bookmark.user_id, music_id: music_bookmark.music_id,
+                                            id: music_bookmark.id),
              headers: headers
       expect(response).to have_http_status :no_content
     end

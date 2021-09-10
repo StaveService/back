@@ -13,6 +13,7 @@ repositories/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/nginx/logs/*
 
 # Ignore uploaded files in development
 /storage/*

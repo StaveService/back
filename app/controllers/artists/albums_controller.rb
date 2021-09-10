@@ -1,5 +1,5 @@
 module Artists
-  class AlbumsController < ApplicationController
+  class AlbumsController < ApiController
     before_action :set_album, only: %i[show update destroy]
 
     # GET /artsts/1/albums

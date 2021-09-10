@@ -1,5 +1,5 @@
 module Users
-  class UserRelationshipsController < ApplicationController
+  class UserRelationshipsController < ApiController
     before_action :authenticate_user!
 
     # POST /user_relationships

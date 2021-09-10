@@ -4,8 +4,9 @@ module Helpers
     { data: items, pagination: pagination(items) }
   end
 
-  def search(object, page, q)
-    index(object.ransack(q).result, page)
+  def search(object, page, locale, query)
+    Mobility.locale = locale if locale
+    index(object.ransack(query).result, page)
   end
 
   def pagination(result)

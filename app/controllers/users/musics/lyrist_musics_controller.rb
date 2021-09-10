@@ -1,6 +1,6 @@
 module Users
   module Musics
-    class LyristMusicsController < ApplicationController
+    class LyristMusicsController < ApiController
       before_action :authenticate_user!
       before_action :set_lyrist_musics
 

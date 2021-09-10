@@ -2,7 +2,9 @@ module Types
   class MusicType < Types::BaseObject
     include Helpers
     field :id, ID, null: false
-    field :title, String, null: false
+    field :title, String, null: false do
+      argument :locale, String, required: true
+    end
     field :user, Types::UserType, null: false
     field :link, Types::MusicLinkType, null: false
     field :band, Types::BandType, null: true
@@ -27,6 +29,20 @@ module Types
       argument :oid, String, required: true
     end
 
+    field :localed, Boolean, null: false do
+      argument :locale, String, required: true
+    end
+
+    def title(locale:)
+      Mobility.with_locale(locale) do
+        object.title
+      end
+    end
+
+    def localed(locale:)
+      object.title(locale: locale).nil?
+    end
+
     def bookmark(current_user_id: nil)
       bookmark_current_user(object.music_bookmarks, current_user_id)
     end
@@ -47,16 +63,16 @@ module Types
 
     def root_tree
       repo = repository
-      unless repo.head_unborn?
-        ref = repo.head
-        commit = ref.target
-        commit.tree
-      end
+      return if repo.head_unborn?
+
+      ref = repo.head
+      commit = ref.target
+      commit.tree
     end
 
     def tree(oid:)
       repo = repository
-      tree = repo.lookup(oid)
+      repo.lookup(oid)
     end
 
     def blob(oid:)
@@ -99,6 +115,10 @@ module Types
 
     def artist_musics
       Loaders::AssociationLoader.for(Music, :artist_musics).load(object)
+    end
+
+    def string_translations
+      Loaders::AssociationLoader.for(Music, :string_translations).load(object)
     end
   end
 end

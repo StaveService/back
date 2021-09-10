@@ -1,7 +1,8 @@
 module Bands
-  class BandLinksController < ApplicationController
+  class BandLinksController < ApiController
     before_action :authenticate_user!
     before_action :set_band_link
+    before_action :set_locale
 
     # PATCH/PUT /band_links/1
     def update
@@ -21,7 +22,7 @@ module Bands
 
     # Only allow a trusted parameter "white list" through.
     def band_link_params
-      params.require(:band_link).permit(:band_id, :itunes, :twitter, :wikipedia, :spotify)
+      params.require(:band_link).permit(:band_id, :itunes, :twitter, :wikipedia, :youtube, :spotify)
     end
   end
 end

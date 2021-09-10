@@ -10,7 +10,7 @@ RSpec.describe 'Albums::ArtistAlbums', type: :request do
     get_auth_params_from_login_response_headers(response)
   end
 
-  context 'POST /bands/artists' do
+  context 'when POST /bands/artists' do
     it 'with headers' do
       post band_artist_bands_path(band_id: band.id), params: { artist_band: { artist_id: artist.id } },
                                                      headers: headers
@@ -23,7 +23,7 @@ RSpec.describe 'Albums::ArtistAlbums', type: :request do
     end
   end
 
-  context 'DELETE /bands/artists' do
+  context 'when DELETE /bands/artists' do
     context 'with Authorization header' do
       it do
         delete band_artist_band_path(band_id: artist_band.band_id, id: artist_band.artist_id),

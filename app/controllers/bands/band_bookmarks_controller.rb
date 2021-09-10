@@ -1,5 +1,5 @@
 module Bands
-  class BandBookmarksController < ApplicationController
+  class BandBookmarksController < ApiController
     before_action :authenticate_user!
     before_action :set_band_bookmarks
 

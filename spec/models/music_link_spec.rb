@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe MusicLink, type: :model do
-  context 'associations' do
+  context 'when associations' do
     it { is_expected.to belong_to :music }
   end
 
-  context 'attributes' do
+  context 'when attributes' do
     it 'has music_id' do
       expect(build(:music_link, music_id: 1)).to have_attributes(music_id: 1)
     end

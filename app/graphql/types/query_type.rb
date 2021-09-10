@@ -12,6 +12,7 @@ module Types
     end
     field :musics, Types::MusicsType, null: true do
       argument :page, Int, required: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :artist, Types::ArtistType, null: false do
@@ -19,6 +20,7 @@ module Types
     end
     field :artists, Types::ArtistsType, null: false do
       argument :page, Int, required: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :album, Types::AlbumType, null: false do
@@ -26,6 +28,7 @@ module Types
     end
     field :albums, Types::AlbumsType, null: false do
       argument :page, Int, required: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :band, Types::BandType, null: false do
@@ -33,6 +36,7 @@ module Types
     end
     field :bands, Types::BandsType, null: false do
       argument :page, Int, required: true
+      argument :locale, String, required: true
       argument :q, GraphQL::Types::JSON, required: false
     end
     field :user, Types::UserType, null: false do
@@ -54,32 +58,32 @@ module Types
       Music.find id
     end
 
-    def musics(page:, q: nil)
-      search(Music, page, q)
+    def musics(page:, locale:, q: nil)
+      search(Music, page, locale, q)
     end
 
     def album(id:)
       Album.find id
     end
 
-    def albums(page:, q: nil)
-      search(Album, page, q)
+    def albums(page:, locale:, q: nil)
+      search(Album, page, locale, q)
     end
 
     def artist(id:)
       Artist.find id
     end
 
-    def artists(page:, q: nil)
-      search(Artist, page, q)
+    def artists(page:, locale:, q: nil)
+      search(Artist, page, locale, q)
     end
 
     def band(id:)
       Band.find id
     end
 
-    def bands(page:, q: nil)
-      search(Band, page, q)
+    def bands(page:, locale:, q: nil)
+      search(Band, page, locale, q)
     end
 
     def user(id:)

@@ -1,5 +1,5 @@
 module Artists
-  class ArtistBookmarksController < ApplicationController
+  class ArtistBookmarksController < ApiController
     before_action :authenticate_user!
     before_action :set_artist_bookmarks
 

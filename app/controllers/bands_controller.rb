@@ -1,6 +1,7 @@
-class BandsController < ApplicationController
+class BandsController < ApiController
   before_action :authenticate_user!
   before_action :set_band, only: %i[update destroy]
+  before_action :set_locale
 
   # POST /bands
   def create

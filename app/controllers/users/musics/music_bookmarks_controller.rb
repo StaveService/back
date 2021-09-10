@@ -1,6 +1,6 @@
 module Users
   module Musics
-    class MusicBookmarksController < ApplicationController
+    class MusicBookmarksController < ApiController
       before_action :authenticate_user!
       before_action :set_music_bookmarks
 

@@ -2,7 +2,9 @@ module Types
   class AlbumType < Types::BaseObject
     include Helpers
     field :id, ID, null: false
-    field :title, String, null: false
+    field :title, String, null: false do
+      argument :locale, String, required: true
+    end
     field :link, Types::AlbumLinkType, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
@@ -13,6 +15,19 @@ module Types
     field :bookmarks_count, Int, null: true
     field :bookmark, Types::ArtistBookmarkType, null: true do
       argument :current_user_id, Int, required: false
+    end
+    field :localed, Boolean, null: false do
+      argument :locale, String, required: true
+    end
+
+    def title(locale:)
+      Mobility.with_locale(locale) do
+        object.title
+      end
+    end
+
+    def localed(locale:)
+      object.title(locale: locale).nil?
     end
 
     def musics(music_page:)
@@ -25,6 +40,10 @@ module Types
 
     def link
       Loaders::AssociationLoader.for(Album, :link).load(object)
+    end
+
+    def string_translations
+      Loaders::AssociationLoader.for(Album, :string_translations).load(object)
     end
   end
 end
