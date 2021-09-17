@@ -47,6 +47,8 @@
 - [factory_bot](https://github.com/thoughtbot/factory_bot)
 - [faker](https://github.com/faker-ruby/faker)
 - [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner)
+- [simplecov](https://github.com/simplecov-ruby/simplecov)
+- [sitemap_generator](https://github.com/kjvarga/sitemap_generator)
 
 ## Docker Container
 

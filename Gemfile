@@ -20,6 +20,7 @@ gem 'rugged', '~> 1.1'
 gem 'sass-rails'
 gem 'seed-fu'
 gem 'unicorn'
+gem 'sitemap_generator'
 
 # TODO: should be dev
 gem 'factory_bot_rails'
@@ -59,19 +60,20 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rails-erd'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rails-erd'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'rspec-request_describer'
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
