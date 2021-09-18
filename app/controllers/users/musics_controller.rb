@@ -38,10 +38,6 @@ module Users
       @music = current_user.musics.find(params[:id])
     end
 
-    def set_locale
-      Mobility.locale = params[:locale]
-    end
-
     # Only allow a trusted parameter "white list" through.
     def music_params
       params.require(:music).permit(:title, :tab, link_attributes: [:itunes])
