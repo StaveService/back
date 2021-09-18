@@ -37,7 +37,7 @@ module Albums
 
     # DELETE /band_albums/1
     def destroy
-      @artist_albums.find_by(album_id: params[:id]).destroy
+      @artist_albums.find_by(artist_id: params[:id]).destroy
     end
 
     private
