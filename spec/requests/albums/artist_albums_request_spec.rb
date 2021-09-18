@@ -13,7 +13,7 @@ RSpec.describe 'Albums::ArtistAlbums', type: :request do
   context 'when POST /albums/artists' do
     it 'with headers' do
       post album_artist_albums_path(album_id: album.id), params: { artist_album: { artist_id: artist.id } },
-                                                     headers: headers
+                                                         headers: headers
       expect(response).to have_http_status :created
     end
 
@@ -26,7 +26,7 @@ RSpec.describe 'Albums::ArtistAlbums', type: :request do
   context 'when DELETE /albums/artists' do
     it 'with Authorization header' do
       delete album_artist_album_path(album_id: artist_album.album_id, id: artist_album.artist_id),
-              headers: headers
+             headers: headers
       expect(response).to have_http_status :no_content
     end
 

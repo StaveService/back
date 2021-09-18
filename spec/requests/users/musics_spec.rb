@@ -22,7 +22,8 @@ RSpec.describe 'Users::Musics', type: :request do
 
   context 'when POST /users/musics' do
     it 'with Authorization header' do
-      post user_musics_path(user_id: current_user.id), params: { music: attributes_for(:music), locale: 'ja' }, headers: headers
+      post user_musics_path(user_id: current_user.id), params: { music: attributes_for(:music), locale: 'ja' },
+                                                       headers: headers
       expect(response).to have_http_status :created
     end
 
@@ -34,12 +35,14 @@ RSpec.describe 'Users::Musics', type: :request do
 
   context 'when PATCH /users/musics' do
     it 'with Authorization header' do
-      patch user_music_path(user_id: current_user.id, id: music.id), params: { music: attributes_for(:music), locale: "ja" }, headers: headers
+      patch user_music_path(user_id: current_user.id, id: music.id),
+            params: { music: attributes_for(:music), locale: 'ja' }, headers: headers
       expect(response).to have_http_status :ok
     end
 
     it 'without Authorization header' do
-      patch user_music_path(user_id: current_user.id, id: music.id), params: { music: attributes_for(:music), locale: "ja" }
+      patch user_music_path(user_id: current_user.id, id: music.id),
+            params: { music: attributes_for(:music), locale: 'ja' }
       expect(response).to have_http_status :unauthorized
     end
   end

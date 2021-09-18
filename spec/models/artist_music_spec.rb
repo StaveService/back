@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ArtistMusic, type: :model do
-  let (:roles) { ArtistMusic.roles }
+  let(:roles) { described_class.roles }
+
   context 'when associations' do
     it { is_expected.to belong_to :artist }
     it { is_expected.to belong_to :music }
