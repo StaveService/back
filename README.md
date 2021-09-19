@@ -57,7 +57,7 @@
 ## Credentials
 
 ```sh
-docker-compose run app rails credentials:edit
+docker-compose run back rails credentials:edit
 ```
 
 ## graphql-rails
