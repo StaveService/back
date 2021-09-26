@@ -90,8 +90,8 @@ module Types
       User.find id
     end
 
-    def users(page:, q: nil)
-      search(User, page, q)
+    def users(page:, locale: nil, q: nil)
+      search(User, page, locale, q)
     end
 
     def issues(music_id:, page:, q: nil)
