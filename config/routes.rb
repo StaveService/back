@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
   resource :contacts, only: :create
   resources :requests
+  resources :musics
   resources :bands do
     scope module: :bands do
       resources :artist_bands, path: :artists, only: %i[create destroy]
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
       resources :band_bookmarks, path: :bookmarks, only: %i[create destroy]
     end
   end
-  resources :albums, only: %i[create update destroy] do
+  resources :albums do
     scope module: :albums do
       resources :artist_albums, path: :artists, only: %i[create destroy]
       resources :album_links, path: :links, only: %i[update]
@@ -43,7 +44,7 @@ Rails.application.routes.draw do
       resources :user_relationships, path: :relationships, only: %i[create destroy]
     end
   end
-  resources :artists, only: %i[create update destroy] do
+  resources :artists do
     scope module: :artists do
       resources :artist_bookmarks, path: :bookmarks, only: %i[create destroy]
       resources :artist_links, path: :links, only: %i[update]
