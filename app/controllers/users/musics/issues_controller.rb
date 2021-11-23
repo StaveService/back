@@ -5,16 +5,6 @@ module Users
       before_action :set_issues
       before_action :set_issue, only: %i[show update destroy]
 
-      # GET /issues
-      def index
-        render json: @issues.ransack(params[:q] && JSON.parse(params[:q])).result
-      end
-
-      # GET /issues/1
-      def show
-        render json: @issue
-      end
-
       # POST /issues
       def create
         @issue = @issues.new(user_id: current_user.id, title: issue_params[:title],
