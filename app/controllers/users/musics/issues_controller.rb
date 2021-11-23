@@ -3,7 +3,7 @@ module Users
     class IssuesController < ApiController
       before_action :authenticate_user!, only: %i[create destroy]
       before_action :set_issues
-      before_action :set_issue, only: %i[show update destroy]
+      before_action :set_issue, only: %i[update destroy]
 
       # POST /issues
       def create
