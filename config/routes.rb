@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
     registrations: 'auth/registrations'
   }
+  get '/basic_auth', to: 'basic_auth#auth'
   resource :contacts, only: :create
   resources :requests
   resources :musics

@@ -3,17 +3,7 @@ module Users
     class IssuesController < ApiController
       before_action :authenticate_user!, only: %i[create destroy]
       before_action :set_issues
-      before_action :set_issue, only: %i[show update destroy]
-
-      # GET /issues
-      def index
-        render json: @issues.ransack(params[:q] && JSON.parse(params[:q])).result
-      end
-
-      # GET /issues/1
-      def show
-        render json: @issue
-      end
+      before_action :set_issue, only: %i[update destroy]
 
       # POST /issues
       def create
