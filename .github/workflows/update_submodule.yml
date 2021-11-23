@@ -11,4 +11,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           repository: StaveService/web
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           event-type: back_update
