@@ -95,7 +95,7 @@ module Types
     end
 
     def issues(music_id:, page:, q: nil)
-      search(Music.find(music_id).issues, page, q)
+      search(Music.find(music_id).issues, page, nil, q)
     end
 
     def issue(id:)
